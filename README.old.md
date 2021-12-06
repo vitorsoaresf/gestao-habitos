@@ -1,0 +1,2 @@
+# gestao-habitos
+O objetivo da plataforma é que o usuário faça cadastro e consiga gerir seus hábitos, e participar de grupos com outras pessoas com a mesma categoria de hábitos e metas. Vocês terão uma API de backend que poderão usar para moldar o frontend da aplicação. A API incluirá endpoints relacionados a autenticação, hábitos, e aos grupos de pessoas, com suas respectivas atividades e metas .
