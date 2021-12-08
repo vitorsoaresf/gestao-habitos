@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: var(--lightGreen);
+  background: var(--green);
 
   border-radius: 10px;
   width: 280px;
