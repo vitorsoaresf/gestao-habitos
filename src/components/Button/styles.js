@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Container = styled.button`
+export const Container = styled.button`
   background: var(--darkGreen);
   width: 150px;
   height: 40px;
@@ -8,5 +8,3 @@ const Container = styled.button`
   border-radius: 8px;
   font-size: large;
 `;
-
-export default Container;
