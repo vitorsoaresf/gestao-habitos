@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import api from "../../services/api";
+import { toast } from "react-hot-toast";
 
 export const UserContext = createContext();
 
@@ -10,9 +11,18 @@ export const UserProvider = ({ children }) => {
     api
       .get(`/sessions/`, data)
       .then((response) => {
-        localStorage.setItem(`@Anima/token:${JSON.stringify(response.access)}`);
+        localStorage.setItem("@Anima/token", JSON.stringify(response.access));
       })
       .catch((err) => console.log(err));
+  };
+
+  const register = (data) => {
+    api
+      .get(`/users/`, data)
+      .then((_) => {
+        toast.success("registered user!");
+      })
+      .catch((_) => toast.error("some error occurred"));
   };
 
   const getSpecificUser = (userId) => {
@@ -25,7 +35,7 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, login }}>
+    <UserContext.Provider value={{ user, login, register }}>
       {children}
     </UserContext.Provider>
   );
