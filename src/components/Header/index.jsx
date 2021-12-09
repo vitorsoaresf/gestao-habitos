@@ -2,9 +2,12 @@ import logo from "../../logo.svg";
 import { BsList } from "react-icons/bs";
 import { Container } from "./styles";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
+
+  const history = useHistory();
 
   const handleMobile = () => {
     setShowMenu(!showMenu);
@@ -14,14 +17,14 @@ const Header = () => {
       <div className="logo">
         <img src={logo} alt="placeholder" />
       </div>
-      <BsList onClick={handleMobile} />
       {showMenu && (
         <section className="info">
-          <p>Home</p>
-          <p>Groups</p>
-          <p>Logout</p>
+          <p onClick={() => history.push("/")}>Home</p>
+          <p onClick={() => history.push("/groups")}>Groups</p>
+          <p onClick={() => history.push("/")}>Logout</p>
         </section>
       )}
+      <BsList onClick={handleMobile} />
     </Container>
   );
 };
