@@ -17,7 +17,8 @@ const Dashboard = () => {
     <>
       <Header />
       <Container>
-        <CardGeneric title={"My Habits"} cardType={"title"} />
+        <CardGeneric title={"My Habits"} cardType={"habit"} />
+        <CardGeneric title={"My Groups"} cardType={"group"} />
       </Container>
     </>
   );
