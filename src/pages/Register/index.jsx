@@ -12,7 +12,6 @@ import Button from "../../components/Button";
 
 const Register = () => {
   const { registerUser } = useContext(UserContext);
-  const { setAccess } = useContext(AuthenticatedContext);
   const history = useHistory();
 
   const formSchema = yup.object().shape({
@@ -48,21 +47,10 @@ const Register = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(formSchema) });
 
-  // const onSubmitFunction = (data) => {
-  //   console.log(data);
-  //   registerUser(data)
-  //     .then((_) => {
-  //       setAccess();
-  //       history.push("/dashboard");
-  //     })
-  //     .catch((_) => {});
-  // };
-
   const onSubmitFunction = (data) => {
     registerUser(data)
       .then((_) => {
-        setAccess();
-        history.push("/dashboard");
+        history.push("/login");
       })
       .catch((_) => {});
   };
