@@ -1,8 +1,8 @@
 import { Container } from "./styles";
 
-const Button = ({ children, ...rest }) => {
+const Button = ({ children, onClick, type }) => {
   return (
-    <Container type="button" {...rest}>
+    <Container type={type} onClick={onClick}>
       {children}
     </Container>
   );

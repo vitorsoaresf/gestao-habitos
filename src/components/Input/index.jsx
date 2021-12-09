@@ -1,9 +1,9 @@
 import { Container } from "./styles";
 
-const Input = ({ register, placeholder }) => {
+const Input = ({ register, name, placeholder, error, ...rest }) => {
   return (
     <Container>
-      <input type="text" placeholder={placeholder} />
+      <input {...register(name)} placeholder={placeholder} {...rest} />
     </Container>
   );
 };
