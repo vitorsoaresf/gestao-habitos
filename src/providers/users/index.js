@@ -7,13 +7,17 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState([]);
 
-  const login = (data) => {
-    api
-      .get(`/sessions/`, data)
+  const login = async (data) => {
+    await api
+      .post("/sessions/", data)
       .then((response) => {
+        console.log(response);
         localStorage.setItem("@Anima/token", JSON.stringify(response.access));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        toast.error("some error occurred");
+      });
   };
 
   const registerUser = async (data) => {
