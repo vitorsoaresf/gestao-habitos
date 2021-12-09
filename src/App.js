@@ -1,4 +1,5 @@
 import "./App.css";
+import Footer from "./components/Footer";
 import Routes from "./routes/Routes";
 import GlobalStyle from "./style/global";
 
