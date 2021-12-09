@@ -2,13 +2,15 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
-import { AuthenticatedContext } from "../../providers/authenticated";
-import { UserContext } from "../../providers/users";
-import { Container } from "./styles";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
+import { UserContext } from "../../providers/users";
+import { AuthenticatedContext } from "../../providers/authenticated";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+
+import { Container } from "./styles";
 
 const Register = () => {
   const { registerUser } = useContext(UserContext);
@@ -88,6 +90,9 @@ const Register = () => {
           error={errors.confirm_password?.message}
         />
         <Button type="submit">Register</Button>
+        <p>
+          Already have an account? <Link to="/login">Login</Link>
+        </p>
       </form>
     </Container>
   );
