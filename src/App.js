@@ -1,6 +1,5 @@
 import "./App.css";
 import Routes from "./routes/Routes";
-
 import GlobalStyle from "./style/global";
 
 const App = () => {
