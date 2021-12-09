@@ -16,10 +16,13 @@ export const UserProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const register = (data) => {
-    api
-      .get(`/users/`, data)
-      .then((_) => {
+  const registerUser = async (data) => {
+    delete data.confirm_password;
+
+    await api
+      .post("/users/", data)
+      .then((response) => {
+        console.log(response);
         toast.success("registered user!");
       })
       .catch((_) => toast.error("some error occurred"));
@@ -35,7 +38,7 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, login, register }}>
+    <UserContext.Provider value={{ user, login, registerUser }}>
       {children}
     </UserContext.Provider>
   );
