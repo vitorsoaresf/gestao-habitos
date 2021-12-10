@@ -6,9 +6,7 @@ import { AuthenticatedContext } from "../../providers/authenticated";
 import { Container } from "./styles";
 
 const Home = () => {
-  const { authenticated } = useContext(AuthenticatedContext);
-
-  if (authenticated) {
+  if (JSON.parse(localStorage.getItem("@Anima/authenticated"))) {
     return <Redirect to="/dashboard" />;
   }
 

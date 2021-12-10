@@ -14,7 +14,7 @@ import { Container } from "./styles";
 const Login = () => {
   const { login } = useContext(UserContext);
 
-  const { setAccess, authenticated } = useContext(AuthenticatedContext);
+  const { setAccess } = useContext(AuthenticatedContext);
 
   const history = useHistory();
 
@@ -46,8 +46,7 @@ const Login = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(formSchema) });
 
-  if (authenticated) {
-    console.log("auqiiii");
+  if (JSON.parse(localStorage.getItem("@Anima/authenticated"))) {
     return <Redirect to="/dashboard" />;
   }
 

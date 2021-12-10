@@ -7,6 +7,10 @@ export const AuthenticatedProvider = ({ children }) => {
 
   const setAccess = () => {
     setAuthenticated(!authenticated);
+    localStorage.setItem(
+      "@Anima/authenticated",
+      JSON.stringify(!authenticated)
+    );
   };
 
   return (

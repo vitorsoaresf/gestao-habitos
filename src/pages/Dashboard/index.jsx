@@ -7,9 +7,7 @@ import Header from "../../components/Header";
 import CardGeneric from "../../components/CardGeneric";
 
 const Dashboard = () => {
-  const { authenticated } = useContext(AuthenticatedContext);
-
-  if (!authenticated) {
+  if (!JSON.parse(localStorage.getItem("@Anima/authenticated"))) {
     return <Redirect to="/" />;
   }
 
