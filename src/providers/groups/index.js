@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import api from "../../services/api";
+import jwt_decode from "jwt-decode";
 
 export const GroupsContext = createContext();
 
@@ -46,6 +47,28 @@ export const GroupsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
+  const createGroup = (token, data) => {
+    api
+      .post("/groups/", data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const updateteGroup = (token, groupId, data) => {
+    api
+      .patch(`/groups/${groupId}/`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <GroupsContext.Provider
       value={{
@@ -54,6 +77,8 @@ export const GroupsProvider = ({ children }) => {
         getGroupsUser,
         getGoalsGroup,
         getActivitiesGroup,
+        createGroup,
+        updateteGroup,
       }}
     >
       {children}
