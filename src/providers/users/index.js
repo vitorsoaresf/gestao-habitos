@@ -13,7 +13,10 @@ export const UserProvider = ({ children }) => {
       .post("/sessions/", data)
       .then((response) => {
         console.log(response);
-        localStorage.setItem("@Anima/token", JSON.stringify(response.access));
+        localStorage.setItem(
+          "@Anima/token",
+          JSON.stringify(response.data.access)
+        );
       })
       .catch((err) => {
         console.log(err);

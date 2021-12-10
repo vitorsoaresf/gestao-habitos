@@ -46,6 +46,11 @@ const Login = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(formSchema) });
 
+  if (authenticated) {
+    console.log("auqiiii");
+    return <Redirect to="/dashboard" />;
+  }
+
   const onSubmitFunction = (data) => {
     console.log(data);
     login(data)
@@ -55,10 +60,6 @@ const Login = () => {
       })
       .catch((_) => {});
   };
-
-  if (authenticated) {
-    return <Redirect to="/dashboard" />;
-  }
 
   return (
     <Container>
