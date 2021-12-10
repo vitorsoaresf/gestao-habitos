@@ -58,13 +58,35 @@ export const GroupsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const updateteGroup = (token, groupId, data) => {
+  const updateGroup = (token, groupId, data) => {
     api
       .patch(`/groups/${groupId}/`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        console.log(response.data);
+        console.log(response);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const inscribeGroup = (token, groupId) => {
+    api
+      .post(`/groups/${groupId}/subscribe/`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const unsubscribeGroup = (token, groupId) => {
+    api
+      .post(`/groups/${groupId}/unsubscribe/`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        console.log(response);
       })
       .catch((err) => console.log(err));
   };
@@ -78,7 +100,9 @@ export const GroupsProvider = ({ children }) => {
         getGoalsGroup,
         getActivitiesGroup,
         createGroup,
-        updateteGroup,
+        updateGroup,
+        inscribeGroup,
+        unsubscribeGroup,
       }}
     >
       {children}
