@@ -12,7 +12,7 @@ const CardGeneric = ({ title, cardType }) => {
             <BsSearch />
           </span>
         </div>
-        <button>+</button>
+        {cardType !== "groups" && <button>+</button>}
       </div>
     </Container>
   );
