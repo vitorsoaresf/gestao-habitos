@@ -2,8 +2,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
-import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useHistory, Link, Redirect } from "react-router-dom";
 
 import { UserContext } from "../../providers/users";
 import { AuthenticatedContext } from "../../providers/authenticated";
@@ -14,6 +13,9 @@ import { Container } from "./styles";
 
 const Login = () => {
   const { login } = useContext(UserContext);
+
+  const { setAccess, authenticated } = useContext(AuthenticatedContext);
+
   const history = useHistory();
 
   const formSchema = yup.object().shape({
@@ -48,10 +50,15 @@ const Login = () => {
     console.log(data);
     login(data)
       .then((_) => {
+        setAccess();
         history.push("/dashboard");
       })
       .catch((_) => {});
   };
+
+  if (authenticated) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <Container>
