@@ -1,7 +1,9 @@
-import { Container } from "./styles";
+import { Container, ListBox } from "./styles";
 import { BsSearch } from "react-icons/bs";
 
-const CardGeneric = ({ title, cardType }) => {
+import Button from "../Button";
+
+const CardGeneric = ({ title, cardType, clicking, list }) => {
   return (
     <Container>
       <h2>{title}</h2>
@@ -12,8 +14,25 @@ const CardGeneric = ({ title, cardType }) => {
             <BsSearch />
           </span>
         </div>
-        {cardType !== "groups" && <button>+</button>}
+        {cardType !== "groups" && <Button onClick={clicking}>+</Button>}
       </div>
+      <ListBox>
+        <ul>
+          {list ? (
+            list.map((element, index) => (
+              <li key={index}>
+                <h3> {element.title}</h3>
+                <div>
+                  <Button onClick={clicking}>Done</Button>
+                  <Button>Delete</Button>
+                </div>
+              </li>
+            ))
+          ) : (
+            <div>{title} is empty</div>
+          )}
+        </ul>
+      </ListBox>
     </Container>
   );
 };
