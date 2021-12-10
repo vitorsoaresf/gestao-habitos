@@ -3,6 +3,9 @@ import { AuthenticatedContext } from "../../providers/authenticated";
 import { Redirect } from "react-router-dom";
 import { Container } from "./styles";
 
+import Header from "../../components/Header";
+import CardGeneric from "../../components/CardGeneric";
+
 const Dashboard = () => {
   const { authenticated } = useContext(AuthenticatedContext);
 
@@ -10,7 +13,15 @@ const Dashboard = () => {
     return <Redirect to="/" />;
   }
 
-  return <Container>Dashboard</Container>;
+  return (
+    <>
+      <Header />
+      <Container>
+        <CardGeneric title={"My Habits"} cardType={"habit"} />
+        <CardGeneric title={"My Groups"} cardType={"group"} />
+      </Container>
+    </>
+  );
 };
 
 export default Dashboard;
