@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   background: var(--Green);
   width: 280px;
-  height: 450px;
+  /* height: 450px; */
   display: flex;
   border-radius: 8px;
   flex-direction: column;
@@ -17,47 +17,39 @@ export const Container = styled.div`
   }
 `;
 
-export const ListBox = styled.ul`
-  width: 250px;
-  height: 380px;
+export const ContainerUl = styled.ul`
+  width: 310px;
+  background-color: var(--green);
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 10px;
+  padding-top: 20px;
+  padding-bottom: 10px;
 
-  ul {
-    > div {
-      background: white;
-      width: 250px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-radius: 8px;
-      margin-top: 10px;
+  li {
+    width: 90%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-top: 10px; */
+    margin-bottom: 10px;
+    background-color: #ecf0f1;
+    border-radius: 5px;
 
-      h3 {
-        font-size: 25px;
-        width: 80%;
-        height: 100%;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-      }
+    button {
+      width: 50px;
+      height: 30px;
+      background-color: var(--lightGreen);
+      color: var(--white);
+      border-radius: 5px;
+      margin-right: 5px;
+    }
 
-      > div {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        justify-content: space-around;
-        align-items: flex-end;
-        margin-right: 3px;
-      }
-
-      Button {
-        width: 80px;
-        font-size: 15px;
-        height: 20px;
-      }
+    p {
+      width: 200px;
+      margin-left: 5px;
     }
   }
 `;

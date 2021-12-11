@@ -39,22 +39,24 @@ export const GroupsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
+  const [groupGoals, setGroupGoals] = useState([]);
   const getGoalsGroup = (groupId, token) => {
     api
       .get(`/goals/?group=${groupId}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        console.log(response.data.results);
+        setGroupGoals(response.data.results);
       })
       .catch((err) => console.log(err));
   };
 
+  const [groupActivities, setGroupActivities] = useState([]);
   const getActivitiesGroup = (groupId) => {
     api
       .get(`/activities/?group=${groupId}`)
       .then((response) => {
-        console.log(response.data.results);
+        setGroupActivities(response.data.results);
       })
       .catch((err) => console.log(err));
   };
@@ -108,6 +110,8 @@ export const GroupsProvider = ({ children }) => {
       value={{
         groups,
         groupParticipants,
+        groupGoals,
+        groupActivities,
         getAllGroups,
         getGroupsUser,
         getGroupAllParticipants,
