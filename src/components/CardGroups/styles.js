@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background: var(--lightGreen);
+  background: var(--Green);
   width: 280px;
   height: 450px;
   display: flex;
@@ -45,11 +45,12 @@ export const ListBox = styled.ul`
       }
 
       > div {
-        Button + Button {
-          margin: 3px 3px 0px 0px;
-        }
         display: flex;
         flex-direction: column;
+        height: 100%;
+        justify-content: space-around;
+        align-items: flex-end;
+        margin-right: 3px;
       }
 
       Button {
