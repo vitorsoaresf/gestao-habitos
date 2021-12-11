@@ -17,7 +17,7 @@ export const Container = styled.div`
   }
 `;
 
-export const ListBox = styled.div`
+export const ListBox = styled.ul`
   width: 250px;
   height: 380px;
   display: flex;

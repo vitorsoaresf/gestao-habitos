@@ -2,7 +2,7 @@ import { Container, ListBox } from "./styles";
 
 import Button from "../Button";
 
-const CardGroups = ({ title }) => {
+const CardGroups = ({ title, list }) => {
   return (
     <Container>
       <h1>{title}</h1>
