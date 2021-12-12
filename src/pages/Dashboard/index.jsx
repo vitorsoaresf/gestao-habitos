@@ -5,7 +5,8 @@ import { AuthenticatedContext } from "../../providers/authenticated";
 import Header from "../../components/Header";
 import CardGeneric from "../../components/CardGeneric";
 import { HabitsContext } from "../../providers/habits";
-import ModalDelete from "../../components/Modal";
+import ModalDelete from "../../components/ModalDeleteHabit/index";
+import ModalAdd from "../../components/ModalAddHabit";
 
 import { Container } from "./styles";
 
@@ -17,6 +18,8 @@ const Dashboard = () => {
   console.log("current habit", currentHabit);
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+  const [showAddModal, setShowAddModal] = useState(false);
 
   console.log("allHabits", allHabits);
 
@@ -35,6 +38,7 @@ const Dashboard = () => {
 
   return (
     <>
+      {showAddModal && <ModalAdd setShowAddModal={setShowAddModal} />}
       {showDeleteModal && (
         <ModalDelete
           getHabits={getHabits}
@@ -52,6 +56,7 @@ const Dashboard = () => {
           habitUptadeData={habitUptadeData}
           setCurrentHabit={setCurrentHabit}
           setShowDeleteModal={setShowDeleteModal}
+          setShowAddModal={setShowAddModal}
           addClick={createHabit}
         />
         <CardGeneric title={"My Groups"} cardType={"group"} />

@@ -11,6 +11,8 @@ export const HabitsProvider = ({ children }) => {
     const { user_id } = jwt_decode(token);
     data.user = user_id;
 
+    console.log("showing data.user", data.user);
+    console.log("showing user_id", user_id);
     api
       .post("/habits/", data, {
         headers: { Authorization: `Bearer ${token}` },

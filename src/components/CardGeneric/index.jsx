@@ -8,10 +8,10 @@ const CardGeneric = ({
   cardType,
   updateClick,
   list,
-  addClick,
   habitUptadeData,
   setCurrentHabit,
   setShowDeleteModal,
+  setShowAddModal,
 }) => {
   return (
     <Container>
@@ -23,7 +23,15 @@ const CardGeneric = ({
             <BsSearch />
           </span>
         </div>
-        {cardType !== "groups" && <Button onClick={addClick}>+</Button>}
+        {cardType !== "groups" && (
+          <Button
+            onClick={() => {
+              setShowAddModal(true);
+            }}
+          >
+            +
+          </Button>
+        )}
       </div>
       <ListBox>
         <ul>
