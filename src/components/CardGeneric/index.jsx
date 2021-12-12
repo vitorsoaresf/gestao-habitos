@@ -3,7 +3,14 @@ import { BsSearch } from "react-icons/bs";
 
 import Button from "../Button";
 
-const CardGeneric = ({ title, cardType, clicking, list }) => {
+const CardGeneric = ({
+  title,
+  cardType,
+  updateClick,
+  list,
+  addClick,
+  habitUptadeData,
+}) => {
   return (
     <Container>
       <h2>{title}</h2>
@@ -14,7 +21,7 @@ const CardGeneric = ({ title, cardType, clicking, list }) => {
             <BsSearch />
           </span>
         </div>
-        {cardType !== "groups" && <Button onClick={clicking}>+</Button>}
+        {cardType !== "groups" && <Button onClick={addClick}>+</Button>}
       </div>
       <ListBox>
         <ul>
@@ -23,7 +30,13 @@ const CardGeneric = ({ title, cardType, clicking, list }) => {
               <li key={index}>
                 <h3> {element.title}</h3>
                 <div>
-                  <Button onClick={clicking}>Done</Button>
+                  <Button
+                    onClick={() => {
+                      updateClick(habitUptadeData, element.id);
+                    }}
+                  >
+                    Done
+                  </Button>
                   <Button>Delete</Button>
                 </div>
               </li>

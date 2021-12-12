@@ -5,7 +5,9 @@ import jwt_decode from "jwt-decode";
 export const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
-  const createHabit = (token, data) => {
+  const token = JSON.parse(localStorage.getItem("@Anima/token"));
+
+  const createHabit = (data) => {
     const { user_id } = jwt_decode(token);
     data.user = user_id;
 
@@ -21,7 +23,7 @@ export const HabitsProvider = ({ children }) => {
 
   const [allHabits, setAllHabits] = useState([]);
 
-  const getHabits = (token) => {
+  const getHabits = () => {
     api
       .get("/habits/personal/", {
         headers: { Authorization: `Bearer ${token}` },
@@ -33,7 +35,7 @@ export const HabitsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const updateHabit = (token, data, habitId) => {
+  const updateHabit = (data, habitId) => {
     console.log("fui chamado para atulaizar");
     api
       .patch(`/habits/${habitId}/`, data, {
@@ -45,7 +47,7 @@ export const HabitsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const deleteHabit = (token, habitId) => {
+  const deleteHabit = (habitId) => {
     api
       .delete(`/habits/${habitId}/`, {
         headers: { Authorization: `Bearer ${token}` },
