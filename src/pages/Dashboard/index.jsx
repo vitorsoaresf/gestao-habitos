@@ -35,7 +35,6 @@ const Dashboard = () => {
           clicking={() => updateHabit()}
         />
         <CardGeneric title={"My Groups"} cardType={"group"} />
-        <CardGroups title="Goals" />
 
         {allHabits.map((element) => console.log("console do habits", element))}
       </Container>
