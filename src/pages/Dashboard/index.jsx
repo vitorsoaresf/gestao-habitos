@@ -12,7 +12,7 @@ import { Container } from "./styles";
 const Dashboard = () => {
   const { getHabits, allHabits, updateHabit } = useContext(HabitsContext);
 
-  const [showDeleteModal, setShowDeleteModal] = useState(true);
+  const [showDeleteModal, setShowDeleteModal] = useState(false); //true
 
   console.log("allHabits", allHabits);
 
