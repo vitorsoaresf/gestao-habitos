@@ -20,6 +20,14 @@ const DetailsGroup = ({ groupId = 17 }) => {
     getActivitiesGroup(groupId);
   }, []);
 
+  useEffect(() => {
+    getGoalsGroup(groupId);
+  }, [groupGoals]);
+
+  useEffect(() => {
+    getActivitiesGroup(groupId);
+  }, [groupActivities]);
+
   return (
     <>
       <Header />

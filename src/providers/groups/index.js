@@ -58,7 +58,7 @@ export const GroupsProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        console.log(response.data.results);
+        console.log(response);
       })
       .catch((err) => console.log(err));
   };
@@ -69,6 +69,17 @@ export const GroupsProvider = ({ children }) => {
       .get(`/activities/?group=${groupId}`)
       .then((response) => {
         setGroupActivities(response.data.results);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const createActivitiesGroup = (data) => {
+    api
+      .post(`/activities/`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        console.log(response);
       })
       .catch((err) => console.log(err));
   };
@@ -130,6 +141,7 @@ export const GroupsProvider = ({ children }) => {
         getGoalsGroup,
         createGoalsGroup,
         getActivitiesGroup,
+        createActivitiesGroup,
         createGroup,
         updateGroup,
         inscribeGroup,
