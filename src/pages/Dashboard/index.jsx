@@ -5,12 +5,14 @@ import { AuthenticatedContext } from "../../providers/authenticated";
 import Header from "../../components/Header";
 import CardGeneric from "../../components/CardGeneric";
 import { HabitsContext } from "../../providers/habits";
+import { GroupsContext } from "../../providers/groups";
 import CardGroups from "../../components/CardGroups";
 
 import { Container } from "./styles";
 
 const Dashboard = () => {
   const { getHabits, allHabits, updateHabit } = useContext(HabitsContext);
+  const { getGroupsUser, groups, updateGroup } = useContext(GroupsContext);
 
   const userToken = JSON.parse(localStorage.getItem("@Anima/token"));
 
@@ -18,6 +20,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     getHabits(userToken);
+    getGroupsUser(userToken);
   }, []);
 
   if (!JSON.parse(localStorage.getItem("@Anima/authenticated"))) {
@@ -34,9 +37,15 @@ const Dashboard = () => {
           list={allHabits}
           clicking={() => updateHabit()}
         />
-        <CardGeneric title={"My Groups"} cardType={"group"} />
+        <CardGeneric
+          title={"My Groups"}
+          cardType={"habit"}
+          list={groups}
+          clicking={() => updateGroup()}
+        />
 
         {allHabits.map((element) => console.log("console do habits", element))}
+        {groups.map((element) => console.log("console do grupo", element))}
       </Container>
     </>
   );
