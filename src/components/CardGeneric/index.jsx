@@ -10,6 +10,8 @@ const CardGeneric = ({
   list,
   addClick,
   habitUptadeData,
+  setCurrentHabit,
+  setShowDeleteModal,
 }) => {
   return (
     <Container>
@@ -26,18 +28,25 @@ const CardGeneric = ({
       <ListBox>
         <ul>
           {list ? (
-            list.map((element, index) => (
+            list.map((habit, index) => (
               <li key={index}>
-                <h3> {element.title}</h3>
+                <h3> {habit.title}</h3>
                 <div>
                   <Button
                     onClick={() => {
-                      updateClick(habitUptadeData, element.id);
+                      updateClick(habitUptadeData, habit.id);
                     }}
                   >
                     Done
                   </Button>
-                  <Button>Delete</Button>
+                  <Button
+                    onClick={() => {
+                      setCurrentHabit(habit);
+                      setShowDeleteModal(true);
+                    }}
+                  >
+                    Delete
+                  </Button>
                 </div>
               </li>
             ))

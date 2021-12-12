@@ -17,6 +17,7 @@ export const HabitsProvider = ({ children }) => {
       })
       .then((response) => {
         console.log(response);
+        getHabits();
       })
       .catch((err) => console.log(err));
   };
@@ -36,7 +37,6 @@ export const HabitsProvider = ({ children }) => {
   };
 
   const updateHabit = (data, habitId) => {
-    console.log("fui chamado para atulaizar");
     api
       .patch(`/habits/${habitId}/`, data, {
         headers: { Authorization: `Bearer ${token}` },
@@ -48,12 +48,14 @@ export const HabitsProvider = ({ children }) => {
   };
 
   const deleteHabit = (habitId) => {
+    console.log("fui chamado para deletar");
     api
       .delete(`/habits/${habitId}/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         console.log(response);
+        getHabits();
       })
       .catch((err) => console.log(err));
   };

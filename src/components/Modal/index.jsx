@@ -1,11 +1,25 @@
+import Button from "../Button";
+
 import { Container } from "./styles";
 
-const Modal = () => {
+const ModalDelete = ({ deleteClick, setShowDeleteModal, getHabits }) => {
   return (
     <Container>
-      <div>Alguma Coisa =D</div>
+      <div>
+        <h3>Nome do hábito</h3>
+        <p>Do you really want to delete this habit?</p>
+        <Button
+          onClick={() => {
+            deleteClick();
+            setShowDeleteModal(false);
+            getHabits();
+          }}
+        >
+          Confirm
+        </Button>
+      </div>
     </Container>
   );
 };
 
-export default Modal;
+export default ModalDelete;
