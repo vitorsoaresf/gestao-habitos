@@ -1,25 +1,39 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background: var(--Green);
-  width: 280px;
-  /* height: 450px; */
+  width: 310px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  background-color: var(--green);
+}
+`;
+
+export const ContainerTitle = styled.div`
+  width: 90%;
   display: flex;
   border-radius: 8px;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+
+  margin: 10px 0;
+  color: var(--white);
+  font-weight: 600;
+  /* background-color: violet; */
 
   h1 {
-    font-size: 45px;
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
+    font-size: 2rem;
+  }
+
+  button {
+    width: 50px;
+    font-size: 1.5rem;
+    color: var(--white);
   }
 `;
 
 export const ContainerUl = styled.ul`
-  width: 310px;
-  background-color: var(--green);
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

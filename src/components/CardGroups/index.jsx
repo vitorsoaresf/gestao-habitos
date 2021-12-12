@@ -1,11 +1,14 @@
-import { Container, ContainerUl } from "./styles";
+import { Container, ContainerTitle, ContainerUl } from "./styles";
 
 import Button from "../Button";
 
 const CardGroups = ({ title, list }) => {
   return (
     <Container>
-      <h1>{title}</h1>
+      <ContainerTitle>
+        <h1>{title}</h1>
+        {title !== "participants" && <Button>+</Button>}
+      </ContainerTitle>
       <ContainerUl>
         {title === "participants"
           ? list.map((partipant, index) => (
