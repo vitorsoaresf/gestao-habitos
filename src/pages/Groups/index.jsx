@@ -4,9 +4,7 @@ import { Redirect } from "react-router-dom";
 import { Container } from "./styles";
 
 const Groups = () => {
-  const { authenticated } = useContext(AuthenticatedContext);
-
-  if (!authenticated) {
+  if (!JSON.parse(localStorage.getItem("@Anima/authenticated"))) {
     return <Redirect to="/" />;
   }
   return <Container>Groups</Container>;
