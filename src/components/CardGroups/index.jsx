@@ -1,36 +1,45 @@
 import { Container, ContainerTitle, ContainerUl } from "./styles";
-
+import { useState } from "react";
 import Button from "../Button";
+import ModalGoals from "../ModalGoals";
 
-const CardGroups = ({ title, list }) => {
+const CardGroups = ({ title, list, groupId }) => {
+  const [modalGoals, setModalGoals] = useState(false);
+
   return (
-    <Container>
-      <ContainerTitle>
-        <h1>{title}</h1>
-        {title !== "participants" && <Button>+</Button>}
-      </ContainerTitle>
-      <ContainerUl>
-        {title === "participants"
-          ? list.map((partipant, index) => (
-              <li key={index}>
-                <p>{partipant.username}</p>
-              </li>
-            ))
-          : title === "goals"
-          ? list.map((goals, index) => (
-              <li key={index}>
-                <p>{goals.title}</p>
-                <Button>Edit</Button>
-              </li>
-            ))
-          : list.map((activities, index) => (
-              <li key={index}>
-                <p>{activities.title}</p>
-                <Button>Edit</Button>
-              </li>
-            ))}
-      </ContainerUl>
-    </Container>
+    <>
+      {modalGoals && <ModalGoals groupId={groupId} />}
+
+      <Container>
+        <ContainerTitle>
+          <h1>{title}</h1>
+          {title !== "participants" && (
+            <Button onClick={() => setModalGoals(!modalGoals)}>+</Button>
+          )}
+        </ContainerTitle>
+        <ContainerUl>
+          {title === "participants"
+            ? list.map((partipant, index) => (
+                <li key={index}>
+                  <p>{partipant.username}</p>
+                </li>
+              ))
+            : title === "goals"
+            ? list.map((goals, index) => (
+                <li key={index}>
+                  <p>{goals.title}</p>
+                  <Button>Edit</Button>
+                </li>
+              ))
+            : list.map((activities, index) => (
+                <li key={index}>
+                  <p>{activities.title}</p>
+                  <Button>Edit</Button>
+                </li>
+              ))}
+        </ContainerUl>
+      </Container>
+    </>
   );
 };
 
