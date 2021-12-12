@@ -6,6 +6,7 @@ export const GroupsContext = createContext();
 
 export const GroupsProvider = ({ children }) => {
   const [groups, setGroups] = useState([]);
+  const token = JSON.parse(localStorage.getItem("@Anima/token"));
 
   const getAllGroups = () => {
     api
@@ -28,7 +29,7 @@ export const GroupsProvider = ({ children }) => {
   };
 
   const [groupParticipants, setGroupParticipants] = useState([]);
-  const getGroupAllParticipants = (groupId, token) => {
+  const getGroupAllParticipants = (groupId) => {
     api
       .get(`/groups/${groupId}/`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -40,7 +41,7 @@ export const GroupsProvider = ({ children }) => {
   };
 
   const [groupGoals, setGroupGoals] = useState([]);
-  const getGoalsGroup = (groupId, token) => {
+  const getGoalsGroup = (groupId) => {
     api
       .get(`/goals/?group=${groupId}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -51,12 +52,34 @@ export const GroupsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
+  const createGoalsGroup = (data) => {
+    api
+      .post(`/goals/`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => console.log(err));
+  };
+
   const [groupActivities, setGroupActivities] = useState([]);
   const getActivitiesGroup = (groupId) => {
     api
       .get(`/activities/?group=${groupId}`)
       .then((response) => {
         setGroupActivities(response.data.results);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const createActivitiesGroup = (data) => {
+    api
+      .post(`/activities/`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        console.log(response);
       })
       .catch((err) => console.log(err));
   };
@@ -116,7 +139,9 @@ export const GroupsProvider = ({ children }) => {
         getGroupsUser,
         getGroupAllParticipants,
         getGoalsGroup,
+        createGoalsGroup,
         getActivitiesGroup,
+        createActivitiesGroup,
         createGroup,
         updateGroup,
         inscribeGroup,
