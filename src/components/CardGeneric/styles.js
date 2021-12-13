@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -64,6 +65,7 @@ export const ListBox = styled.section`
   /* background: red; */
 
   ul {
+    overflow-y: scroll;
     > li {
       background: white;
       width: 250px;
