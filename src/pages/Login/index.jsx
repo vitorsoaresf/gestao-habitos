@@ -10,12 +10,11 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 
 import { Container } from "./styles";
+import { HabitsContext } from "../../providers/habits";
 
 const Login = () => {
   const { login } = useContext(UserContext);
-
   const { setAccess } = useContext(AuthenticatedContext);
-
   const history = useHistory();
 
   const formSchema = yup.object().shape({
@@ -51,13 +50,14 @@ const Login = () => {
   }
 
   const onSubmitFunction = (data) => {
-    console.log(data);
+    setAccess();
     login(data)
-      .then((_) => {
-        setAccess();
-        history.push("/dashboard");
-      })
-      .catch((_) => {});
+      .then((_) =>
+        history.push(
+          `/dashboard/${JSON.parse(localStorage.getItem("@Anima/token"))}`
+        )
+      )
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -83,7 +83,7 @@ const Login = () => {
 
         <Button type="submit">Login</Button>
         <p>
-          Don't have an account? <Link to="/login">Sign up</Link>
+          Don't have an account? <Link to="/register">Sign up</Link>
         </p>
       </form>
     </Container>
