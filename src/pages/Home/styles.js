@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   width: 100vw;
   flex-direction: column;
-  height: 100vh;
+  /* height: 110vh; */
   /* background: pink; */
 
   header {
@@ -15,19 +15,8 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    > div {
-      background: var(--white);
-      width: 32px;
-      margin-left: 12px;
-      border-radius: 100%;
-      padding: 2px;
-
-      img {
-        width: 30px;
-      }
-    }
-
     > p {
+      font-size: 24px;
       margin-right: 12px;
       color: var(--white);
     }
@@ -35,7 +24,7 @@ export const Container = styled.div`
 
   > div {
     /* background: orange; */
-    height: 80vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -51,6 +40,29 @@ export const Container = styled.div`
         width: 200px;
       }
     }
+  }
+`;
+
+export const LogoBox = styled.div`
+  display: flex;
+  align-items: center;
+
+  > div {
+    background: var(--white);
+    width: 32px;
+    margin-left: 12px;
+    border-radius: 100%;
+    padding: 2px;
+
+    img {
+      width: 30px;
+    }
+  }
+
+  p {
+    margin-left: 8px;
+    font-size: 24px;
+    color: var(--white);
   }
 `;
 
@@ -70,4 +82,9 @@ export const TitleBox = styled.div`
     text-align: center;
     margin: 25px 10px 0 10px;
   }
+`;
+
+export const AboutUsBox = styled.section`
+  background: orange;
+  height: 200px;
 `;

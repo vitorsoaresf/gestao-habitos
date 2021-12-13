@@ -6,7 +6,7 @@ import { AuthenticatedContext } from "../../providers/authenticated";
 import Button from "../../components/Button";
 import Logo from "../../assets/anima-logo.png";
 
-import { Container, TitleBox } from "./styles";
+import { Container, TitleBox, LogoBox, AboutUsBox } from "./styles";
 
 const Home = () => {
   const history = useHistory();
@@ -22,9 +22,12 @@ const Home = () => {
   return (
     <Container>
       <header>
-        <div>
-          <img src={Logo} alt="project Logo" />
-        </div>
+        <LogoBox>
+          <div>
+            <img src={Logo} alt="project Logo" />
+          </div>
+          <p>Anima</p>
+        </LogoBox>
         <p>About Us</p>
       </header>
       <div>
@@ -42,6 +45,7 @@ const Home = () => {
           </Button>
         </div>
       </div>
+      <AboutUsBox>teste</AboutUsBox>
     </Container>
   );
 };
