@@ -7,7 +7,7 @@ import { Container } from "./styles";
 import Input from "../Input";
 import Button from "../Button";
 
-const ModalGoals = ({ groupId, setModalGoals, addGoals }) => {
+const ModalGoals = ({ groupId, setModalGoals, updateActivitiesGoals }) => {
   const { createGoalsGroup } = useContext(GroupsContext);
 
   const formSchema = yup.object().shape({
@@ -29,7 +29,7 @@ const ModalGoals = ({ groupId, setModalGoals, addGoals }) => {
 
     setModalGoals(false);
     createGoalsGroup(groupId, data);
-    addGoals();
+    updateActivitiesGoals();
   };
 
   return (

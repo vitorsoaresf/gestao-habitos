@@ -75,6 +75,15 @@ export const GroupsProvider = ({ children }) => {
     getGoalsGroup(groupId);
   };
 
+  const updateGoalsGroup = (goalId, data) => {
+    api
+      .patch(`/goals/${goalId}/`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .catch((response) => console.log(response))
+      .catch((err) => console.log(err));
+  };
+
   const [groupActivities, setGroupActivities] = useState([]);
   const getActivitiesGroup = (groupId) => {
     api
@@ -96,6 +105,15 @@ export const GroupsProvider = ({ children }) => {
       .catch((err) => console.log(err));
 
     getActivitiesGroup(groupId);
+  };
+
+  const updateActivitiesGroup = (activitiesId, data) => {
+    api
+      .patch(`/activities/${activitiesId}/`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .catch((response) => console.log(response))
+      .catch((err) => console.log(err));
   };
 
   const createGroup = (token, data) => {
@@ -157,8 +175,10 @@ export const GroupsProvider = ({ children }) => {
         getGroupAllParticipants,
         getGoalsGroup,
         createGoalsGroup,
+        updateGoalsGroup,
         getActivitiesGroup,
         createActivitiesGroup,
+        updateActivitiesGroup,
         createGroup,
         updateGroup,
         inscribeGroup,
