@@ -5,9 +5,9 @@ import jwt_decode from "jwt-decode";
 export const GroupsContext = createContext();
 
 export const GroupsProvider = ({ children }) => {
-  const [groups, setGroups] = useState([]);
   const token = JSON.parse(localStorage.getItem("@Anima/token"));
 
+  const [groups, setGroups] = useState([]);
   const getAllGroups = () => {
     api
       .get("/groups/")
@@ -30,6 +30,7 @@ export const GroupsProvider = ({ children }) => {
 
   const [groupParticipants, setGroupParticipants] = useState([]);
   const [groupCreator, setGroupCreator] = useState(false);
+  const [dataGroup, setSpecificGroup] = useState([]);
 
   const getGroupAllParticipants = (groupId) => {
     const { user_id } = jwt_decode(token);
@@ -39,6 +40,8 @@ export const GroupsProvider = ({ children }) => {
       })
       .then((response) => {
         setGroupParticipants(response.data.users_on_group);
+        setSpecificGroup(response.data);
+
         if (user_id === response.data.creator.id) {
           setGroupCreator(response.data.creator);
         }
@@ -148,6 +151,7 @@ export const GroupsProvider = ({ children }) => {
         groupGoals,
         groupActivities,
         groupCreator,
+        dataGroup,
         getAllGroups,
         getGroupsUser,
         getGroupAllParticipants,

@@ -25,7 +25,7 @@ const Routes = () => {
         <Route path="/detailsgroup">
           <DetailsGroup />
         </Route>
-        <Route path="/dashboard">
+        <Route path="/dashboard/:token">
           <Dashboard />
         </Route>
       </Switch>

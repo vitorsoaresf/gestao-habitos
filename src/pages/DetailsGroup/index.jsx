@@ -1,4 +1,4 @@
-import { Container, ContainerUl } from "./styles";
+import { Container, ContainerBody, ContainerTitle } from "./styles";
 import { useContext, useEffect, useState } from "react";
 import { GroupsContext } from "../../providers/groups";
 import { useHistory } from "react-router-dom";
@@ -27,6 +27,7 @@ const DetailsGroup = ({ groupId = 17 }) => {
     getActivitiesGroup,
     groupCreator,
     unsubscribeGroup,
+    dataGroup,
   } = useContext(GroupsContext);
 
   useEffect(() => {
@@ -45,32 +46,39 @@ const DetailsGroup = ({ groupId = 17 }) => {
 
   return (
     <>
-      {modalLeave && (
-        <ModalLeave groupId={groupId} setModalLeave={setModalLeave} />
-      )}
-      {modalEdit && <ModalEdit groupId={groupId} setModalEdit={setModalEdit} />}
-
       <Header />
       <Container>
-        <CardGroups title="participants" list={groupParticipants} />
-        <CardGroups
-          addGoals={addGoals}
-          groupId={groupId}
-          title="goals"
-          list={groupGoals}
-        />
-        <CardGroups
-          addActivities={addActivities}
-          groupId={groupId}
-          title="activities"
-          list={groupActivities}
-        />
-        <Button onClick={() => history.push("/dashboard")}>Back</Button>
-        {groupCreator ? (
-          <Button onClick={() => setModalEdit(true)}>Edit</Button>
-        ) : (
-          <Button onClick={() => setModalLeave(true)}>Leave</Button>
+        {modalLeave && (
+          <ModalLeave groupId={groupId} setModalLeave={setModalLeave} />
         )}
+        {modalEdit && (
+          <ModalEdit groupId={groupId} setModalEdit={setModalEdit} />
+        )}
+
+        <ContainerTitle>
+          <h1>{dataGroup.name}</h1>
+        </ContainerTitle>
+        <ContainerBody>
+          <CardGroups title="participants" list={groupParticipants} />
+          <CardGroups
+            addGoals={addGoals}
+            groupId={groupId}
+            title="goals"
+            list={groupGoals}
+          />
+          <CardGroups
+            addActivities={addActivities}
+            groupId={groupId}
+            title="activities"
+            list={groupActivities}
+          />
+          <Button onClick={() => history.push("/dashboard")}>Back</Button>
+          {groupCreator ? (
+            <Button onClick={() => setModalEdit(true)}>Edit</Button>
+          ) : (
+            <Button onClick={() => setModalLeave(true)}>Leave</Button>
+          )}
+        </ContainerBody>
       </Container>
     </>
   );

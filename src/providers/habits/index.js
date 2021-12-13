@@ -26,7 +26,7 @@ export const HabitsProvider = ({ children }) => {
 
   const [allHabits, setAllHabits] = useState([]);
 
-  const getHabits = () => {
+  const getHabits = (token) => {
     api
       .get("/habits/personal/", {
         headers: { Authorization: `Bearer ${token}` },
