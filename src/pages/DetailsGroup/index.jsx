@@ -6,7 +6,7 @@ import Header from "../../components/Header";
 import CardGroups from "../../components/CardGroups";
 import Button from "../../components/Button";
 import ModalLeave from "../../components/ModalLeave";
-import ModalEdit from "../../components/ModalEdit";
+import ModalEditGroup from "../../components/ModalEditGroup";
 
 // 17 ou 102
 const DetailsGroup = () => {
@@ -14,7 +14,7 @@ const DetailsGroup = () => {
   const [update, setUpdate] = useState(false);
 
   const [modalLeave, setModalLeave] = useState(false);
-  const [modalEdit, setModalEdit] = useState(false);
+  const [modalEditGroup, setModalEditGroup] = useState(false);
 
   const history = useHistory();
   const {
@@ -46,8 +46,12 @@ const DetailsGroup = () => {
         {modalLeave && (
           <ModalLeave groupId={groupId} setModalLeave={setModalLeave} />
         )}
-        {modalEdit && (
-          <ModalEdit groupId={groupId} setModalEdit={setModalEdit} />
+        {modalEditGroup && (
+          <ModalEditGroup
+            groupId={groupId}
+            setModalEditGroup={setModalEditGroup}
+            updateActivitiesGoals={updateActivitiesGoals}
+          />
         )}
 
         <ContainerTitle>
@@ -67,17 +71,9 @@ const DetailsGroup = () => {
             title="activities"
             list={groupActivities}
           />
-          <Button
-            onClick={() =>
-              history.push(
-                `/dashboard/${JSON.parse(localStorage.getItem("@Anima/token"))}`
-              )
-            }
-          >
-            Back
-          </Button>
+          <Button onClick={() => history.push(`/groups/`)}>Back</Button>
           {groupCreator ? (
-            <Button onClick={() => setModalEdit(true)}>Edit</Button>
+            <Button onClick={() => setModalEditGroup(true)}>Edit</Button>
           ) : (
             <Button onClick={() => setModalLeave(true)}>Leave</Button>
           )}

@@ -23,7 +23,7 @@ const Header = () => {
           <p onClick={() => history.push("/groups")}>Groups</p>
           <p
             onClick={() => {
-              // localStorage.clear();
+              localStorage.clear();
               history.push("/");
             }}
           >
