@@ -22,7 +22,7 @@ const Routes = () => {
         <Route path="/groups">
           <Groups />
         </Route>
-        <Route path="/detailsgroup">
+        <Route path="/detailsgroup/:id">
           <DetailsGroup />
         </Route>
         <Route path="/dashboard">

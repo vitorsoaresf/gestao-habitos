@@ -35,7 +35,7 @@ const CardGeneric = ({
       </div>
       <ListBox>
         <ul>
-          {list ? (
+          {cardType === "habit" && list ? (
             list.map((habit, index) => (
               <li key={index}>
                 <h3> {habit.title}</h3>
@@ -58,8 +58,23 @@ const CardGeneric = ({
                 </div>
               </li>
             ))
+          ) : cardType === "groups" && list ? (
+            list.map((group, index) => (
+              <li key={index}>
+                <h3>{group.name}</h3>
+                <div>
+                  <Button
+                    onClick={() => {
+                      updateClick(group.id);
+                    }}
+                  >
+                    Details
+                  </Button>
+                </div>
+              </li>
+            ))
           ) : (
-            <div>{title} is empty</div>
+            <div>testudo</div>
           )}
         </ul>
       </ListBox>
