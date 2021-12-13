@@ -53,7 +53,7 @@ const ModalEdit = ({ groupId, setModalEdit }) => {
             error={errors.category?.message}
           />
 
-          <Button type="submit">Update Group</Button>
+          <Button type="submit">Confirm</Button>
         </form>
       </ContainerForm>
     </Container>

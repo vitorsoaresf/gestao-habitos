@@ -8,7 +8,8 @@ import Button from "../../components/Button";
 import ModalLeave from "../../components/ModalLeave";
 import ModalEdit from "../../components/ModalEdit";
 
-const DetailsGroup = ({ groupId = 102 }) => {
+// 17 ou 102
+const DetailsGroup = ({ groupId = 17 }) => {
   const [participants, setParticipants] = useState([]);
   const [goals, setGoals] = useState(false);
   const [activities, setActivities] = useState(false);
