@@ -11,7 +11,7 @@ import ModalEdit from "../../components/ModalEdit";
 // 17 ou 102
 const DetailsGroup = () => {
   const { id: groupId } = useParams();
-  const [update, setUpdatre] = useState(false);
+  const [update, setUpdate] = useState(false);
 
   const [modalLeave, setModalLeave] = useState(false);
   const [modalEdit, setModalEdit] = useState(false);
@@ -36,7 +36,7 @@ const DetailsGroup = () => {
   }, [update]);
 
   const updateActivitiesGoals = () => {
-    setUpdatre(!update);
+    setUpdate(!update);
   };
 
   return (
@@ -70,7 +70,7 @@ const DetailsGroup = () => {
           <Button
             onClick={() =>
               history.push(
-                `/dashboard/${JSON.parse(localStorage.getItem("Anima/token"))}`
+                `/dashboard/${JSON.parse(localStorage.getItem("@Anima/token"))}`
               )
             }
           >

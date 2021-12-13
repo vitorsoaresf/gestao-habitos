@@ -92,13 +92,13 @@ const CardGroups = ({ title, list, groupId, updateActivitiesGoals }) => {
             ? list.map((goals, index) => (
                 <li key={index}>
                   <p>{goals.title}</p>
-                  <Button onClick={() => editGoal(goals.id)}>Edit</Button>
+                  <Button onClick={() => editGoal(goals)}>Edit</Button>
                 </li>
               ))
             : list.map((activities, index) => (
                 <li key={index}>
                   <p>{activities.title}</p>
-                  <Button onClick={() => editActivities(activities.id)}>
+                  <Button onClick={() => editActivities(activities)}>
                     Edit
                   </Button>
                 </li>
