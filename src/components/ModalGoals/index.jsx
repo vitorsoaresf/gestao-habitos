@@ -7,7 +7,7 @@ import { Container } from "./styles";
 import Input from "../Input";
 import Button from "../Button";
 
-const ModalGoals = ({ groupId, setModalGoals }) => {
+const ModalGoals = ({ groupId, setModalGoals, addGoals }) => {
   const { createGoalsGroup } = useContext(GroupsContext);
 
   const formSchema = yup.object().shape({
@@ -25,9 +25,11 @@ const ModalGoals = ({ groupId, setModalGoals }) => {
     data.group = groupId;
     data.how_much_achieved = 0;
     data.achieved = false;
-    setModalGoals(false);
+    console.log(data);
 
-    createGoalsGroup(data);
+    setModalGoals(false);
+    createGoalsGroup(groupId, data);
+    addGoals();
   };
 
   return (
@@ -40,7 +42,6 @@ const ModalGoals = ({ groupId, setModalGoals }) => {
           name="title"
           error={errors.title?.message}
         />
-
         <Input
           type="text"
           placeholder="Difficulty"

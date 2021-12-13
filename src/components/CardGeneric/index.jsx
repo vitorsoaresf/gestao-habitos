@@ -3,7 +3,16 @@ import { BsSearch } from "react-icons/bs";
 
 import Button from "../Button";
 
-const CardGeneric = ({ title, cardType, clicking, list }) => {
+const CardGeneric = ({
+  title,
+  cardType,
+  updateClick,
+  list,
+  habitUptadeData,
+  setCurrentHabit,
+  setShowDeleteModal,
+  setShowAddModal,
+}) => {
   return (
     <Container>
       <h2>{title}</h2>
@@ -14,17 +23,38 @@ const CardGeneric = ({ title, cardType, clicking, list }) => {
             <BsSearch />
           </span>
         </div>
-        {cardType !== "groups" && <Button onClick={clicking}>+</Button>}
+        {cardType !== "groups" && (
+          <Button
+            onClick={() => {
+              setShowAddModal(true);
+            }}
+          >
+            +
+          </Button>
+        )}
       </div>
       <ListBox>
         <ul>
           {list ? (
-            list.map((element, index) => (
+            list.map((habit, index) => (
               <li key={index}>
-                <h3> {element.title}</h3>
+                <h3> {habit.title}</h3>
                 <div>
-                  <Button onClick={clicking}>Done</Button>
-                  <Button>Delete</Button>
+                  <Button
+                    onClick={() => {
+                      updateClick(habitUptadeData, habit.id);
+                    }}
+                  >
+                    Done
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      setCurrentHabit(habit);
+                      setShowDeleteModal(true);
+                    }}
+                  >
+                    Delete
+                  </Button>
                 </div>
               </li>
             ))
