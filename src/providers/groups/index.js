@@ -6,6 +6,7 @@ export const GroupsContext = createContext();
 
 export const GroupsProvider = ({ children }) => {
   const [groups, setGroups] = useState([]);
+  const token = JSON.parse(localStorage.getItem("@Anima/token"));
 
   const getAllGroups = () => {
     api
@@ -27,24 +28,71 @@ export const GroupsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const getGoalsGroup = (groupId, token) => {
+  const [groupParticipants, setGroupParticipants] = useState([]);
+  const [groupCreator, setGroupCreator] = useState(false);
+
+  const getGroupAllParticipants = (groupId) => {
+    const { user_id } = jwt_decode(token);
+    api
+      .get(`/groups/${groupId}/`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        setGroupParticipants(response.data.users_on_group);
+        if (user_id === response.data.creator.id) {
+          setGroupCreator(response.data.creator);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const [groupGoals, setGroupGoals] = useState([]);
+  const getGoalsGroup = (groupId) => {
     api
       .get(`/goals/?group=${groupId}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        console.log(response.data.results);
+        setGroupGoals(response.data.results);
       })
       .catch((err) => console.log(err));
   };
 
+  const createGoalsGroup = (groupId, data) => {
+    console.log("provider", data);
+    api
+      .post(`/goals/`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => console.log(err));
+
+    getGoalsGroup(groupId);
+  };
+
+  const [groupActivities, setGroupActivities] = useState([]);
   const getActivitiesGroup = (groupId) => {
     api
       .get(`/activities/?group=${groupId}`)
       .then((response) => {
-        console.log(response.data.results);
+        setGroupActivities(response.data.results);
       })
       .catch((err) => console.log(err));
+  };
+
+  const createActivitiesGroup = (groupId, data) => {
+    api
+      .post(`/activities/`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => console.log(err));
+
+    getActivitiesGroup(groupId);
   };
 
   const createGroup = (token, data) => {
@@ -58,7 +106,8 @@ export const GroupsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const updateGroup = (token, groupId, data) => {
+  const updateGroup = (groupId, data) => {
+    console.log(data);
     api
       .patch(`/groups/${groupId}/`, data, {
         headers: { Authorization: `Bearer ${token}` },
@@ -80,9 +129,9 @@ export const GroupsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const unsubscribeGroup = (token, groupId) => {
+  const unsubscribeGroup = (groupId) => {
     api
-      .post(`/groups/${groupId}/unsubscribe/`, {
+      .delete(`/groups/${groupId}/unsubscribe/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -95,10 +144,17 @@ export const GroupsProvider = ({ children }) => {
     <GroupsContext.Provider
       value={{
         groups,
+        groupParticipants,
+        groupGoals,
+        groupActivities,
+        groupCreator,
         getAllGroups,
         getGroupsUser,
+        getGroupAllParticipants,
         getGoalsGroup,
+        createGoalsGroup,
         getActivitiesGroup,
+        createActivitiesGroup,
         createGroup,
         updateGroup,
         inscribeGroup,
