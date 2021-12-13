@@ -4,6 +4,7 @@ import { BsList } from "react-icons/bs";
 
 import { AuthenticatedContext } from "../../providers/authenticated";
 import Button from "../../components/Button";
+import Logo from "../../assets/anima-logo.png";
 
 import { Container, TitleBox } from "./styles";
 
@@ -21,7 +22,9 @@ const Home = () => {
   return (
     <Container>
       <header>
-        <img src alt="project Logo" />
+        <div>
+          <img src={Logo} alt="project Logo" />
+        </div>
         <p>About Us</p>
       </header>
       <div>

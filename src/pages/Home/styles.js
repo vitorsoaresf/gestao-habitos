@@ -15,8 +15,16 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    img {
+    > div {
+      background: var(--white);
+      width: 32px;
       margin-left: 12px;
+      border-radius: 100%;
+      padding: 2px;
+
+      img {
+        width: 30px;
+      }
     }
 
     > p {
