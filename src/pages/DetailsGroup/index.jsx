@@ -9,10 +9,8 @@ import ModalLeave from "../../components/ModalLeave";
 import ModalEdit from "../../components/ModalEdit";
 
 // 17 ou 102
-const DetailsGroup = ({ groupId = 17 }) => {
-  const [participants, setParticipants] = useState([]);
-  const [goals, setGoals] = useState(false);
-  const [activities, setActivities] = useState(false);
+const DetailsGroup = ({ groupId = 102 }) => {
+  const [update, setUpdatre] = useState(false);
 
   const [modalLeave, setModalLeave] = useState(false);
   const [modalEdit, setModalEdit] = useState(false);
@@ -34,14 +32,10 @@ const DetailsGroup = ({ groupId = 17 }) => {
     getGroupAllParticipants(groupId);
     getGoalsGroup(groupId);
     getActivitiesGroup(groupId);
-  }, [goals, activities]);
+  }, [update]);
 
-  const addGoals = () => {
-    setGoals(!goals);
-  };
-
-  const addActivities = () => {
-    setActivities(!activities);
+  const updateActivitiesGoals = () => {
+    setUpdatre(!update);
   };
 
   return (
@@ -61,13 +55,13 @@ const DetailsGroup = ({ groupId = 17 }) => {
         <ContainerBody>
           <CardGroups title="participants" list={groupParticipants} />
           <CardGroups
-            addGoals={addGoals}
+            updateActivitiesGoals={updateActivitiesGoals}
             groupId={groupId}
             title="goals"
             list={groupGoals}
           />
           <CardGroups
-            addActivities={addActivities}
+            updateActivitiesGoals={updateActivitiesGoals}
             groupId={groupId}
             title="activities"
             list={groupActivities}
