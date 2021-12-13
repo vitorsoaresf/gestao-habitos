@@ -28,7 +28,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     getHabits();
-    getGroupsUser();
+    getGroupsUser(); // getGroupsUser receives token
   }, []);
 
   if (!JSON.parse(localStorage.getItem("@Anima/authenticated"))) {
@@ -67,7 +67,9 @@ const Dashboard = () => {
           title={"My Groups"}
           cardType={"habit"}
           list={groups}
-          clicking={() => updateGroup()}
+          updateClick={updateGroup}
+          // habiUptadeData on CardGeneric
+          // setCurrentHabit ?
         />
       </Container>
     </>
