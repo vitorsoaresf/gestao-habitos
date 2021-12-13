@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 
 import { AuthenticatedContext } from "../../providers/authenticated";
 import Header from "../../components/Header";
@@ -13,18 +13,16 @@ import { Container } from "./styles";
 const Dashboard = () => {
   const { getHabits, allHabits, updateHabit, deleteHabit, createHabit } =
     useContext(HabitsContext);
+  const params = useParams();
 
   const [currentHabit, setCurrentHabit] = useState([]);
-  console.log("current habit", currentHabit);
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const [showAddModal, setShowAddModal] = useState(false);
 
-  console.log("allHabits", allHabits);
-
   useEffect(() => {
-    getHabits();
+    getHabits(params.token);
   }, []);
 
   if (!JSON.parse(localStorage.getItem("@Anima/authenticated"))) {

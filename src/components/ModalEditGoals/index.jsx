@@ -7,12 +7,17 @@ import { Container } from "./styles";
 import Input from "../Input";
 import Button from "../Button";
 
-const ModalGoals = ({ groupId, setModalGoals, updateActivitiesGoals }) => {
-  const { createGoalsGroup } = useContext(GroupsContext);
+const ModalEditGoals = ({
+  updateActivitiesGoals,
+  setModalEditGoals,
+  currentGoal,
+}) => {
+  const { updateGoalsGroup } = useContext(GroupsContext);
 
   const formSchema = yup.object().shape({
     title: yup.string().required("Title required"),
     difficulty: yup.string().required("Difficulty required"),
+    achieved: yup.boolean(),
   });
 
   const {
@@ -22,13 +27,10 @@ const ModalGoals = ({ groupId, setModalGoals, updateActivitiesGoals }) => {
   } = useForm({ resolver: yupResolver(formSchema) });
 
   const onSubmitFunction = (data) => {
-    data.group = groupId;
     data.how_much_achieved = 0;
-    data.achieved = false;
-    console.log(data);
 
-    setModalGoals(false);
-    createGoalsGroup(groupId, data);
+    setModalEditGoals(false);
+    updateGoalsGroup(currentGoal, data);
     updateActivitiesGoals();
   };
 
@@ -50,10 +52,18 @@ const ModalGoals = ({ groupId, setModalGoals, updateActivitiesGoals }) => {
           error={errors.difficulty?.message}
         />
 
-        <Button type="submit">Create Goal</Button>
+        <Input
+          type="checkbox"
+          placeholder=""
+          register={register}
+          name="achieved"
+          error={errors.achieved?.message}
+        />
+
+        <Button type="submit">Update</Button>
       </form>
     </Container>
   );
 };
 
-export default ModalGoals;
+export default ModalEditGoals;

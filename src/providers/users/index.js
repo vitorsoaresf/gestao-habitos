@@ -1,7 +1,8 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import api from "../../services/api";
 import { toast } from "react-hot-toast";
 import jwt_decode from "jwt-decode";
+import { useHistory } from "react-router-dom";
 
 export const UserContext = createContext();
 
@@ -12,7 +13,6 @@ export const UserProvider = ({ children }) => {
     await api
       .post("/sessions/", data)
       .then((response) => {
-        console.log(response);
         localStorage.setItem(
           "@Anima/token",
           JSON.stringify(response.data.access)
