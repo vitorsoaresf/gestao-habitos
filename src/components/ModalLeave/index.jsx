@@ -18,10 +18,10 @@ const ModalLeave = ({ groupId, setModalLeave }) => {
   return (
     <Container>
       <h3>
-        Are you sure you want to leave?{" "}
+        <p>Are you sure you want to leave? </p>
         <Button onClick={() => setModalLeave(false)}>x</Button>
       </h3>
-      <Button onClick={() => onSubmitFunction()}></Button>
+      <Button onClick={() => onSubmitFunction()}>Leave</Button>
     </Container>
   );
 };

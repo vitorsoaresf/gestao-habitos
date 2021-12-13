@@ -1,11 +1,11 @@
 import { Container, ContainerUl } from "./styles";
 import { useContext, useEffect, useState } from "react";
 import { GroupsContext } from "../../providers/groups";
+import { useHistory } from "react-router-dom";
 import Header from "../../components/Header";
 import CardGroups from "../../components/CardGroups";
 import Button from "../../components/Button";
 import ModalLeave from "../../components/ModalLeave";
-import { useHistory } from "react-router-dom";
 
 const DetailsGroup = ({ groupId = 17 }) => {
   const [participants, setParticipants] = useState([]);
