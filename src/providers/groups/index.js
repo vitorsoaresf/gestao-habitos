@@ -29,13 +29,19 @@ export const GroupsProvider = ({ children }) => {
   };
 
   const [groupParticipants, setGroupParticipants] = useState([]);
+  const [groupCreator, setGroupCreator] = useState(false);
+
   const getGroupAllParticipants = (groupId) => {
+    const { user_id } = jwt_decode(token);
     api
       .get(`/groups/${groupId}/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         setGroupParticipants(response.data.users_on_group);
+        if (user_id === response.data.creator.id) {
+          setGroupCreator(response.data.creator);
+        }
       })
       .catch((err) => console.log(err));
   };
@@ -52,7 +58,8 @@ export const GroupsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const createGoalsGroup = (data) => {
+  const createGoalsGroup = (groupId, data) => {
+    console.log("provider", data);
     api
       .post(`/goals/`, data, {
         headers: { Authorization: `Bearer ${token}` },
@@ -61,6 +68,8 @@ export const GroupsProvider = ({ children }) => {
         console.log(response);
       })
       .catch((err) => console.log(err));
+
+    getGoalsGroup(groupId);
   };
 
   const [groupActivities, setGroupActivities] = useState([]);
@@ -73,7 +82,7 @@ export const GroupsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const createActivitiesGroup = (data) => {
+  const createActivitiesGroup = (groupId, data) => {
     api
       .post(`/activities/`, data, {
         headers: { Authorization: `Bearer ${token}` },
@@ -82,6 +91,8 @@ export const GroupsProvider = ({ children }) => {
         console.log(response);
       })
       .catch((err) => console.log(err));
+
+    getActivitiesGroup(groupId);
   };
 
   const createGroup = (token, data) => {
@@ -117,9 +128,9 @@ export const GroupsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const unsubscribeGroup = (token, groupId) => {
+  const unsubscribeGroup = (groupId) => {
     api
-      .post(`/groups/${groupId}/unsubscribe/`, {
+      .delete(`/groups/${groupId}/unsubscribe/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -135,6 +146,7 @@ export const GroupsProvider = ({ children }) => {
         groupParticipants,
         groupGoals,
         groupActivities,
+        groupCreator,
         getAllGroups,
         getGroupsUser,
         getGroupAllParticipants,

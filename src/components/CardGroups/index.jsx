@@ -4,18 +4,23 @@ import Button from "../Button";
 import ModalGoals from "../ModalGoals";
 import ModalActivities from "../ModalActivities";
 
-const CardGroups = ({ title, list, groupId }) => {
+const CardGroups = ({ title, list, groupId, addGoals, addActivities }) => {
   const [modalGoals, setModalGoals] = useState(false);
   const [modalActivities, setModalActivities] = useState(false);
 
   return (
     <>
       {modalGoals && (
-        <ModalGoals setModalGoals={setModalGoals} groupId={groupId} />
+        <ModalGoals
+          addGoals={addGoals}
+          setModalGoals={setModalGoals}
+          groupId={groupId}
+        />
       )}
 
       {modalActivities && (
         <ModalActivities
+          addActivities={addActivities}
           setModalActivities={setModalActivities}
           groupId={groupId}
         />
