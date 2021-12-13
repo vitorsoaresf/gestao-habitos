@@ -2,17 +2,19 @@ import { Redirect } from "react-router-dom";
 import { Container } from "./styles";
 import Header from "../../components/Header";
 import CardGeneric from "../../components/CardGeneric";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { GroupsContext } from "../../providers/groups";
 import { useEffect } from "react";
 import { useHistory } from "react-router";
 
 const Groups = () => {
   const history = useHistory();
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const { getAllGroups, groups } = useContext(GroupsContext);
+  const { getAllGroups, groups, previousPage, nextPage, getFilteredGroups } =
+    useContext(GroupsContext);
   useEffect(() => {
-    getAllGroups();
+    getAllGroups(currentPage);
   }, []);
 
   if (!JSON.parse(localStorage.getItem("@Anima/authenticated"))) {
@@ -23,6 +25,26 @@ const Groups = () => {
     history.push(`/detailsgroup/${id}`);
   };
 
+  const goToNextPage = () => {
+    if (nextPage) {
+      setCurrentPage(currentPage + 1);
+      getAllGroups(currentPage);
+    }
+  };
+  const goToPrevPage = () => {
+    if (previousPage) {
+      setCurrentPage(currentPage - 1);
+      getAllGroups(currentPage);
+    }
+  };
+
+  const searchFunction = (valor) => {
+    getFilteredGroups(valor);
+  };
+  console.log("prev: " + previousPage);
+  console.log("current: " + currentPage);
+  console.log("next: " + nextPage);
+  console.log("________________________-");
   return (
     <Container>
       <Header />
@@ -32,6 +54,9 @@ const Groups = () => {
           cardType="groups"
           list={groups}
           updateClick={accessGroup}
+          habitUptadeData={goToNextPage}
+          setCurrentHabit={goToPrevPage}
+          searchFunction={searchFunction}
         />
       )}
     </Container>
