@@ -6,13 +6,15 @@ import Header from "../../components/Header";
 import CardGroups from "../../components/CardGroups";
 import Button from "../../components/Button";
 import ModalLeave from "../../components/ModalLeave";
+import ModalEdit from "../../components/ModalEdit";
 
-const DetailsGroup = ({ groupId = 17 }) => {
+const DetailsGroup = ({ groupId = 102 }) => {
   const [participants, setParticipants] = useState([]);
   const [goals, setGoals] = useState(false);
   const [activities, setActivities] = useState(false);
 
   const [modalLeave, setModalLeave] = useState(false);
+  const [modalEdit, setModalEdit] = useState(false);
 
   const history = useHistory();
   const {
@@ -40,13 +42,13 @@ const DetailsGroup = ({ groupId = 17 }) => {
     setActivities(!activities);
   };
 
-  // PAREI AQUI PARA FAZER A MODAL DE DESISTIR DO GRUPO
-  console.log(modalLeave);
   return (
     <>
       {modalLeave && (
         <ModalLeave groupId={groupId} setModalLeave={setModalLeave} />
       )}
+      {modalEdit && <ModalEdit groupId={groupId} setModalEdit={setModalEdit} />}
+
       <Header />
       <Container>
         <CardGroups title="participants" list={groupParticipants} />
@@ -64,7 +66,7 @@ const DetailsGroup = ({ groupId = 17 }) => {
         />
         <Button onClick={() => history.push("/dashboard")}>Back</Button>
         {groupCreator ? (
-          <Button>Edit</Button>
+          <Button onClick={() => setModalEdit(true)}>Edit</Button>
         ) : (
           <Button onClick={() => setModalLeave(true)}>Leave</Button>
         )}

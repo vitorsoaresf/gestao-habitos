@@ -106,7 +106,8 @@ export const GroupsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const updateGroup = (token, groupId, data) => {
+  const updateGroup = (groupId, data) => {
+    console.log(data);
     api
       .patch(`/groups/${groupId}/`, data, {
         headers: { Authorization: `Bearer ${token}` },

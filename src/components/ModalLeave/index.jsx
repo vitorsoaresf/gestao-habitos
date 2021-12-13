@@ -8,8 +8,7 @@ const ModalLeave = ({ groupId, setModalLeave }) => {
   const { unsubscribeGroup } = useContext(GroupsContext);
   const history = useHistory();
 
-  const onSubmitFunction = (data) => {
-    setModalLeave(false);
+  const onSubmitFunction = () => {
     setModalLeave(false);
     unsubscribeGroup(groupId);
     history.push("/dashboard");
