@@ -39,12 +39,6 @@ const CardGeneric = ({
           </Button>
         )}
       </div>
-      {cardType === "groups" && (
-        <div>
-          <button onClick={setCurrentHabit}>Prev. Page</button>
-          <Button onClick={habitUptadeData}>Next Page</Button>
-        </div>
-      )}
       <ListBox>
         <ul>
           {cardType === "habit" && list ? (

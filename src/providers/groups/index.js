@@ -1,26 +1,27 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import api from "../../services/api";
 import jwt_decode from "jwt-decode";
-
 export const GroupsContext = createContext();
 
 export const GroupsProvider = ({ children }) => {
   const token = JSON.parse(localStorage.getItem("@Anima/token"));
 
   const [groups, setGroups] = useState([]);
-  const [previousPage, setPreviousPage] = useState("");
-  const [nextPage, setNextPage] = useState("");
+  const [next, setNext] = useState(
+    "https://kenzie-habits.herokuapp.com/groups/"
+  )
 
-  const getAllGroups = (page) => {
+  //Loads all the groups
+  useEffect(() => {
     api
-      .get(`/groups/?page=${page}`)
+      .get(next)
       .then((response) => {
-        setGroups(response.data.results);
-        setPreviousPage(response.data.previous);
-        setNextPage(response.data.next);
+        setGroups([...groups, ...response.data.results]);
+        next && setNext(response.data.next);
       })
-      .catch((err) => console.log(err));
-  };
+      .catch((err) => console.log(err))
+  }, [next])
+
 
   const getFilteredGroups = (filter) => {
     if (filter) {
@@ -32,13 +33,7 @@ export const GroupsProvider = ({ children }) => {
         })
         .catch((err) => console.log(err))
     } else {
-      api
-        .get(`/groups/?page=1`)
-        .then((response) => {
-          setGroups(response.data.results);
-        })
-        .catch((err) => console.log(err))
-      console.log("filter vazio: " + filter)
+      setNext("https://kenzie-habits.herokuapp.com/groups/")
     }
   }
 
@@ -190,15 +185,12 @@ export const GroupsProvider = ({ children }) => {
     <GroupsContext.Provider
       value={{
         groups,
-        previousPage,
-        nextPage,
         getFilteredGroups,
         groupParticipants,
         groupGoals,
         groupActivities,
         groupCreator,
         dataGroup,
-        getAllGroups,
         getGroupsUser,
         getGroupAllParticipants,
         getGoalsGroup,
