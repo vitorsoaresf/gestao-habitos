@@ -1,4 +1,9 @@
-import { Container, ContainerBody, ContainerTitle } from "./styles";
+import {
+  Container,
+  ContainerBody,
+  ContainerTitle,
+  ContainerButton,
+} from "./styles";
 import { useContext, useEffect, useState } from "react";
 import { GroupsContext } from "../../providers/groups";
 import { useHistory, useParams } from "react-router-dom";
@@ -24,8 +29,9 @@ const DetailsGroup = () => {
     groupActivities,
     getActivitiesGroup,
     groupCreator,
-    unsubscribeGroup,
+    inscribeGroup,
     dataGroup,
+    isParticipant,
   } = useContext(GroupsContext);
 
   useEffect(() => {
@@ -37,8 +43,8 @@ const DetailsGroup = () => {
   const updateActivitiesGoals = () => {
     setUpdate(!update);
   };
-
-  return (
+  console.log(isParticipant);
+  return isParticipant ? (
     <>
       <Header />
       <Container>
@@ -72,11 +78,40 @@ const DetailsGroup = () => {
             list={groupActivities}
           />
           <Button onClick={() => history.push(`/groups/`)}>Back</Button>
-          {groupCreator ? (
+          {groupCreator.length > 0 ? (
             <Button onClick={() => setModalEditGroup(true)}>Edit</Button>
           ) : (
             <Button onClick={() => setModalLeave(true)}>Leave</Button>
           )}
+        </ContainerBody>
+      </Container>
+    </>
+  ) : (
+    <>
+      <Header />
+      <Container>
+        <ContainerTitle>
+          <h1>{dataGroup.name}</h1>
+          <p>{dataGroup.description}</p>
+        </ContainerTitle>
+        <ContainerBody>
+          <CardGroups title="participants" list={groupParticipants} />
+          <ContainerButton>
+            <Button onClick={() => history.push(`/groups/`)}>Back</Button>
+            {groupCreator.length > 0 ? (
+              <Button onClick={() => setModalEditGroup(true)}>Edit</Button>
+            ) : (
+              <Button
+                onClick={() => {
+                  inscribeGroup(groupId)
+                    .then((_) => updateActivitiesGoals())
+                    .catch((err) => console.log(err));
+                }}
+              >
+                Join
+              </Button>
+            )}
+          </ContainerButton>
         </ContainerBody>
       </Container>
     </>
