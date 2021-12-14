@@ -49,7 +49,11 @@ const Login = () => {
   } = useForm({ resolver: yupResolver(formSchema) });
 
   if (JSON.parse(localStorage.getItem("@Anima/authenticated"))) {
-    return <Redirect to="/dashboard" />;
+    return (
+      <Redirect
+        to={`/dashboard/${JSON.parse(localStorage.getItem("@Anima/token"))}`}
+      />
+    );
   }
 
   const onSubmitFunction = async (data) => {
