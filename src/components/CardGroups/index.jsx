@@ -15,9 +15,9 @@ const CardGroups = ({ title, list, groupId, updateActivitiesGoals }) => {
   const [currentGoal, setCurrentGoal] = useState(0);
   const [currentActivities, setCurrentActivities] = useState(0);
 
-  const editGoal = (goalId) => {
+  const editGoal = (goal) => {
     setModalEditGoals(!modalEditGoals);
-    setCurrentGoal(goalId);
+    setCurrentGoal(goal);
   };
 
   const editActivities = (activitiesId) => {

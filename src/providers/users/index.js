@@ -2,35 +2,19 @@ import { createContext, useContext, useState } from "react";
 import api from "../../services/api";
 import { toast } from "react-hot-toast";
 import jwt_decode from "jwt-decode";
-import { useHistory } from "react-router-dom";
+import { AuthenticatedContext } from "../authenticated";
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState([]);
 
-  const login = async (data) => {
-    await api
-      .post("/sessions/", data)
-      .then((response) => {
-        localStorage.setItem(
-          "@Anima/token",
-          JSON.stringify(response.data.access)
-        );
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.error("some error occurred");
-      });
-  };
-
   const registerUser = async (data) => {
     delete data.confirm_password;
 
     await api
       .post("/users/", data)
-      .then((response) => {
-        console.log(response);
+      .then((_) => {
         toast.success("registered user!");
       })
       .catch((_) => toast.error("some error occurred"));
@@ -61,14 +45,19 @@ export const UserProvider = ({ children }) => {
       .patch(`/users/${user_id}/`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((response) => console.log(response));
+      .then((_) => {
+        toast.success("user updated successfully");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("some error on the server");
+      });
   };
 
   return (
     <UserContext.Provider
       value={{
         user,
-        login,
         registerUser,
         getSpecificUser,
         getAllUsers,
