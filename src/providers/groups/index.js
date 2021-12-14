@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import api from "../../services/api";
 import jwt_decode from "jwt-decode";
 import { toast } from "react-hot-toast";
@@ -9,14 +9,35 @@ export const GroupsProvider = ({ children }) => {
   const token = JSON.parse(localStorage.getItem("@Anima/token"));
 
   const [groups, setGroups] = useState([]);
-  const getAllGroups = () => {
+  const [next, setNext] = useState(
+    "https://kenzie-habits.herokuapp.com/groups/"
+  )
+
+  //Loads all the groups
+  useEffect(() => {
     api
-      .get("/groups/")
+      .get(next)
       .then((response) => {
-        setGroups(response.data.results);
+        setGroups([...groups, ...response.data.results]);
+        next && setNext(response.data.next);
       })
-      .catch((err) => console.log(err));
-  };
+      .catch((err) => console.log(err))
+  }, [next])
+
+
+  const getFilteredGroups = (filter) => {
+    if (filter) {
+      console.log("filter: " + filter)
+      api
+        .get(`/groups/?search=${filter}`)
+        .then((response) => {
+          setGroups(response.data.results);
+        })
+        .catch((err) => console.log(err))
+    } else {
+      setNext("https://kenzie-habits.herokuapp.com/groups/")
+    }
+  }
 
   const getGroupsUser = (token) => {
     api
@@ -30,7 +51,7 @@ export const GroupsProvider = ({ children }) => {
   };
 
   const [groupParticipants, setGroupParticipants] = useState([]);
-  const [groupCreator, setGroupCreator] = useState([]);
+  const [groupCreator, setGroupCreator] = useState(false);
   const [dataGroup, setSpecificGroup] = useState([]);
   const [isParticipant, setIsParticipant] = useState(false);
 
@@ -214,23 +235,25 @@ export const GroupsProvider = ({ children }) => {
     <GroupsContext.Provider
       value={{
         groups,
+        getFilteredGroups,
         groupParticipants,
         groupGoals,
         groupActivities,
         groupCreator,
         dataGroup,
+<<<<<<< HEAD
         isParticipant,
         getAllGroups,
+=======
+>>>>>>> 1a94d6115b3f489f34e6d118f94244d09c55252f
         getGroupsUser,
         getGroupAllParticipants,
         getGoalsGroup,
         createGoalsGroup,
         updateGoalsGroup,
-        deleteGoalsGroup,
         getActivitiesGroup,
         createActivitiesGroup,
         updateActivitiesGroup,
-        deleteActivitiesGroup,
         createGroup,
         updateGroup,
         inscribeGroup,
