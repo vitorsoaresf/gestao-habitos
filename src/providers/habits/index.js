@@ -19,7 +19,7 @@ export const HabitsProvider = ({ children }) => {
       })
       .then((response) => {
         console.log(response);
-        getHabits();
+        getHabits(token);
       })
       .catch((err) => console.log(err));
   };
@@ -57,7 +57,7 @@ export const HabitsProvider = ({ children }) => {
       })
       .then((response) => {
         console.log(response);
-        getHabits();
+        getHabits(token);
       })
       .catch((err) => console.log(err));
   };

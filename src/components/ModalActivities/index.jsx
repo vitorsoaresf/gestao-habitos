@@ -35,17 +35,23 @@ const ModalActivities = ({
 
   return (
     <Container>
-      <form onSubmit={handleSubmit(onSubmitFunction)}>
-        <Input
-          type="text"
-          placeholder="Title"
-          register={register}
-          name="title"
-          error={errors.title?.message}
-        />
+      <div>
+        <h1>
+          New activity{" "}
+          <Button onClick={() => setModalActivities(false)}>x</Button>
+        </h1>
+        <form onSubmit={handleSubmit(onSubmitFunction)}>
+          <Input
+            type="text"
+            placeholder=" Title"
+            register={register}
+            name="title"
+            error={errors.title?.message}
+          />
 
-        <Button type="submit">Create Activities</Button>
-      </form>
+          <Button type="submit">Create Activities</Button>
+        </form>
+      </div>
     </Container>
   );
 };

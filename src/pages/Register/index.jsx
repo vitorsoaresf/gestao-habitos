@@ -6,7 +6,6 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import { UserContext } from "../../providers/users";
-import { AuthenticatedContext } from "../../providers/authenticated";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 

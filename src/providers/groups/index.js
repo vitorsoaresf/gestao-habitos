@@ -1,6 +1,7 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import api from "../../services/api";
 import jwt_decode from "jwt-decode";
+import { toast } from "react-hot-toast";
 
 export const GroupsContext = createContext();
 
@@ -8,13 +9,33 @@ export const GroupsProvider = ({ children }) => {
   const token = JSON.parse(localStorage.getItem("@Anima/token"));
 
   const [groups, setGroups] = useState([]);
-  const getAllGroups = () => {
+  const [next, setNext] = useState(
+    "https://kenzie-habits.herokuapp.com/groups/"
+  );
+
+  //Loads all the groups
+  useEffect(() => {
     api
-      .get("/groups/")
+      .get(next)
       .then((response) => {
-        setGroups(response.data.results);
+        setGroups([...groups, ...response.data.results]);
+        next && setNext(response.data.next);
       })
       .catch((err) => console.log(err));
+  }, [next]);
+
+  const getFilteredGroups = (filter) => {
+    if (filter) {
+      console.log("filter: " + filter);
+      api
+        .get(`/groups/?search=${filter}`)
+        .then((response) => {
+          setGroups(response.data.results);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      setNext("https://kenzie-habits.herokuapp.com/groups/");
+    }
   };
 
   const [myGroups, setMyGroups] = useState([]);
@@ -33,9 +54,11 @@ export const GroupsProvider = ({ children }) => {
   const [groupParticipants, setGroupParticipants] = useState([]);
   const [groupCreator, setGroupCreator] = useState(false);
   const [dataGroup, setSpecificGroup] = useState([]);
+  const [isParticipant, setIsParticipant] = useState(false);
 
   const getGroupAllParticipants = (groupId) => {
     const { user_id } = jwt_decode(token);
+    setIsParticipant(false);
     api
       .get(`/groups/${groupId}/`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -46,6 +69,14 @@ export const GroupsProvider = ({ children }) => {
 
         if (user_id === response.data.creator.id) {
           setGroupCreator(response.data.creator);
+        }
+
+        if (
+          response.data.users_on_group.find(
+            (participant) => participant.id === user_id
+          )
+        ) {
+          setIsParticipant(true);
         }
       })
       .catch((err) => console.log(err));
@@ -69,21 +100,39 @@ export const GroupsProvider = ({ children }) => {
       .post(`/goals/`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((response) => {
-        console.log(response);
+      .then((_) => {
+        toast.success("goal created successfully");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        toast.error("some error on the server");
+      });
 
     getGoalsGroup(groupId);
   };
 
-  const updateGoalsGroup = (goalId, data) => {
-    api
+  const updateGoalsGroup = async (goalId, data) => {
+    await api
       .patch(`/goals/${goalId}/`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .catch((response) => console.log(response))
-      .catch((err) => console.log(err));
+      .then((_) => toast.success("goal updated successfully"))
+      .catch((err) => {
+        console.log(err);
+        toast.error("some error on the server");
+      });
+  };
+
+  const deleteGoalsGroup = async (goalId) => {
+    await api
+      .delete(`/goals/${goalId}/`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((_) => toast.success("goal deleted successfully"))
+      .catch((err) => {
+        console.log(err);
+        toast.error("some error on the server");
+      });
   };
 
   const [groupActivities, setGroupActivities] = useState([]);
@@ -101,32 +150,52 @@ export const GroupsProvider = ({ children }) => {
       .post(`/activities/`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => console.log(err));
+      .then((_) => toast.success("activity created successfully"))
+      .catch((err) => {
+        console.log(err);
+        toast.error("some error on the server");
+      });
 
     getActivitiesGroup(groupId);
   };
 
-  const updateActivitiesGroup = (activitiesId, data) => {
-    api
+  const updateActivitiesGroup = async (activitiesId, data) => {
+    await api
       .patch(`/activities/${activitiesId}/`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .catch((response) => console.log(response))
-      .catch((err) => console.log(err));
+      .then((_) => toast.success("activity updated successfully"))
+      .catch((err) => {
+        console.log(err);
+        toast.error("some error on the server");
+      });
   };
 
-  const createGroup = (token, data) => {
-    api
+  const deleteActivitiesGroup = async (activitiesId) => {
+    await api
+      .delete(`/activities/${activitiesId}/`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((_) => toast.success("activity deleted successfully"))
+      .catch((err) => {
+        console.log(err);
+        toast.error("some error on the server");
+      });
+  };
+
+  const createGroup = async (data) => {
+    await api
       .post("/groups/", data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((response) => {
-        console.log(response.data);
+      .then((_) => {
+        getGroupsUser(token);
+        toast.success("Group created successfully");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        toast.error("some error on the server");
+      });
   };
 
   const updateGroup = (groupId, data) => {
@@ -135,21 +204,23 @@ export const GroupsProvider = ({ children }) => {
       .patch(`/groups/${groupId}/`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => console.log(err));
+      .then((_) => toast.success("Activity updated successfully"))
+      .catch((err) => {
+        console.log(err);
+        toast.error("some error on the server");
+      });
   };
 
-  const inscribeGroup = (token, groupId) => {
-    api
-      .post(`/groups/${groupId}/subscribe/`, {
+  const inscribeGroup = async (groupId) => {
+    await api
+      .post(`/groups/${groupId}/subscribe/`, groupId, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => console.log(err));
+      .then((_) => toast.success("subscribe successful"))
+      .catch((err) => {
+        console.log(err);
+        toast.error("some error on the server");
+      });
   };
 
   const unsubscribeGroup = (groupId) => {
@@ -157,10 +228,11 @@ export const GroupsProvider = ({ children }) => {
       .delete(`/groups/${groupId}/unsubscribe/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => console.log(err));
+      .then((_) => toast.success("successfully unsubscribed"))
+      .catch((err) => {
+        console.log(err);
+        toast.error("some error on the server");
+      });
   };
 
   return (
@@ -173,7 +245,8 @@ export const GroupsProvider = ({ children }) => {
         groupCreator,
         dataGroup,
         myGroups,
-        getAllGroups,
+        isParticipant,
+        getFilteredGroups,
         getGroupsUser,
         getGroupAllParticipants,
         getGoalsGroup,

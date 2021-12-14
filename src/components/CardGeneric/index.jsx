@@ -2,6 +2,7 @@ import { Container, ListBox } from "./styles";
 import { BsSearch } from "react-icons/bs";
 
 import Button from "../Button";
+import { useState } from "react";
 
 const CardGeneric = ({
   title,
@@ -13,15 +14,20 @@ const CardGeneric = ({
   setShowDeleteModal,
   setShowAddModal,
   setShowAddGroupModal,
+  searchFunction,
 }) => {
+  const [input, setInput] = useState("");
   return (
     <Container>
       <h2>{title}</h2>
       <div>
         <div>
-          <input></input>
+          <input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          ></input>
           <span>
-            <BsSearch />
+            <BsSearch onClick={() => searchFunction(input)} />
           </span>
         </div>
         {cardType !== "groups" && (

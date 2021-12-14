@@ -21,7 +21,14 @@ const Header = () => {
         <section className="info">
           <p onClick={() => history.push("/")}>Home</p>
           <p onClick={() => history.push("/groups")}>Groups</p>
-          <p onClick={() => history.push("/")}>Logout</p>
+          <p
+            onClick={() => {
+              localStorage.clear();
+              history.push("/");
+            }}
+          >
+            Logout
+          </p>
         </section>
       )}
       <BsList onClick={handleMobile} />

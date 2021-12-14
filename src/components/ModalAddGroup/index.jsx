@@ -32,7 +32,11 @@ const ModalAddGroup = ({ userId, setShowAddGroupModal }) => {
     };
 
     setShowAddGroupModal(false);
-    createGroup(newGroup);
+    createGroup(newGroup)
+      .then((_) => {
+        setShowAddGroupModal(false);
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
