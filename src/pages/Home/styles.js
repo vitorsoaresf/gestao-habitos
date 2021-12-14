@@ -3,49 +3,77 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  /* justify-content: center; */
 
   header {
-    width: 100%;
     background: var(--darkGreen);
-    height: 50px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 
-    > a {
-      text-decoration: none;
-      font-size: 24px;
-      margin-right: 32px;
-      color: var(--white);
-    }
-  }
+    > div {
+      width: 100%;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1000px;
 
-  > img {
-    position: absolute;
-    z-index: -1;
-    margin-top: 90px;
-
-    @media (max-width: 767px) {
-      display: none;
+      > a {
+        text-decoration: none;
+        font-size: 24px;
+        margin-right: 32px;
+        color: var(--white);
+      }
     }
   }
 
   > div {
     display: flex;
 
-    @media (min-width: 768px) {
-      justify-content: flex-end;
+    @media (min-width: 1300px) {
+      gap: 6vw;
+    }
+
+    @media (min-width: 1804px) {
+      gap: 10vw;
+    }
+
+    @media (min-width: 2125px) {
+      gap: 20vw;
+    }
+
+    > img {
+      @media (max-width: 767px) {
+        display: none;
+      }
     }
 
     > div {
-      height: 100vh;
       display: flex;
-      flex-direction: column;
+      /* background: orange; */
+      height: 100vh;
       align-items: center;
-      justify-content: space-around;
 
       @media (min-width: 768px) {
-        width: 80vw;
+        justify-content: flex-end;
+      }
+
+      > div {
+        /* display: flex; */
+        /* justify-content: center; */
+
+        > div {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-around;
+          /* background: green; */
+
+          @media (min-width: 768px) {
+            /* width: 80vw; */
+            height: 550px;
+          }
+        }
       }
     }
   }
@@ -54,6 +82,7 @@ export const Container = styled.div`
 export const ButtonBox = styled.section`
   display: flex;
   flex-direction: column;
+  height: 25vh;
 
   > Button {
     margin: 8px;
