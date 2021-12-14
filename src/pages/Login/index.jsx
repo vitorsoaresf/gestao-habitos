@@ -8,6 +8,7 @@ import { UserContext } from "../../providers/users";
 import { AuthenticatedContext } from "../../providers/authenticated";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import yoga from "../../assets/Svg/yoga.svg";
 
 import { Container } from "./styles";
 import { HabitsContext } from "../../providers/habits";
@@ -78,30 +79,35 @@ const Login = () => {
 
   return (
     <Container>
-      <h1>Login</h1>
+      <div>
+        <img src={yoga} alt="Yoga svg" />
+        <div>
+          <h1>Login</h1>
 
-      <form onSubmit={handleSubmit(onSubmitFunction)}>
-        <Input
-          type="text"
-          placeholder="Username"
-          register={register}
-          name="username"
-          error={errors.username?.message}
-        />
+          <form onSubmit={handleSubmit(onSubmitFunction)}>
+            <Input
+              type="text"
+              placeholder="Username"
+              register={register}
+              name="username"
+              error={errors.username?.message}
+            />
 
-        <Input
-          type="password"
-          placeholder="Password"
-          register={register}
-          name="password"
-          error={errors.password?.message}
-        />
+            <Input
+              type="password"
+              placeholder="Password"
+              register={register}
+              name="password"
+              error={errors.password?.message}
+            />
 
-        <Button type="submit">Login</Button>
-        <p>
-          Don't have an account? <Link to="/register">Sign up</Link>
-        </p>
-      </form>
+            <Button type="submit">Login</Button>
+            <p>
+              Don't have an account? <Link to="/register">Sign up</Link>
+            </p>
+          </form>
+        </div>
+      </div>
     </Container>
   );
 };

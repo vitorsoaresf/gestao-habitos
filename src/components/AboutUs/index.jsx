@@ -1,7 +1,7 @@
-import leonardo from "../../assets/leonardoDev.png";
-import vitor from "../../assets/vitorDev.jpeg";
-import guilherme from "../../assets/guilhermeDev.png";
-import berg from "../../assets/bergDev.jpeg";
+import leonardo from "../../assets/DevImages/leonardoDev.png";
+import vitor from "../../assets/DevImages/vitorDev.png";
+import guilherme from "../../assets/DevImages/guilhermeDev.png";
+import berg from "../../assets/DevImages/bergDev.png";
 
 const AboutUs = [
   {
