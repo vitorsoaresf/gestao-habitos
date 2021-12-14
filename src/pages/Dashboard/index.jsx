@@ -26,6 +26,8 @@ const Dashboard = () => {
 
   const [showAddModal, setShowAddModal] = useState(false);
 
+  const [showAddGroupModal, setShowAddGroupModal] = useState(false);
+
   useEffect(() => {
     getGroupsUser(params.token);
     getHabits(params.token);
@@ -51,7 +53,9 @@ const Dashboard = () => {
         />
       )}
 
-      {showAddModal && <ModalAddGroup setShowAddModal={setShowAddModal} />}
+      {showAddGroupModal && (
+        <ModalAddGroup setShowAddGroupModal={setShowAddGroupModal} />
+      )}
 
       <Header />
       <Container>
@@ -69,7 +73,8 @@ const Dashboard = () => {
         <CardGeneric
           title={"My Groups"}
           list={myGroups}
-          setShowAddModal={setShowAddModal}
+          // setShowAddModal={setShowAddModal}
+          setShowAddGroupModal={setShowAddGroupModal}
           addClick={createGroup}
         />
       </Container>

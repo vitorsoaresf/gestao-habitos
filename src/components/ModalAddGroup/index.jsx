@@ -9,7 +9,7 @@ import { GroupsContext } from "../../providers/groups";
 import { Container } from "./style";
 import { useContext } from "react";
 
-const ModalAddGroup = ({ userId, setShowAddModal }) => {
+const ModalAddGroup = ({ userId, setShowAddGroupModal }) => {
   const { createGroup } = useContext(GroupsContext);
 
   const schema = yup.object().shape({
@@ -31,7 +31,7 @@ const ModalAddGroup = ({ userId, setShowAddModal }) => {
       category: data.category,
     };
 
-    setShowAddModal(false);
+    setShowAddGroupModal(false);
     createGroup(newGroup);
   };
 

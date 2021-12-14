@@ -12,6 +12,7 @@ const CardGeneric = ({
   setCurrentHabit,
   setShowDeleteModal,
   setShowAddModal,
+  setShowAddGroupModal,
 }) => {
   return (
     <Container>
@@ -24,13 +25,25 @@ const CardGeneric = ({
           </span>
         </div>
         {cardType !== "groups" && (
-          <Button
-            onClick={() => {
-              setShowAddModal(true);
-            }}
-          >
-            +
-          </Button>
+          <>
+            {cardType === "habit" ? (
+              <Button
+                onClick={() => {
+                  setShowAddModal(true);
+                }}
+              >
+                +
+              </Button>
+            ) : (
+              <Button
+                onClick={() => {
+                  setShowAddGroupModal(true);
+                }}
+              >
+                +
+              </Button>
+            )}
+          </>
         )}
       </div>
       <ListBox>
