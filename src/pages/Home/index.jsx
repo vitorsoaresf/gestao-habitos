@@ -4,7 +4,7 @@ import { BsLinkedin } from "react-icons/bs";
 import Button from "../../components/Button";
 import Logo from "../../assets/anima-logo.png";
 import AboutUs from "../../components/AboutUs";
-import love from "../../assets/love_svg .svg";
+import love from "../../assets/Svg/love_svg.svg";
 
 import {
   Container,
