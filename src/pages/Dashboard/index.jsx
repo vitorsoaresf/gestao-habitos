@@ -26,6 +26,8 @@ const Dashboard = () => {
 
   const [showAddModal, setShowAddModal] = useState(false);
 
+  const [showAddGroupModal, setShowAddGroupModal] = useState(false);
+
   useEffect(() => {
     getGroupsUser(params.token);
     getHabits(params.token);
@@ -51,7 +53,9 @@ const Dashboard = () => {
         />
       )}
 
-      {showAddModal && <ModalAddGroup setShowAddModal={setShowAddModal} />}
+      {showAddGroupModal && (
+        <ModalAddGroup showAddGroupModal={showAddGroupModal} />
+      )}
 
       <Header />
       <Container>
