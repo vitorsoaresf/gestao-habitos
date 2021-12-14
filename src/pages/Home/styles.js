@@ -2,10 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  width: 100vw;
   flex-direction: column;
-  /* height: 110vh; */
-  /* background: pink; */
 
   header {
     width: 100%;
@@ -15,31 +12,57 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    > p {
+    > a {
+      text-decoration: none;
       font-size: 24px;
-      margin-right: 12px;
+      margin-right: 32px;
       color: var(--white);
     }
   }
 
+  > img {
+    position: absolute;
+    z-index: -1;
+    margin-top: 90px;
+
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+
   > div {
-    /* background: orange; */
-    height: 90vh;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+
+    @media (min-width: 768px) {
+      justify-content: flex-end;
+    }
 
     > div {
-      /* background: blue; */
+      height: 100vh;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
 
-      > Button {
-        margin: 8px;
-        width: 200px;
+      @media (min-width: 768px) {
+        width: 80vw;
       }
     }
+  }
+`;
+
+export const ButtonBox = styled.section`
+  display: flex;
+  flex-direction: column;
+
+  > Button {
+    margin: 8px;
+    width: 200px;
+  }
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
   }
 `;
 
@@ -71,7 +94,6 @@ export const TitleBox = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  /* height: 50vh; */
 
   h1 {
     font-size: 64px;
@@ -84,7 +106,76 @@ export const TitleBox = styled.div`
   }
 `;
 
-export const AboutUsBox = styled.section`
-  background: orange;
-  height: 200px;
+export const AboutUsBox = styled.footer`
+  background: var(--gray);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 42px 0 42px 0;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+
+  > div {
+    @media (min-width: 768px) {
+      width: 650px;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
+    }
+
+    > div {
+      background: var(--darkGreen);
+      color: var(--white);
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      padding: 12px;
+      width: 270px;
+      height: 150px;
+      border-radius: 8px;
+      justify-content: space-between;
+
+      box-shadow: rgba(0, 0, 0, 0.55) 0px 3px 8px;
+
+      a {
+        text-decoration: none;
+        color: var(--white);
+        margin-left: 4px;
+        cursor: pointer;
+      }
+    }
+  }
+`;
+
+export const NameBox = styled.div`
+  display: flex;
+  margin-bottom: 8px;
+  justify-content: center;
+  border-bottom: 1px solid var(--gray);
+
+  h1 {
+    font-weight: 600;
+  }
+
+  p {
+    font-family: italic;
+  }
+`;
+
+export const PicBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+  align-items: center;
+
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-right: 8px;
+  }
+
+  h4 {
+    width: 80%;
+  }
 `;
