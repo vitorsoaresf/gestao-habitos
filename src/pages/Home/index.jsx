@@ -30,30 +30,36 @@ const Home = () => {
   return (
     <Container>
       <header>
-        <LogoBox>
-          <div>
-            <img src={Logo} alt="project Logo" />
-          </div>
-          <p>Anima</p>
-        </LogoBox>
-        <a href="#devTeam">About Us</a>
-      </header>
-      <img src={love} alt="svg balao" />
-      <div>
         <div>
-          <TitleBox>
-            <h1>Anima</h1>
-            <p>
-              A great way to manage your habits and connect you with people who
-              share the same habits.
-            </p>
-          </TitleBox>
-          <ButtonBox>
-            <Button onClick={() => history.push("/login")}>Login</Button>
-            <Button isGray onClick={() => history.push("/register")}>
-              Sign up
-            </Button>
-          </ButtonBox>
+          <LogoBox>
+            <div>
+              <img src={Logo} alt="project Logo" />
+            </div>
+            <p>Anima</p>
+          </LogoBox>
+          <a href="#devTeam">About Us</a>
+        </div>
+      </header>
+      <div>
+        <img src={love} alt="svg balao" />
+        <div id="orange">
+          <div>
+            <div>
+              <TitleBox>
+                <h1>Anima</h1>
+                <p>
+                  A great way to manage your habits and connect you with people
+                  who share the same habits.
+                </p>
+              </TitleBox>
+              <ButtonBox>
+                <Button onClick={() => history.push("/login")}>Login</Button>
+                <Button isGray onClick={() => history.push("/register")}>
+                  Sign up
+                </Button>
+              </ButtonBox>
+            </div>
+          </div>
         </div>
       </div>
       <AboutUsBox id="devTeam">
