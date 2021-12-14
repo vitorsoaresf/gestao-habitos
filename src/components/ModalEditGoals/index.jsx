@@ -31,17 +31,24 @@ const ModalEditGoals = ({
 
   const onSubmitFunction = (data) => {
     data.how_much_achieved = 0;
+    console.log("current", currentGoal);
+    console.log("atual", data);
 
-    setModalEditGoals(false);
-    updateGoalsGroup(currentGoal.id, data);
-    updateActivitiesGoals();
-    console.log("entrou");
+    updateGoalsGroup(currentGoal.id, data)
+      .then((_) => {
+        setModalEditGoals(false);
+        updateActivitiesGoals();
+      })
+      .catch((err) => console.log(err));
   };
 
   const deleteGoal = () => {
-    setModalEditGoals(false);
-    deleteGoalsGroup(currentGoal.id);
-    updateActivitiesGoals();
+    deleteGoalsGroup(currentGoal.id)
+      .then((_) => {
+        setModalEditGoals(false);
+        updateActivitiesGoals();
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -85,7 +92,9 @@ const ModalEditGoals = ({
           </label>
           <div className="bt">
             <Button type="submit">Update</Button>
-            <Button onClick={() => deleteGoal()}>Delete</Button>
+            <Button type="button" onClick={() => deleteGoal()}>
+              Delete
+            </Button>
           </div>
         </form>
       </div>

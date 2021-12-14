@@ -28,15 +28,21 @@ const ModalEditActivities = ({
   } = useForm({ resolver: yupResolver(formSchema) });
 
   const onSubmitFunction = (data) => {
-    setModalEditActivities(false);
-    updateActivitiesGroup(currentActivities.id, data);
-    updateActivitiesGoals();
+    updateActivitiesGroup(currentActivities.id, data)
+      .then((_) => {
+        setModalEditActivities(false);
+        updateActivitiesGoals();
+      })
+      .catch((err) => console.log(err));
   };
 
   const deleteActivity = () => {
-    setModalEditActivities(false);
-    deleteActivitiesGroup(currentActivities.id);
-    updateActivitiesGoals();
+    deleteActivitiesGroup(currentActivities.id)
+      .then((_) => {
+        setModalEditActivities(false);
+        updateActivitiesGoals();
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -59,7 +65,9 @@ const ModalEditActivities = ({
 
           <div className="bt">
             <Button type="submit">Update</Button>
-            <Button onClick={() => deleteActivity()}>Delete</Button>
+            <Button type="button" onClick={() => deleteActivity()}>
+              Delete
+            </Button>
           </div>
         </form>
       </div>

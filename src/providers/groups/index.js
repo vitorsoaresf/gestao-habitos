@@ -75,8 +75,8 @@ export const GroupsProvider = ({ children }) => {
     getGoalsGroup(groupId);
   };
 
-  const updateGoalsGroup = (goalId, data) => {
-    api
+  const updateGoalsGroup = async (goalId, data) => {
+    await api
       .patch(`/goals/${goalId}/`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
@@ -84,8 +84,8 @@ export const GroupsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const deleteGoalsGroup = (goalId) => {
-    api
+  const deleteGoalsGroup = async (goalId) => {
+    await api
       .delete(`/goals/${goalId}/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
@@ -116,8 +116,8 @@ export const GroupsProvider = ({ children }) => {
     getActivitiesGroup(groupId);
   };
 
-  const updateActivitiesGroup = (activitiesId, data) => {
-    api
+  const updateActivitiesGroup = async (activitiesId, data) => {
+    await api
       .patch(`/activities/${activitiesId}/`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
@@ -125,8 +125,8 @@ export const GroupsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const deleteActivitiesGroup = (activitiesId) => {
-    api
+  const deleteActivitiesGroup = async (activitiesId) => {
+    await api
       .delete(`/activities/${activitiesId}/`, {
         headers: { Authorization: `Bearer ${token}` },
       })

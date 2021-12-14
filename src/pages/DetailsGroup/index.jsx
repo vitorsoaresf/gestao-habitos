@@ -8,7 +8,6 @@ import Button from "../../components/Button";
 import ModalLeave from "../../components/ModalLeave";
 import ModalEditGroup from "../../components/ModalEditGroup";
 
-// 17 ou 102
 const DetailsGroup = () => {
   const { id: groupId } = useParams();
   const [update, setUpdate] = useState(false);
