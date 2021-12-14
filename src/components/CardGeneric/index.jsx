@@ -2,6 +2,7 @@ import { Container, ListBox } from "./styles";
 import { BsSearch } from "react-icons/bs";
 
 import Button from "../Button";
+import Loading from "../Loading";
 import { useState } from "react";
 
 const CardGeneric = ({
@@ -16,6 +17,7 @@ const CardGeneric = ({
   searchFunction,
 }) => {
   const [input, setInput] = useState("");
+
   return (
     <Container>
       <h2>{title}</h2>
@@ -66,20 +68,18 @@ const CardGeneric = ({
             ))
           ) : cardType === "groups" && list ? (
             list.map((group, index) => (
-              <>
-                <li key={index}>
-                  <h3>{group.name}</h3>
-                  <div>
-                    <Button
-                      onClick={() => {
-                        updateClick(group.id);
-                      }}
-                    >
-                      Details
-                    </Button>
-                  </div>
-                </li>
-              </>
+              <li key={index}>
+                <h3>{group.name}</h3>
+                <div>
+                  <Button
+                    onClick={() => {
+                      updateClick(group.id);
+                    }}
+                  >
+                    Details
+                  </Button>
+                </div>
+              </li>
             ))
           ) : (
             <div>testudo</div>

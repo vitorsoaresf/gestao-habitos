@@ -6,7 +6,7 @@ import {
 } from "./styles";
 import { useContext, useEffect, useState } from "react";
 import { GroupsContext } from "../../providers/groups";
-import { useHistory, useParams } from "react-router-dom";
+import { Redirect, useHistory, useParams } from "react-router-dom";
 import Header from "../../components/Header";
 import CardGroups from "../../components/CardGroups";
 import Button from "../../components/Button";
@@ -35,14 +35,22 @@ const DetailsGroup = () => {
   } = useContext(GroupsContext);
 
   useEffect(() => {
+    if (!JSON.parse(localStorage.getItem("@Anima/authenticated"))) {
+      return <Redirect to="/" />;
+    }
     getGroupAllParticipants(groupId);
     getGoalsGroup(groupId);
     getActivitiesGroup(groupId);
   }, [update]);
 
+  if (!JSON.parse(localStorage.getItem("@Anima/authenticated"))) {
+    return <Redirect to="/" />;
+  }
+
   const updateActivitiesGoals = () => {
     setUpdate(!update);
   };
+
   console.log(isParticipant);
   return isParticipant ? (
     <>
