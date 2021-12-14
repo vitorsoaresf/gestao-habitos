@@ -11,6 +11,8 @@ import Button from "../../components/Button";
 
 import { Container } from "./styles";
 import { HabitsContext } from "../../providers/habits";
+import api from "../../services/api";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
   const { login } = useContext(UserContext);
@@ -43,21 +45,31 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({ resolver: yupResolver(formSchema) });
 
   if (JSON.parse(localStorage.getItem("@Anima/authenticated"))) {
     return <Redirect to="/dashboard" />;
   }
 
-  const onSubmitFunction = (data) => {
-    setAccess();
-    login(data)
-      .then((_) =>
+  const onSubmitFunction = async (data) => {
+    await api
+      .post("/sessions/", data)
+      .then((response) => {
+        localStorage.setItem(
+          "@Anima/token",
+          JSON.stringify(response.data.access)
+        );
+        setAccess();
         history.push(
           `/dashboard/${JSON.parse(localStorage.getItem("@Anima/token"))}`
-        )
-      )
-      .catch((err) => console.log(err));
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("unregistered user");
+        reset();
+      });
   };
 
   return (

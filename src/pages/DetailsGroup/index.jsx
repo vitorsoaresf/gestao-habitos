@@ -55,6 +55,7 @@ const DetailsGroup = () => {
 
         <ContainerTitle>
           <h1>{dataGroup.name}</h1>
+          <p>{dataGroup.description}</p>
         </ContainerTitle>
         <ContainerBody>
           <CardGroups title="participants" list={groupParticipants} />

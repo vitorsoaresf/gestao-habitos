@@ -1,8 +1,6 @@
-import { useContext } from "react";
 import { Redirect, useHistory } from "react-router";
 import { BsLinkedin } from "react-icons/bs";
 
-import { AuthenticatedContext } from "../../providers/authenticated";
 import Button from "../../components/Button";
 import Logo from "../../assets/anima-logo.png";
 import AboutUs from "../../components/AboutUs";
@@ -17,7 +15,6 @@ import {
   NameBox,
   ButtonBox,
 } from "./styles";
-import { Link } from "react-router-dom";
 
 const Home = () => {
   const history = useHistory();
@@ -62,7 +59,7 @@ const Home = () => {
       <AboutUsBox id="devTeam">
         <div>
           {AboutUs.map((element, index) => (
-            <div>
+            <div key={index}>
               <NameBox>
                 <h1>{element.name}</h1>
                 <p>, {element.function}</p>

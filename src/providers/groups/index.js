@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import api from "../../services/api";
 import jwt_decode from "jwt-decode";
+import { toast } from "react-hot-toast";
 
 export const GroupsContext = createContext();
 
@@ -67,10 +68,13 @@ export const GroupsProvider = ({ children }) => {
       .post(`/goals/`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((response) => {
-        console.log(response);
+      .then((_) => {
+        toast.success("group created successfully");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        toast.error("some error on the server");
+      });
 
     getGoalsGroup(groupId);
   };
@@ -80,8 +84,11 @@ export const GroupsProvider = ({ children }) => {
       .patch(`/goals/${goalId}/`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .catch((response) => console.log(response))
-      .catch((err) => console.log(err));
+      .then((_) => toast.success("goal updated successfully"))
+      .catch((err) => {
+        console.log(err);
+        toast.error("some error on the server");
+      });
   };
 
   const deleteGoalsGroup = async (goalId) => {
@@ -89,8 +96,11 @@ export const GroupsProvider = ({ children }) => {
       .delete(`/goals/${goalId}/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .catch((response) => console.log(response))
-      .catch((err) => console.log(err));
+      .then((_) => toast.success("goal deleted successfully"))
+      .catch((err) => {
+        console.log(err);
+        toast.error("some error on the server");
+      });
   };
 
   const [groupActivities, setGroupActivities] = useState([]);
@@ -108,10 +118,11 @@ export const GroupsProvider = ({ children }) => {
       .post(`/activities/`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => console.log(err));
+      .then((_) => toast.success("Activity created successfully"))
+      .catch((err) => {
+        console.log(err);
+        toast.error("some error on the server");
+      });
 
     getActivitiesGroup(groupId);
   };
@@ -121,8 +132,11 @@ export const GroupsProvider = ({ children }) => {
       .patch(`/activities/${activitiesId}/`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .catch((response) => console.log(response))
-      .catch((err) => console.log(err));
+      .then((_) => toast.success("Activity updated successfully"))
+      .catch((err) => {
+        console.log(err);
+        toast.error("some error on the server");
+      });
   };
 
   const deleteActivitiesGroup = async (activitiesId) => {
@@ -130,8 +144,11 @@ export const GroupsProvider = ({ children }) => {
       .delete(`/activities/${activitiesId}/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .catch((response) => console.log(response))
-      .catch((err) => console.log(err));
+      .then((_) => toast.success("Activity deleted successfully"))
+      .catch((err) => {
+        console.log(err);
+        toast.error("some error on the server");
+      });
   };
 
   const createGroup = (token, data) => {
@@ -139,10 +156,11 @@ export const GroupsProvider = ({ children }) => {
       .post("/groups/", data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((err) => console.log(err));
+      .then((_) => toast.success("Group created successfully"))
+      .catch((err) => {
+        console.log(err);
+        toast.error("some error on the server");
+      });
   };
 
   const updateGroup = (groupId, data) => {
@@ -151,10 +169,11 @@ export const GroupsProvider = ({ children }) => {
       .patch(`/groups/${groupId}/`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => console.log(err));
+      .then((_) => toast.success("Activity updated successfully"))
+      .catch((err) => {
+        console.log(err);
+        toast.error("some error on the server");
+      });
   };
 
   const inscribeGroup = (token, groupId) => {
@@ -162,10 +181,11 @@ export const GroupsProvider = ({ children }) => {
       .post(`/groups/${groupId}/subscribe/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => console.log(err));
+      .then((_) => toast.success("successfully enrolled"))
+      .catch((err) => {
+        console.log(err);
+        toast.error("some error on the server");
+      });
   };
 
   const unsubscribeGroup = (groupId) => {
@@ -173,10 +193,11 @@ export const GroupsProvider = ({ children }) => {
       .delete(`/groups/${groupId}/unsubscribe/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => console.log(err));
+      .then((_) => toast.success("successfully unsubscribed"))
+      .catch((err) => {
+        console.log(err);
+        toast.error("some error on the server");
+      });
   };
 
   return (

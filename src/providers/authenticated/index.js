@@ -6,11 +6,8 @@ export const AuthenticatedProvider = ({ children }) => {
   const [authenticated, setAuthenticated] = useState(false);
 
   const setAccess = () => {
-    setAuthenticated(!authenticated);
-    localStorage.setItem(
-      "@Anima/authenticated",
-      JSON.stringify(!authenticated)
-    );
+    setAuthenticated(true);
+    localStorage.setItem("@Anima/authenticated", JSON.stringify(true));
   };
 
   return (
