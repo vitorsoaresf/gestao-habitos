@@ -1,6 +1,6 @@
 import { Container, ListBox } from "./styles";
 import { BsSearch } from "react-icons/bs";
-
+import { useHistory } from "react-router";
 import Button from "../Button";
 import Loading from "../Loading";
 import { useState } from "react";
@@ -17,6 +17,7 @@ const CardGeneric = ({
   searchFunction,
 }) => {
   const [input, setInput] = useState("");
+  const history = useHistory();
 
   return (
     <Container>
@@ -85,7 +86,13 @@ const CardGeneric = ({
                 <li key={index}>
                   <h3>{myGroup.name}</h3>
                   <div>
-                    <Button onClick={() => {}}>Details</Button>
+                    <Button
+                      onClick={() =>
+                        history.push(`/detailsgroup/${myGroup.id}`)
+                      }
+                    >
+                      Details
+                    </Button>
                   </div>
                 </li>
               ))}

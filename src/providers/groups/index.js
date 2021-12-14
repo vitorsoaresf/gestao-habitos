@@ -183,12 +183,15 @@ export const GroupsProvider = ({ children }) => {
       });
   };
 
-  const createGroup = (token, data) => {
+  const createGroup = (data) => {
     api
       .post("/groups/", data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((_) => toast.success("Group created successfully"))
+      .then((_) => {
+        toast.success("Group created successfully");
+        getGroupsUser(token);
+      })
       .catch((err) => {
         console.log(err);
         toast.error("some error on the server");
@@ -225,7 +228,10 @@ export const GroupsProvider = ({ children }) => {
       .delete(`/groups/${groupId}/unsubscribe/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((_) => toast.success("successfully unsubscribed"))
+      .then((_) => {
+        toast.success("successfully unsubscribed");
+        getGroupsUser(token);
+      })
       .catch((err) => {
         console.log(err);
         toast.error("some error on the server");
@@ -242,7 +248,6 @@ export const GroupsProvider = ({ children }) => {
         groupCreator,
         dataGroup,
         myGroups,
-        getAllGroups,
         isParticipant,
         getFilteredGroups,
         getGroupsUser,
