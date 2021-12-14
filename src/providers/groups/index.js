@@ -38,13 +38,15 @@ export const GroupsProvider = ({ children }) => {
     }
   };
 
+  const [myGroups, setMyGroups] = useState([]);
+
   const getGroupsUser = (token) => {
     api
       .get("/groups/subscriptions/", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        console.log(response.data);
+        setMyGroups(response.data);
       })
       .catch((err) => console.log(err));
   };
@@ -239,6 +241,8 @@ export const GroupsProvider = ({ children }) => {
         groupActivities,
         groupCreator,
         dataGroup,
+        myGroups,
+        getAllGroups,
         isParticipant,
         getFilteredGroups,
         getGroupsUser,

@@ -5,14 +5,19 @@ import { AuthenticatedContext } from "../../providers/authenticated";
 import Header from "../../components/Header";
 import CardGeneric from "../../components/CardGeneric";
 import { HabitsContext } from "../../providers/habits";
+import { GroupsContext } from "../../providers/groups";
+import CardGroups from "../../components/CardGroups";
 import ModalDelete from "../../components/ModalDeleteHabit/index";
 import ModalAdd from "../../components/ModalAddHabit";
+
+import ModalAddGroup from "../../components/ModalAddGroup";
 
 import { Container } from "./styles";
 
 const Dashboard = () => {
   const { getHabits, allHabits, updateHabit, deleteHabit, createHabit } =
     useContext(HabitsContext);
+  const { getGroupsUser, myGroups, createGroup } = useContext(GroupsContext);
   const params = useParams();
 
   const [currentHabit, setCurrentHabit] = useState([]);
@@ -22,6 +27,7 @@ const Dashboard = () => {
   const [showAddModal, setShowAddModal] = useState(false);
 
   useEffect(() => {
+    getGroupsUser(params.token);
     getHabits(params.token);
   }, []);
 
@@ -44,6 +50,9 @@ const Dashboard = () => {
           deleteClick={() => deleteHabit(currentHabit.id)}
         />
       )}
+
+      {showAddModal && <ModalAddGroup setShowAddModal={setShowAddModal} />}
+
       <Header />
       <Container>
         <CardGeneric
@@ -57,9 +66,12 @@ const Dashboard = () => {
           setShowAddModal={setShowAddModal}
           addClick={createHabit}
         />
-        <CardGeneric title={"My Groups"} cardType={"group"} />
-
-        {/* {allHabits.map((element) => console.log("console do habits", element))} */}
+        <CardGeneric
+          title={"My Groups"}
+          list={myGroups}
+          setShowAddModal={setShowAddModal}
+          addClick={createGroup}
+        />
       </Container>
     </>
   );
