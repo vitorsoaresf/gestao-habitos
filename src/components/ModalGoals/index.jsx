@@ -34,24 +34,30 @@ const ModalGoals = ({ groupId, setModalGoals, updateActivitiesGoals }) => {
 
   return (
     <Container>
-      <form onSubmit={handleSubmit(onSubmitFunction)}>
-        <Input
-          type="text"
-          placeholder="Title"
-          register={register}
-          name="title"
-          error={errors.title?.message}
-        />
-        <Input
-          type="text"
-          placeholder="Difficulty"
-          register={register}
-          name="difficulty"
-          error={errors.difficulty?.message}
-        />
+      <div>
+        <h1>
+          New goal
+          <Button onClick={() => setModalGoals(false)}>x</Button>
+        </h1>
+        <form onSubmit={handleSubmit(onSubmitFunction)}>
+          <Input
+            type="text"
+            placeholder=" Title"
+            register={register}
+            name="title"
+            error={errors.title?.message}
+          />
+          <Input
+            type="text"
+            placeholder=" Difficulty"
+            register={register}
+            name="difficulty"
+            error={errors.difficulty?.message}
+          />
 
-        <Button type="submit">Create Goal</Button>
-      </form>
+          <Button type="submit">Create Goal</Button>
+        </form>
+      </div>
     </Container>
   );
 };

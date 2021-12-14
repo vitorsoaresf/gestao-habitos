@@ -29,7 +29,7 @@ export const GroupsProvider = ({ children }) => {
   };
 
   const [groupParticipants, setGroupParticipants] = useState([]);
-  const [groupCreator, setGroupCreator] = useState(false);
+  const [groupCreator, setGroupCreator] = useState([]);
   const [dataGroup, setSpecificGroup] = useState([]);
 
   const getGroupAllParticipants = (groupId) => {
@@ -84,6 +84,15 @@ export const GroupsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
+  const deleteGoalsGroup = (goalId) => {
+    api
+      .delete(`/goals/${goalId}/`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .catch((response) => console.log(response))
+      .catch((err) => console.log(err));
+  };
+
   const [groupActivities, setGroupActivities] = useState([]);
   const getActivitiesGroup = (groupId) => {
     api
@@ -110,6 +119,15 @@ export const GroupsProvider = ({ children }) => {
   const updateActivitiesGroup = (activitiesId, data) => {
     api
       .patch(`/activities/${activitiesId}/`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .catch((response) => console.log(response))
+      .catch((err) => console.log(err));
+  };
+
+  const deleteActivitiesGroup = (activitiesId) => {
+    api
+      .delete(`/activities/${activitiesId}/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .catch((response) => console.log(response))
@@ -176,9 +194,11 @@ export const GroupsProvider = ({ children }) => {
         getGoalsGroup,
         createGoalsGroup,
         updateGoalsGroup,
+        deleteGoalsGroup,
         getActivitiesGroup,
         createActivitiesGroup,
         updateActivitiesGroup,
+        deleteActivitiesGroup,
         createGroup,
         updateGroup,
         inscribeGroup,

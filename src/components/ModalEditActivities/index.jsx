@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { GroupsContext } from "../../providers/groups";
 import { Container } from "./styles";
 import Input from "../Input";
@@ -12,7 +12,10 @@ const ModalEditActivities = ({
   setModalEditActivities,
   currentActivities,
 }) => {
-  const { updateActivitiesGroup } = useContext(GroupsContext);
+  const [title, setTitle] = useState(currentActivities.title);
+
+  const { updateActivitiesGroup, deleteActivitiesGroup } =
+    useContext(GroupsContext);
 
   const formSchema = yup.object().shape({
     title: yup.string().required("Title required"),
@@ -26,23 +29,40 @@ const ModalEditActivities = ({
 
   const onSubmitFunction = (data) => {
     setModalEditActivities(false);
-    updateActivitiesGroup(currentActivities, data);
+    updateActivitiesGroup(currentActivities.id, data);
+    updateActivitiesGoals();
+  };
+
+  const deleteActivity = () => {
+    setModalEditActivities(false);
+    deleteActivitiesGroup(currentActivities.id);
     updateActivitiesGoals();
   };
 
   return (
     <Container>
-      <form onSubmit={handleSubmit(onSubmitFunction)}>
-        <Input
-          type="text"
-          placeholder="Title"
-          register={register}
-          name="title"
-          error={errors.title?.message}
-        />
+      <div>
+        <h1>
+          Edit activity
+          <Button onClick={() => setModalEditActivities(false)}>x</Button>
+        </h1>
+        <form onSubmit={handleSubmit(onSubmitFunction)}>
+          <Input
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            type="text"
+            placeholder={currentActivities.title}
+            register={register}
+            name="title"
+            error={errors.title?.message}
+          />
 
-        <Button type="submit">Update</Button>
-      </form>
+          <div className="bt">
+            <Button type="submit">Update</Button>
+            <Button onClick={() => deleteActivity()}>Delete</Button>
+          </div>
+        </form>
+      </div>
     </Container>
   );
 };
