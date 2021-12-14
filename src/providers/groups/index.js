@@ -11,7 +11,7 @@ export const GroupsProvider = ({ children }) => {
   const [groups, setGroups] = useState([]);
   const [next, setNext] = useState(
     "https://kenzie-habits.herokuapp.com/groups/"
-  )
+  );
 
   //Loads all the groups
   useEffect(() => {
@@ -21,23 +21,22 @@ export const GroupsProvider = ({ children }) => {
         setGroups([...groups, ...response.data.results]);
         next && setNext(response.data.next);
       })
-      .catch((err) => console.log(err))
-  }, [next])
-
+      .catch((err) => console.log(err));
+  }, [next]);
 
   const getFilteredGroups = (filter) => {
     if (filter) {
-      console.log("filter: " + filter)
+      console.log("filter: " + filter);
       api
         .get(`/groups/?search=${filter}`)
         .then((response) => {
           setGroups(response.data.results);
         })
-        .catch((err) => console.log(err))
+        .catch((err) => console.log(err));
     } else {
-      setNext("https://kenzie-habits.herokuapp.com/groups/")
+      setNext("https://kenzie-habits.herokuapp.com/groups/");
     }
-  }
+  };
 
   const getGroupsUser = (token) => {
     api
@@ -235,17 +234,13 @@ export const GroupsProvider = ({ children }) => {
     <GroupsContext.Provider
       value={{
         groups,
-        getFilteredGroups,
         groupParticipants,
         groupGoals,
         groupActivities,
         groupCreator,
         dataGroup,
-<<<<<<< HEAD
         isParticipant,
-        getAllGroups,
-=======
->>>>>>> 1a94d6115b3f489f34e6d118f94244d09c55252f
+        getFilteredGroups,
         getGroupsUser,
         getGroupAllParticipants,
         getGoalsGroup,
