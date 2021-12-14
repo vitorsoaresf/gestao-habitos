@@ -24,3 +24,17 @@ export const ContainerBody = styled.section`
   flex-direction: column;
   align-items: center;
 `;
+
+export const ContainerButton = styled.div`
+  display: flex;
+
+  button {
+    background-color: var(--gray);
+    color: var(--black);
+  }
+  button + button {
+    background-color: var(--darkGreen);
+    color: var(--white);
+    margin-left: 5px;
+  }
+`;
