@@ -2,9 +2,10 @@ import { Redirect } from "react-router-dom";
 import { Container } from "./styles";
 import Header from "../../components/Header";
 import CardGeneric from "../../components/CardGeneric";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { GroupsContext } from "../../providers/groups";
 import { useHistory } from "react-router";
+import Loading from "../../components/Loading";
 
 const Groups = () => {
   const history = useHistory();
