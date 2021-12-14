@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   position: fixed;
   top: 0;
   width: 100vw;
@@ -17,7 +18,7 @@ export const Container = styled.div`
     align-items: center;
 
     h1 {
-      width: 100%;
+      width: 95%;
       padding: 5px 0;
       border-radius: 5px 5px 0 0;
       background: var(--darkGreen);
@@ -26,29 +27,45 @@ export const Container = styled.div`
       display: flex;
       justify-content: space-between;
 
+      p {
+        margin-left: 5px;
+      }
+
       button {
         color: var(--white);
         width: 30px;
         height: 30px;
         background: var(--purple);
+        margin-right: 5px;
       }
     }
+  }
+`;
 
-    form {
+export const ContainerForm = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: var(--gray);
+  border-radius: 0 0 5px 5px;
+  width: 100%;
+
+  form {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    input {
       width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: var(--gray);
-      border-radius: 0 0 5px 5px;
-
-      input {
-        width: 100%;
-      }
-
-      button {
-        margin: 10px 0;
-      }
     }
+  }
+
+  button {
+    width: 95%;
+    height: 40px;
+    color: var(--white);
+    margin: 10px;
   }
 `;

@@ -1,19 +1,24 @@
-import { Container, ContainerBody, ContainerTitle } from "./styles";
+import {
+  Container,
+  ContainerBody,
+  ContainerTitle,
+  ContainerButton,
+} from "./styles";
 import { useContext, useEffect, useState } from "react";
 import { GroupsContext } from "../../providers/groups";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Header from "../../components/Header";
 import CardGroups from "../../components/CardGroups";
 import Button from "../../components/Button";
 import ModalLeave from "../../components/ModalLeave";
-import ModalEdit from "../../components/ModalEdit";
+import ModalEditGroup from "../../components/ModalEditGroup";
 
-// 17 ou 102
-const DetailsGroup = ({ groupId = 102 }) => {
-  const [update, setUpdatre] = useState(false);
+const DetailsGroup = () => {
+  const { id: groupId } = useParams();
+  const [update, setUpdate] = useState(false);
 
   const [modalLeave, setModalLeave] = useState(false);
-  const [modalEdit, setModalEdit] = useState(false);
+  const [modalEditGroup, setModalEditGroup] = useState(false);
 
   const history = useHistory();
   const {
@@ -24,8 +29,9 @@ const DetailsGroup = ({ groupId = 102 }) => {
     groupActivities,
     getActivitiesGroup,
     groupCreator,
-    unsubscribeGroup,
+    inscribeGroup,
     dataGroup,
+    isParticipant,
   } = useContext(GroupsContext);
 
   useEffect(() => {
@@ -35,22 +41,27 @@ const DetailsGroup = ({ groupId = 102 }) => {
   }, [update]);
 
   const updateActivitiesGoals = () => {
-    setUpdatre(!update);
+    setUpdate(!update);
   };
-
-  return (
+  console.log(isParticipant);
+  return isParticipant ? (
     <>
       <Header />
       <Container>
         {modalLeave && (
           <ModalLeave groupId={groupId} setModalLeave={setModalLeave} />
         )}
-        {modalEdit && (
-          <ModalEdit groupId={groupId} setModalEdit={setModalEdit} />
+        {modalEditGroup && (
+          <ModalEditGroup
+            groupId={groupId}
+            setModalEditGroup={setModalEditGroup}
+            updateActivitiesGoals={updateActivitiesGoals}
+          />
         )}
 
         <ContainerTitle>
           <h1>{dataGroup.name}</h1>
+          <p>{dataGroup.description}</p>
         </ContainerTitle>
         <ContainerBody>
           <CardGroups title="participants" list={groupParticipants} />
@@ -66,12 +77,41 @@ const DetailsGroup = ({ groupId = 102 }) => {
             title="activities"
             list={groupActivities}
           />
-          <Button onClick={() => history.push("/dashboard")}>Back</Button>
-          {groupCreator ? (
-            <Button onClick={() => setModalEdit(true)}>Edit</Button>
+          <Button onClick={() => history.push(`/groups/`)}>Back</Button>
+          {groupCreator.length > 0 ? (
+            <Button onClick={() => setModalEditGroup(true)}>Edit</Button>
           ) : (
             <Button onClick={() => setModalLeave(true)}>Leave</Button>
           )}
+        </ContainerBody>
+      </Container>
+    </>
+  ) : (
+    <>
+      <Header />
+      <Container>
+        <ContainerTitle>
+          <h1>{dataGroup.name}</h1>
+          <p>{dataGroup.description}</p>
+        </ContainerTitle>
+        <ContainerBody>
+          <CardGroups title="participants" list={groupParticipants} />
+          <ContainerButton>
+            <Button onClick={() => history.push(`/groups/`)}>Back</Button>
+            {groupCreator.length > 0 ? (
+              <Button onClick={() => setModalEditGroup(true)}>Edit</Button>
+            ) : (
+              <Button
+                onClick={() => {
+                  inscribeGroup(groupId)
+                    .then((_) => updateActivitiesGoals())
+                    .catch((err) => console.log(err));
+                }}
+              >
+                Join
+              </Button>
+            )}
+          </ContainerButton>
         </ContainerBody>
       </Container>
     </>

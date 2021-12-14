@@ -31,6 +31,7 @@ footer, header, hgroup, menu, nav, section {
 body {
     line-height: 1;
     box-sizing: border-box;
+    font-family: 'Lobster Two', cursive;
 }
 ol, ul {
     list-style: none;
@@ -56,6 +57,7 @@ table {
     --gray: #C4C4C4;
     --purple: #9C5DB3;
     --white: #fff;
+    --red: #b71540;
 }
 
 `;

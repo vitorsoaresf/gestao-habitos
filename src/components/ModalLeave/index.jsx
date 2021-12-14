@@ -11,7 +11,7 @@ const ModalLeave = ({ groupId, setModalLeave }) => {
   const onSubmitFunction = () => {
     setModalLeave(false);
     unsubscribeGroup(groupId);
-    history.push("/dashboard");
+    history.push("/groups/");
   };
 
   return (

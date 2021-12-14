@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { GroupsContext } from "../../providers/groups";
 import { Container } from "./styles";
 import Input from "../Input";
@@ -12,7 +12,10 @@ const ModalEditGoals = ({
   setModalEditGoals,
   currentGoal,
 }) => {
-  const { updateGoalsGroup } = useContext(GroupsContext);
+  const [title, setTitle] = useState(currentGoal.title);
+  const [difficulty, setDifficulty] = useState(currentGoal.difficulty);
+
+  const { updateGoalsGroup, deleteGoalsGroup } = useContext(GroupsContext);
 
   const formSchema = yup.object().shape({
     title: yup.string().required("Title required"),
@@ -28,40 +31,73 @@ const ModalEditGoals = ({
 
   const onSubmitFunction = (data) => {
     data.how_much_achieved = 0;
+    console.log("current", currentGoal);
+    console.log("atual", data);
 
-    setModalEditGoals(false);
-    updateGoalsGroup(currentGoal, data);
-    updateActivitiesGoals();
+    updateGoalsGroup(currentGoal.id, data)
+      .then((_) => {
+        setModalEditGoals(false);
+        updateActivitiesGoals();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const deleteGoal = () => {
+    deleteGoalsGroup(currentGoal.id)
+      .then((_) => {
+        setModalEditGoals(false);
+        updateActivitiesGoals();
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
     <Container>
-      <form onSubmit={handleSubmit(onSubmitFunction)}>
-        <Input
-          type="text"
-          placeholder="Title"
-          register={register}
-          name="title"
-          error={errors.title?.message}
-        />
-        <Input
-          type="text"
-          placeholder="Difficulty"
-          register={register}
-          name="difficulty"
-          error={errors.difficulty?.message}
-        />
+      <div>
+        <h1>
+          Edit goal
+          <Button onClick={() => setModalEditGoals(false)}>x</Button>
+        </h1>
+        <form onSubmit={handleSubmit(onSubmitFunction)}>
+          <Input
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            type="text"
+            placeholder="Title"
+            register={register}
+            name="title"
+            error={errors.title?.message}
+          />
+          <Input
+            value={difficulty}
+            onChange={(e) => setDifficulty(e.target.value)}
+            type="text"
+            placeholder="Difficulty"
+            register={register}
+            name="difficulty"
+            error={errors.difficulty?.message}
+          />
 
-        <Input
-          type="checkbox"
-          placeholder=""
-          register={register}
-          name="achieved"
-          error={errors.achieved?.message}
-        />
-
-        <Button type="submit">Update</Button>
-      </form>
+          <label htmlFor="achieved">
+            <Input
+              className="check"
+              id="achieved"
+              type="checkbox"
+              placeholder=""
+              register={register}
+              name="achieved"
+              error={errors.achieved?.message}
+            />
+            <p>achieved</p>
+          </label>
+          <div className="bt">
+            <Button type="submit">Update</Button>
+            <Button type="button" onClick={() => deleteGoal()}>
+              Delete
+            </Button>
+          </div>
+        </form>
+      </div>
     </Container>
   );
 };
