@@ -47,7 +47,7 @@ const ModalAdd = ({ userId, setShowAddModal }) => {
   };
 
   return (
-    <Container onClick={() => setShowAddModal(false)}>
+    <Container>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
