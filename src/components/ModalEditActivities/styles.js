@@ -34,7 +34,7 @@ export const Container = styled.div`
         color: var(--white);
         width: 30px;
         height: 30px;
-        background: var(--green);
+        background: var(--red);
         margin-right: 5px;
       }
     }

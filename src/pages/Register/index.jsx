@@ -11,6 +11,7 @@ import Button from "../../components/Button";
 import SignUp from "../../assets/Svg/signUp.svg";
 import { motion } from "framer-motion";
 import { Container } from "./styles";
+import { FaUserAlt, FaLock, MdEmail } from "react-icons/all";
 
 const Register = () => {
   const { registerUser } = useContext(UserContext);
@@ -77,28 +78,36 @@ const Register = () => {
                 register={register}
                 name="username"
                 error={errors.username?.message}
-              />
+              >
+                <FaUserAlt />
+              </Input>
               <Input
                 type="email"
                 placeholder="Email"
                 register={register}
                 name="email"
                 error={errors.email?.message}
-              />
+              >
+                <MdEmail />
+              </Input>
               <Input
                 type="password"
                 placeholder="Password"
                 register={register}
                 name="password"
                 error={errors.password?.message}
-              />
+              >
+                <FaLock />
+              </Input>
               <Input
                 type="password"
                 placeholder="Confirm Password"
                 register={register}
                 name="confirm_password"
                 error={errors.confirm_password?.message}
-              />
+              >
+                <FaLock />
+              </Input>
               <Button type="submit">Register</Button>
               <p>
                 Already have an account? <Link to="/login">Login</Link>

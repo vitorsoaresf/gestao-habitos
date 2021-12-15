@@ -34,7 +34,7 @@ export const Container = styled.div`
         color: var(--white);
         width: 30px;
         height: 30px;
-        background: var(--green);
+        background: var(--red);
         margin-right: 5px;
       }
     }
@@ -53,6 +53,7 @@ export const Container = styled.div`
 
       button {
         margin: 10px 0;
+        width: 80%;
       }
     }
   }

@@ -34,7 +34,7 @@ export const Container = styled.div`
         color: var(--white);
         width: 30px;
         height: 30px;
-        background: var(--green);
+        background: var(--red);
         margin-right: 5px;
       }
     }
@@ -59,7 +59,7 @@ export const Container = styled.div`
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        width: 95%;
+        width: 85%;
 
         p {
           margin-left: 5px;
@@ -70,9 +70,10 @@ export const Container = styled.div`
           height: 20px;
         }
 
-        input {
-          width: 20px;
-          padding: 0;
+        .check {
+          width: 40px;
+          height: 25px;
+          background: unset;
         }
       }
 

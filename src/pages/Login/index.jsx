@@ -15,6 +15,7 @@ import { HabitsContext } from "../../providers/habits";
 import api from "../../services/api";
 import { toast } from "react-hot-toast";
 import { motion } from "framer-motion";
+import { FaUserAlt, FaLock } from "react-icons/all";
 
 const Login = () => {
   const { login } = useContext(UserContext);
@@ -98,7 +99,9 @@ const Login = () => {
                 register={register}
                 name="username"
                 error={errors.username?.message}
-              />
+              >
+                <FaUserAlt />
+              </Input>
 
               <Input
                 type="password"
@@ -106,7 +109,9 @@ const Login = () => {
                 register={register}
                 name="password"
                 error={errors.password?.message}
-              />
+              >
+                <FaLock />
+              </Input>
 
               <Button type="submit">Login</Button>
               <p>

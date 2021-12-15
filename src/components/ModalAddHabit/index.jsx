@@ -9,6 +9,12 @@ import { HabitsContext } from "../../providers/habits";
 import { Container } from "./style";
 import { useContext } from "react";
 import { motion } from "framer-motion";
+import {
+  FaPencilAlt,
+  BiCategoryAlt,
+  AiFillSignal,
+  BsCalendar3,
+} from "react-icons/all";
 
 const ModalAdd = ({ userId, setShowAddModal }) => {
   const { createHabit } = useContext(HabitsContext);
@@ -60,28 +66,36 @@ const ModalAdd = ({ userId, setShowAddModal }) => {
               name="title"
               register={register}
               error={errors.title?.message}
-            />
+            >
+              <FaPencilAlt />
+            </Input>
             <Input
               type="text"
               placeholder="Category"
               name="category"
               register={register}
               error={errors.category?.message}
-            />
+            >
+              <BiCategoryAlt />
+            </Input>
             <Input
               type="text"
               placeholder="Dificulty"
               name="difficulty"
               register={register}
               error={errors.difficulty?.message}
-            />
+            >
+              <AiFillSignal />
+            </Input>
             <Input
               type="text"
               placeholder="Frequency"
               name="frequency"
               register={register}
               error={errors.frequency?.message}
-            />
+            >
+              <BsCalendar3 />
+            </Input>
             <Button type="submit">Create</Button>
           </form>
         </div>

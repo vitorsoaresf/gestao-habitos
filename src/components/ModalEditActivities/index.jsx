@@ -7,6 +7,7 @@ import { Container } from "./styles";
 import Input from "../Input";
 import Button from "../Button";
 import { motion } from "framer-motion";
+import { FaPencilAlt } from "react-icons/all";
 
 const ModalEditActivities = ({
   updateActivitiesGoals,
@@ -68,7 +69,9 @@ const ModalEditActivities = ({
               register={register}
               name="title"
               error={errors.title?.message}
-            />
+            >
+              <FaPencilAlt />
+            </Input>
 
             <div className="bt">
               <Button type="submit">Update</Button>
