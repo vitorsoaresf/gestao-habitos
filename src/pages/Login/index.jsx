@@ -7,11 +7,13 @@ import { AuthenticatedContext } from "../../providers/authenticated";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import yoga from "../../assets/Svg/yoga.svg";
-import { Container } from "./styles";
+import { Container, LogoBox } from "./styles";
 import api from "../../services/api";
 import { toast } from "react-hot-toast";
 import { motion } from "framer-motion";
 import { FaUserAlt, FaLock } from "react-icons/all";
+import Logo from "../../assets/anima-logo.png";
+import HeaderInitial from "../../components/HeaderInitial";
 
 const Login = () => {
   const { setAccess } = useContext(AuthenticatedContext);
@@ -59,9 +61,9 @@ const Login = () => {
 
   return (
     <motion.div
-      initial={{ y: -900 }}
-      animate={{ y: 0 }}
-      exit={{ y: 0 }}
+      initial={{ x: -900 }}
+      animate={{ x: 0 }}
+      exit={{ x: 0 }}
       transition={{ duration: 1 }}
     >
       <Container>

@@ -7,7 +7,7 @@ import {
 import { useContext, useEffect, useState } from "react";
 import { GroupsContext } from "../../providers/groups";
 import { Redirect, useHistory, useParams } from "react-router-dom";
-import Header from "../../components/Header";
+// import Header from "../../components/Header";
 import CardGroups from "../../components/CardGroups";
 import Button from "../../components/Button";
 import ModalLeave from "../../components/ModalLeave";
@@ -55,7 +55,7 @@ const DetailsGroup = () => {
   console.log(isParticipant);
   return isParticipant ? (
     <>
-      <Header />
+      {/* <Header /> */}
       <motion.div
         initial={{ x: -900 }}
         animate={{ x: 0 }}
@@ -104,7 +104,7 @@ const DetailsGroup = () => {
     </>
   ) : (
     <>
-      <Header />
+      {/* <Header /> */}
       <motion.div
         initial={{ x: -900 }}
         animate={{ x: 0 }}

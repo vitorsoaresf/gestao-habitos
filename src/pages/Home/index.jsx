@@ -15,6 +15,8 @@ import {
   NameBox,
   ButtonBox,
 } from "./styles";
+import { Link } from "react-router-dom";
+import HeaderInitial from "../../components/HeaderInitial";
 
 const Home = () => {
   const history = useHistory();
@@ -35,17 +37,6 @@ const Home = () => {
       transition={{ duration: 1 }}
     >
       <Container>
-        <header>
-          <div>
-            <LogoBox>
-              <div>
-                <img src={Logo} alt="project Logo" />
-              </div>
-              <p>Anima</p>
-            </LogoBox>
-            <a href="#devTeam">About Us</a>
-          </div>
-        </header>
         <div>
           <img src={love} alt="svg balao" />
           <div id="orange">
