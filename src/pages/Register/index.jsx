@@ -9,7 +9,7 @@ import { UserContext } from "../../providers/users";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import SignUp from "../../assets/Svg/signUp.svg";
-
+import { motion } from "framer-motion";
 import { Container } from "./styles";
 
 const Register = () => {
@@ -58,49 +58,56 @@ const Register = () => {
   };
 
   return (
-    <Container>
-      <div>
-        <img src={SignUp} alt="Signup svg" />
+    <motion.div
+      initial={{ x: 1000 }}
+      animate={{ x: 0 }}
+      exit={{ x: 0 }}
+      transition={{ duration: 1 }}
+    >
+      <Container>
         <div>
-          <h1>Sign Up</h1>
+          <img src={SignUp} alt="Signup svg" />
+          <div>
+            <h1>Sign Up</h1>
 
-          <form onSubmit={handleSubmit(onSubmitFunction)}>
-            <Input
-              type="text"
-              placeholder="Username"
-              register={register}
-              name="username"
-              error={errors.username?.message}
-            />
-            <Input
-              type="email"
-              placeholder="Email"
-              register={register}
-              name="email"
-              error={errors.email?.message}
-            />
-            <Input
-              type="password"
-              placeholder="Password"
-              register={register}
-              name="password"
-              error={errors.password?.message}
-            />
-            <Input
-              type="password"
-              placeholder="Confirm Password"
-              register={register}
-              name="confirm_password"
-              error={errors.confirm_password?.message}
-            />
-            <Button type="submit">Register</Button>
-            <p>
-              Already have an account? <Link to="/login">Login</Link>
-            </p>
-          </form>
+            <form onSubmit={handleSubmit(onSubmitFunction)}>
+              <Input
+                type="text"
+                placeholder="Username"
+                register={register}
+                name="username"
+                error={errors.username?.message}
+              />
+              <Input
+                type="email"
+                placeholder="Email"
+                register={register}
+                name="email"
+                error={errors.email?.message}
+              />
+              <Input
+                type="password"
+                placeholder="Password"
+                register={register}
+                name="password"
+                error={errors.password?.message}
+              />
+              <Input
+                type="password"
+                placeholder="Confirm Password"
+                register={register}
+                name="confirm_password"
+                error={errors.confirm_password?.message}
+              />
+              <Button type="submit">Register</Button>
+              <p>
+                Already have an account? <Link to="/login">Login</Link>
+              </p>
+            </form>
+          </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </motion.div>
   );
 };
 

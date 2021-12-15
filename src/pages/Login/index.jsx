@@ -14,6 +14,7 @@ import { Container } from "./styles";
 import { HabitsContext } from "../../providers/habits";
 import api from "../../services/api";
 import { toast } from "react-hot-toast";
+import { motion } from "framer-motion";
 
 const Login = () => {
   const { login } = useContext(UserContext);
@@ -78,37 +79,44 @@ const Login = () => {
   };
 
   return (
-    <Container>
-      <div>
-        <img src={yoga} alt="Yoga svg" />
+    <motion.div
+      initial={{ y: -900 }}
+      animate={{ y: 0 }}
+      exit={{ y: 0 }}
+      transition={{ duration: 1 }}
+    >
+      <Container>
         <div>
-          <h1>Login</h1>
+          <img src={yoga} alt="Yoga svg" />
+          <div>
+            <h1>Login</h1>
 
-          <form onSubmit={handleSubmit(onSubmitFunction)}>
-            <Input
-              type="text"
-              placeholder="Username"
-              register={register}
-              name="username"
-              error={errors.username?.message}
-            />
+            <form onSubmit={handleSubmit(onSubmitFunction)}>
+              <Input
+                type="text"
+                placeholder="Username"
+                register={register}
+                name="username"
+                error={errors.username?.message}
+              />
 
-            <Input
-              type="password"
-              placeholder="Password"
-              register={register}
-              name="password"
-              error={errors.password?.message}
-            />
+              <Input
+                type="password"
+                placeholder="Password"
+                register={register}
+                name="password"
+                error={errors.password?.message}
+              />
 
-            <Button type="submit">Login</Button>
-            <p>
-              Don't have an account? <Link to="/register">Sign up</Link>
-            </p>
-          </form>
+              <Button type="submit">Login</Button>
+              <p>
+                Don't have an account? <Link to="/register">Sign up</Link>
+              </p>
+            </form>
+          </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </motion.div>
   );
 };
 

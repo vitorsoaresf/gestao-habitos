@@ -12,6 +12,7 @@ import CardGroups from "../../components/CardGroups";
 import Button from "../../components/Button";
 import ModalLeave from "../../components/ModalLeave";
 import ModalEditGroup from "../../components/ModalEditGroup";
+import { motion } from "framer-motion";
 
 const DetailsGroup = () => {
   const { id: groupId } = useParams();
@@ -55,73 +56,87 @@ const DetailsGroup = () => {
   return isParticipant ? (
     <>
       <Header />
-      <Container>
-        {modalLeave && (
-          <ModalLeave groupId={groupId} setModalLeave={setModalLeave} />
-        )}
-        {modalEditGroup && (
-          <ModalEditGroup
-            groupId={groupId}
-            setModalEditGroup={setModalEditGroup}
-            updateActivitiesGoals={updateActivitiesGoals}
-          />
-        )}
-
-        <ContainerTitle>
-          <h1>{dataGroup.name}</h1>
-          <p>{dataGroup.description}</p>
-        </ContainerTitle>
-        <ContainerBody>
-          <CardGroups title="participants" list={groupParticipants} />
-          <CardGroups
-            updateActivitiesGoals={updateActivitiesGoals}
-            groupId={groupId}
-            title="goals"
-            list={groupGoals}
-          />
-          <CardGroups
-            updateActivitiesGoals={updateActivitiesGoals}
-            groupId={groupId}
-            title="activities"
-            list={groupActivities}
-          />
-          <Button onClick={() => history.push(`/groups/`)}>Back</Button>
-          {groupCreator.length > 0 ? (
-            <Button onClick={() => setModalEditGroup(true)}>Edit</Button>
-          ) : (
-            <Button onClick={() => setModalLeave(true)}>Leave</Button>
+      <motion.div
+        initial={{ x: -900 }}
+        animate={{ x: 0 }}
+        exit={{ x: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <Container>
+          {modalLeave && (
+            <ModalLeave groupId={groupId} setModalLeave={setModalLeave} />
           )}
-        </ContainerBody>
-      </Container>
-    </>
-  ) : (
-    <>
-      <Header />
-      <Container>
-        <ContainerTitle>
-          <h1>{dataGroup.name}</h1>
-          <p>{dataGroup.description}</p>
-        </ContainerTitle>
-        <ContainerBody>
-          <CardGroups title="participants" list={groupParticipants} />
-          <ContainerButton>
+          {modalEditGroup && (
+            <ModalEditGroup
+              groupId={groupId}
+              setModalEditGroup={setModalEditGroup}
+              updateActivitiesGoals={updateActivitiesGoals}
+            />
+          )}
+
+          <ContainerTitle>
+            <h1>{dataGroup.name}</h1>
+            <p>{dataGroup.description}</p>
+          </ContainerTitle>
+          <ContainerBody>
+            <CardGroups title="participants" list={groupParticipants} />
+            <CardGroups
+              updateActivitiesGoals={updateActivitiesGoals}
+              groupId={groupId}
+              title="goals"
+              list={groupGoals}
+            />
+            <CardGroups
+              updateActivitiesGoals={updateActivitiesGoals}
+              groupId={groupId}
+              title="activities"
+              list={groupActivities}
+            />
             <Button onClick={() => history.push(`/groups/`)}>Back</Button>
             {groupCreator.length > 0 ? (
               <Button onClick={() => setModalEditGroup(true)}>Edit</Button>
             ) : (
-              <Button
-                onClick={() => {
-                  inscribeGroup(groupId)
-                    .then((_) => updateActivitiesGoals())
-                    .catch((err) => console.log(err));
-                }}
-              >
-                Join
-              </Button>
+              <Button onClick={() => setModalLeave(true)}>Leave</Button>
             )}
-          </ContainerButton>
-        </ContainerBody>
-      </Container>
+          </ContainerBody>
+        </Container>
+      </motion.div>
+    </>
+  ) : (
+    <>
+      <Header />
+      <motion.div
+        initial={{ x: -900 }}
+        animate={{ x: 0 }}
+        exit={{ x: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <Container>
+          <ContainerTitle>
+            <h1>{dataGroup.name}</h1>
+            <p>{dataGroup.description}</p>
+          </ContainerTitle>
+          <ContainerBody>
+            <CardGroups title="participants" list={groupParticipants} />
+            <ContainerButton>
+              <Button onClick={() => history.push(`/groups/`)}>Back</Button>
+              {groupCreator.length > 0 ? (
+                <Button onClick={() => setModalEditGroup(true)}>Edit</Button>
+              ) : (
+                <Button
+                  onClick={() => {
+                    inscribeGroup(groupId)
+                      .then((_) => updateActivitiesGoals())
+                      .catch((err) => console.log(err));
+                  }}
+                >
+                  Join
+                </Button>
+              )}
+            </ContainerButton>
+          </ContainerBody>
+        </Container>
+      </motion.div>
     </>
   );
 };
