@@ -1,9 +1,9 @@
-import logo from "../../logo.svg";
 import { BsList } from "react-icons/bs";
-import { Container } from "./styles";
+import { Container, LogoBox } from "./styles";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
+import Logo from "../../assets/anima-logo.png";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -21,9 +21,12 @@ const Header = () => {
       transition={{ duration: 1 }}
     >
       <Container>
-        <div className="logo">
-          <img src={logo} alt="placeholder" />
-        </div>
+        <LogoBox>
+          <div>
+            <img src={Logo} alt="project Logo" />
+          </div>
+          <p>Anima</p>
+        </LogoBox>
         {showMenu && (
           <section className="info">
             <p onClick={() => history.push("/")}>Dashboard</p>
