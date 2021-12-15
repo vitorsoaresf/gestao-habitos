@@ -9,7 +9,7 @@ import { GroupsContext } from "../../providers/groups";
 import CardGroups from "../../components/CardGroups";
 import ModalDelete from "../../components/ModalDeleteHabit/index";
 import ModalAdd from "../../components/ModalAddHabit";
-
+import { motion } from "framer-motion";
 import ModalAddGroup from "../../components/ModalAddGroup";
 
 import { Container } from "./styles";
@@ -58,25 +58,32 @@ const Dashboard = () => {
       )}
 
       <Header />
-      <Container>
-        <CardGeneric
-          title={"My Habits"}
-          cardType={"habit"}
-          list={allHabits}
-          updateClick={updateHabit}
-          habitUptadeData={habitUptadeData}
-          setCurrentHabit={setCurrentHabit}
-          setShowDeleteModal={setShowDeleteModal}
-          setShowAddModal={setShowAddModal}
-          addClick={createHabit}
-        />
-        <CardGeneric
-          title={"My Groups"}
-          list={myGroups}
-          setShowAddModal={setShowAddModal}
-          addClick={createGroup}
-        />
-      </Container>
+      <motion.div
+        initial={{ y: 900 }}
+        animate={{ y: 0 }}
+        exit={{ y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <Container>
+          <CardGeneric
+            title={"My Habits"}
+            cardType={"habit"}
+            list={allHabits}
+            updateClick={updateHabit}
+            habitUptadeData={habitUptadeData}
+            setCurrentHabit={setCurrentHabit}
+            setShowDeleteModal={setShowDeleteModal}
+            setShowAddModal={setShowAddModal}
+            addClick={createHabit}
+          />
+          <CardGeneric
+            title={"My Groups"}
+            list={myGroups}
+            setShowAddModal={setShowAddModal}
+            addClick={createGroup}
+          />
+        </Container>
+      </motion.div>
     </>
   );
 };

@@ -6,6 +6,7 @@ import { GroupsContext } from "../../providers/groups";
 import { Container } from "./styles";
 import Input from "../Input";
 import Button from "../Button";
+import { motion } from "framer-motion";
 
 const ModalEditGoals = ({
   updateActivitiesGoals,
@@ -53,51 +54,58 @@ const ModalEditGoals = ({
 
   return (
     <Container>
-      <div>
-        <h1>
-          Edit goal
-          <Button onClick={() => setModalEditGoals(false)}>x</Button>
-        </h1>
-        <form onSubmit={handleSubmit(onSubmitFunction)}>
-          <Input
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            type="text"
-            placeholder="Title"
-            register={register}
-            name="title"
-            error={errors.title?.message}
-          />
-          <Input
-            value={difficulty}
-            onChange={(e) => setDifficulty(e.target.value)}
-            type="text"
-            placeholder="Difficulty"
-            register={register}
-            name="difficulty"
-            error={errors.difficulty?.message}
-          />
-
-          <label htmlFor="achieved">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div>
+          <h1>
+            Edit goal
+            <Button onClick={() => setModalEditGoals(false)}>x</Button>
+          </h1>
+          <form onSubmit={handleSubmit(onSubmitFunction)}>
             <Input
-              className="check"
-              id="achieved"
-              type="checkbox"
-              placeholder=""
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              type="text"
+              placeholder="Title"
               register={register}
-              name="achieved"
-              error={errors.achieved?.message}
+              name="title"
+              error={errors.title?.message}
             />
-            <p>achieved</p>
-          </label>
-          <div className="bt">
-            <Button type="submit">Update</Button>
-            <Button type="button" onClick={() => deleteGoal()}>
-              Delete
-            </Button>
-          </div>
-        </form>
-      </div>
+            <Input
+              value={difficulty}
+              onChange={(e) => setDifficulty(e.target.value)}
+              type="text"
+              placeholder="Difficulty"
+              register={register}
+              name="difficulty"
+              error={errors.difficulty?.message}
+            />
+
+            <label htmlFor="achieved">
+              <Input
+                className="check"
+                id="achieved"
+                type="checkbox"
+                placeholder=""
+                register={register}
+                name="achieved"
+                error={errors.achieved?.message}
+              />
+              <p>achieved</p>
+            </label>
+            <div className="bt">
+              <Button type="submit">Update</Button>
+              <Button type="button" onClick={() => deleteGoal()}>
+                Delete
+              </Button>
+            </div>
+          </form>
+        </div>
+      </motion.div>
     </Container>
   );
 };

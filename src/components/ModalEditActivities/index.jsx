@@ -6,6 +6,7 @@ import { GroupsContext } from "../../providers/groups";
 import { Container } from "./styles";
 import Input from "../Input";
 import Button from "../Button";
+import { motion } from "framer-motion";
 
 const ModalEditActivities = ({
   updateActivitiesGoals,
@@ -47,30 +48,37 @@ const ModalEditActivities = ({
 
   return (
     <Container>
-      <div>
-        <h1>
-          Edit activity
-          <Button onClick={() => setModalEditActivities(false)}>x</Button>
-        </h1>
-        <form onSubmit={handleSubmit(onSubmitFunction)}>
-          <Input
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            type="text"
-            placeholder={currentActivities.title}
-            register={register}
-            name="title"
-            error={errors.title?.message}
-          />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div>
+          <h1>
+            Edit activity
+            <Button onClick={() => setModalEditActivities(false)}>x</Button>
+          </h1>
+          <form onSubmit={handleSubmit(onSubmitFunction)}>
+            <Input
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              type="text"
+              placeholder={currentActivities.title}
+              register={register}
+              name="title"
+              error={errors.title?.message}
+            />
 
-          <div className="bt">
-            <Button type="submit">Update</Button>
-            <Button type="button" onClick={() => deleteActivity()}>
-              Delete
-            </Button>
-          </div>
-        </form>
-      </div>
+            <div className="bt">
+              <Button type="submit">Update</Button>
+              <Button type="button" onClick={() => deleteActivity()}>
+                Delete
+              </Button>
+            </div>
+          </form>
+        </div>
+      </motion.div>
     </Container>
   );
 };

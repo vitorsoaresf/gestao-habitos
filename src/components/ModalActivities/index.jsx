@@ -6,6 +6,7 @@ import { GroupsContext } from "../../providers/groups";
 import { Container } from "./styles";
 import Input from "../Input";
 import Button from "../Button";
+import { motion } from "framer-motion";
 
 const ModalActivities = ({
   groupId,
@@ -35,23 +36,30 @@ const ModalActivities = ({
 
   return (
     <Container>
-      <div>
-        <h1>
-          New activity{" "}
-          <Button onClick={() => setModalActivities(false)}>x</Button>
-        </h1>
-        <form onSubmit={handleSubmit(onSubmitFunction)}>
-          <Input
-            type="text"
-            placeholder=" Title"
-            register={register}
-            name="title"
-            error={errors.title?.message}
-          />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div>
+          <h1>
+            New activity{" "}
+            <Button onClick={() => setModalActivities(false)}>x</Button>
+          </h1>
+          <form onSubmit={handleSubmit(onSubmitFunction)}>
+            <Input
+              type="text"
+              placeholder=" Title"
+              register={register}
+              name="title"
+              error={errors.title?.message}
+            />
 
-          <Button type="submit">Create Activities</Button>
-        </form>
-      </div>
+            <Button type="submit">Create Activities</Button>
+          </form>
+        </div>
+      </motion.div>
     </Container>
   );
 };
