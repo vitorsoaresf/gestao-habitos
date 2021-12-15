@@ -9,7 +9,6 @@ export const Container = styled.div`
     background: var(--darkGreen);
     display: flex;
     justify-content: center;
-    width: 100vw;
     height: 70px;
     align-items: center;
 
