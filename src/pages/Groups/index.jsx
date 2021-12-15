@@ -1,6 +1,6 @@
 import { Redirect } from "react-router-dom";
 import { Container } from "./styles";
-import Header from "../../components/Header";
+// import Header from "../../components/Header";
 import CardGeneric from "../../components/CardGeneric";
 import { useContext, useState } from "react";
 import { GroupsContext } from "../../providers/groups";
@@ -26,7 +26,7 @@ const Groups = () => {
   };
   return (
     <Container>
-      <Header />
+      {/* <Header /> */}
       <motion.div
         initial={{ x: 1000 }}
         animate={{ x: 0 }}

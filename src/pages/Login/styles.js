@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 100vh;
+  height: 80vh;
   display: flex;
+  flex-direction: column;
   justify-content: flex-end;
 
   > div {
@@ -58,5 +59,29 @@ export const Container = styled.div`
         }
       }
     }
+  }
+`;
+
+export const LogoBox = styled.div`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  > div {
+    background: var(--white);
+    width: 40px;
+    margin-left: 12px;
+    border-radius: 100%;
+    padding: 5px;
+
+    img {
+      width: 41px;
+    }
+  }
+
+  p {
+    margin-left: 8px;
+    font-size: 24px;
+    color: var(--white);
   }
 `;

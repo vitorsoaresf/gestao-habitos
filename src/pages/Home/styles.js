@@ -3,29 +3,6 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-
-  header {
-    background: var(--darkGreen);
-    display: flex;
-    justify-content: center;
-
-    > div {
-      width: 100%;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 1000px;
-
-      > a {
-        text-decoration: none;
-        font-size: 24px;
-        margin-right: 32px;
-        color: var(--white);
-      }
-    }
-  }
 
   > div {
     display: flex;
@@ -101,13 +78,13 @@ export const LogoBox = styled.div`
 
   > div {
     background: var(--white);
-    width: 32px;
+    width: 40px;
     margin-left: 12px;
     border-radius: 100%;
-    padding: 2px;
+    padding: 5px;
 
     img {
-      width: 30px;
+      width: 41px;
     }
   }
 
