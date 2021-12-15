@@ -3,45 +3,23 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
 import { useHistory, Link, Redirect } from "react-router-dom";
-
-import { UserContext } from "../../providers/users";
 import { AuthenticatedContext } from "../../providers/authenticated";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import yoga from "../../assets/Svg/yoga.svg";
-
 import { Container } from "./styles";
-import { HabitsContext } from "../../providers/habits";
 import api from "../../services/api";
 import { toast } from "react-hot-toast";
 import { motion } from "framer-motion";
 import { FaUserAlt, FaLock } from "react-icons/all";
 
 const Login = () => {
-  const { login } = useContext(UserContext);
   const { setAccess } = useContext(AuthenticatedContext);
   const history = useHistory();
 
   const formSchema = yup.object().shape({
-    username: yup
-      .string()
-      .required("Username required")
-      .matches(
-        /^[a-zA-Z0-9]+([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*[a-zA-Z0-9]+$/
-        // "Usernames can consist of lowercase and capitals, Usernames can consist of alphanumeric characters",
-        // "Usernames can consist of underscore and hyphens and spaces, Cannot be two underscores, two hypens or two spaces in a row",
-        // "Cannot have a underscore, hypen or space at the start or end"
-      ),
+    username: yup.string().required("Username required"),
     password: yup.string().required("Password required"),
-    // .matches(
-    //   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/,
-    //   "Min 8 char( Special character, Number, Capital, Lower)"
-    // ),
-    // deve conter ao menos um dígito
-    // deve conter ao menos uma letra minúscula
-    // deve conter ao menos uma letra maiúscula
-    // deve conter ao menos um caractere especial
-    // deve conter ao menos 8 dos caracteres mencionados))
   });
 
   const {

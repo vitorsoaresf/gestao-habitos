@@ -54,7 +54,7 @@ const ModalEditGoals = ({
   };
 
   return (
-    <Container onClick={() => setModalEditGoals(false)}>
+    <Container>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

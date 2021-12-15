@@ -35,7 +35,7 @@ const ModalEditGroup = ({
   };
 
   return (
-    <Container onClick={() => setModalEditGroup(false)}>
+    <Container>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

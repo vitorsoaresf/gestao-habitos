@@ -30,7 +30,7 @@ export const Container = styled.div`
       height: 50px;
       border-radius: 8px 8px 0 0;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: center;
       background: var(--darkGreen);
       text-align: center;
@@ -47,6 +47,7 @@ export const Container = styled.div`
         height: 30px;
         background-color: var(--red);
         margin-right: 5px;
+        margin-bottom: 0;
       }
     }
 
