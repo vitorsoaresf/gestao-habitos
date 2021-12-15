@@ -2,6 +2,7 @@ import { Container, ListBox } from "./styles";
 import { BsSearch } from "react-icons/bs";
 
 import Button from "../Button";
+import Loading from "../Loading";
 import { useState } from "react";
 
 const CardGeneric = ({
@@ -17,6 +18,7 @@ const CardGeneric = ({
   searchFunction,
 }) => {
   const [input, setInput] = useState("");
+
   return (
     <Container>
       <h2>{title}</h2>

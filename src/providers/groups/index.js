@@ -245,6 +245,10 @@ export const GroupsProvider = ({ children }) => {
         groupCreator,
         dataGroup,
         myGroups,
+<<<<<<< HEAD
+=======
+        getAllGroups,
+>>>>>>> 793b2295c89e50551687767843050c12fcd7907d
         isParticipant,
         getFilteredGroups,
         getGroupsUser,
