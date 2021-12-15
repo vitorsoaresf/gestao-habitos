@@ -56,7 +56,7 @@ const ModalEditActivities = ({
       >
         <div>
           <h1>
-            Edit activity
+            <p>Edit activity</p>
             <Button onClick={() => setModalEditActivities(false)}>x</Button>
           </h1>
           <form onSubmit={handleSubmit(onSubmitFunction)}>

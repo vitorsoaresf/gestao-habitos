@@ -62,7 +62,7 @@ const ModalEditGoals = ({
       >
         <div>
           <h1>
-            Edit goal
+            <p>Edit goal</p>
             <Button onClick={() => setModalEditGoals(false)}>x</Button>
           </h1>
           <form onSubmit={handleSubmit(onSubmitFunction)}>

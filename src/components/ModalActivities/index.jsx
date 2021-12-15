@@ -44,7 +44,7 @@ const ModalActivities = ({
       >
         <div>
           <h1>
-            New activity{" "}
+            <p>New activity</p>
             <Button onClick={() => setModalActivities(false)}>x</Button>
           </h1>
           <form onSubmit={handleSubmit(onSubmitFunction)}>
@@ -56,7 +56,7 @@ const ModalActivities = ({
               error={errors.title?.message}
             />
 
-            <Button type="submit">Create Activities</Button>
+            <Button type="submit">Create</Button>
           </form>
         </div>
       </motion.div>

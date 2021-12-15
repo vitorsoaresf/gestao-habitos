@@ -49,7 +49,10 @@ const ModalAdd = ({ userId, setShowAddModal }) => {
         transition={{ duration: 0.5 }}
       >
         <div>
-          <h3>Create New Habit</h3>
+          <h3>
+            <p>Create New Habit </p>
+            <Button onClick={() => setShowAddModal(false)}>x</Button>
+          </h3>
           <form onSubmit={handleSubmit(submitFunction)}>
             <Input
               type="text"
@@ -79,7 +82,7 @@ const ModalAdd = ({ userId, setShowAddModal }) => {
               register={register}
               error={errors.frequency?.message}
             />
-            <Button type="submit">Create Habit</Button>
+            <Button type="submit">Create</Button>
           </form>
         </div>
       </motion.div>

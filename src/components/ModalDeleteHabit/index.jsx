@@ -3,7 +3,12 @@ import Button from "../Button";
 
 import { Container } from "./styles";
 
-const ModalDelete = ({ deleteClick, setShowDeleteModal, getHabits }) => {
+const ModalDelete = ({
+  deleteClick,
+  setShowDeleteModal,
+  getHabits,
+  currentHabit,
+}) => {
   return (
     <Container>
       <motion.div
@@ -13,7 +18,10 @@ const ModalDelete = ({ deleteClick, setShowDeleteModal, getHabits }) => {
         transition={{ duration: 0.5 }}
       >
         <div>
-          <h3>Nome do hábito</h3>
+          <h3>
+            <p>Habit - {currentHabit.title} </p>
+            <Button onClick={() => setShowDeleteModal(false)}>x</Button>
+          </h3>
           <p>Do you really want to delete this habit?</p>
           <Button
             onClick={() => {
