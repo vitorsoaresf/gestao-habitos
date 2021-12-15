@@ -11,7 +11,9 @@ const ModalLeave = ({ groupId, setModalLeave }) => {
   const onSubmitFunction = () => {
     setModalLeave(false);
     unsubscribeGroup(groupId);
-    history.push("/groups/");
+    history.push(
+      `/dashboard/${JSON.parse(localStorage.getItem("@Anima/token"))}`
+    );
   };
 
   return (
