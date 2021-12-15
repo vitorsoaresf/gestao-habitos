@@ -15,22 +15,35 @@ export const Container = styled.div`
       height: 50px;
       border-radius: 8px 8px 0 0;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
       background: var(--darkGreen);
       color: white;
       font-size: larger;
+
+      p {
+        margin-left: 5px;
+        font-size: 1.2rem;
+      }
+
+      button {
+        margin-right: 5px;
+        background-color: var(--green);
+        width: 30px;
+        height: 30px;
+      }
     }
 
     p {
-      font-size: large;
+      font-size: 1.5rem;
+      text-align: center;
     }
 
-    Button {
+    button {
       margin-bottom: 10px;
     }
 
-    width: 350px;
+    width: 310px;
     height: 300px;
     border-radius: 8px;
     background-color: var(--white);

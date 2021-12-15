@@ -26,11 +26,16 @@ export const Container = styled.div`
       display: flex;
       justify-content: space-between;
 
+      p {
+        margin-left: 5px;
+      }
+
       button {
         color: var(--white);
         width: 30px;
         height: 30px;
-        background: var(--purple);
+        background: var(--green);
+        margin-right: 5px;
       }
     }
 

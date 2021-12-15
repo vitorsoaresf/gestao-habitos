@@ -43,7 +43,7 @@ const ModalGoals = ({ groupId, setModalGoals, updateActivitiesGoals }) => {
       >
         <div>
           <h1>
-            New goal
+            <p>New goal</p>
             <Button onClick={() => setModalGoals(false)}>x</Button>
           </h1>
           <form onSubmit={handleSubmit(onSubmitFunction)}>

@@ -4,33 +4,57 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   position: fixed;
   top: 0;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
 
-  h3 {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  div {
     width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    p {
+    h1 {
+      width: 100%;
+      padding: 5px 0;
+      border-radius: 5px 5px 0 0;
+      background: var(--darkGreen);
+      font-size: 1.5rem;
       color: var(--white);
-      font-size: 1.2rem;
+      display: flex;
+      justify-content: space-between;
+
+      p {
+        margin-left: 5px;
+      }
+
+      button {
+        color: var(--white);
+        width: 30px;
+        height: 30px;
+        background: var(--green);
+        margin-right: 5px;
+      }
     }
 
-    button {
-      width: 30px;
-      height: 30px;
-      color: var(--white);
+    div {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: var(--gray);
+      border-radius: 0 0 5px 5px;
+
+      input {
+        width: 100%;
+      }
+
+      button {
+        margin: 10px 0;
+        background-color: var(--red);
+      }
     }
-  }
-  button {
-    width: 100px;
-    height: 50px;
-    color: var(--white);
   }
 `;

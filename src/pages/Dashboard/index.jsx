@@ -49,6 +49,7 @@ const Dashboard = () => {
         <ModalDelete
           getHabits={getHabits}
           setShowDeleteModal={setShowDeleteModal}
+          currentHabit={currentHabit}
           deleteClick={() => deleteHabit(currentHabit.id)}
         />
       )}

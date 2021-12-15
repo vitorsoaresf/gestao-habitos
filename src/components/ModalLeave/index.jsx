@@ -25,11 +25,13 @@ const ModalLeave = ({ groupId, setModalLeave }) => {
         exit={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <h3>
+        <h1>
           <p>Are you sure you want to leave? </p>
           <Button onClick={() => setModalLeave(false)}>x</Button>
-        </h3>
-        <Button onClick={() => onSubmitFunction()}>Leave</Button>
+        </h1>
+        <div>
+          <Button onClick={() => onSubmitFunction()}>Confirm</Button>
+        </div>
       </motion.div>
     </Container>
   );
