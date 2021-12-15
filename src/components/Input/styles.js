@@ -10,7 +10,7 @@ export const Container = styled.section`
   width: 80%;
   max-width: 300px;
   height: 40px;
-  margin: 8px 0;
+  margin: 10px 0;
 
   input {
     background: transparent;
@@ -31,5 +31,11 @@ export const Container = styled.section`
     color: var(--darkGreen);
     width: 15%;
     height: 50%;
+  }
+
+  p {
+    position: absolute;
+    margin-left: 170px;
+    color: var(--red);
   }
 `;

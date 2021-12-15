@@ -37,7 +37,7 @@ const ModalActivities = ({
   };
 
   return (
-    <Container onClick={() => setModalActivities(false)}>
+    <Container>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
