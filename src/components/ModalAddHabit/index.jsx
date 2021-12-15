@@ -40,7 +40,7 @@ const ModalAdd = ({ userId, setShowAddModal }) => {
   };
 
   return (
-    <Container>
+    <Container onClick={() => setShowAddModal(false)}>
       <div>
         <h3>Create New Habit</h3>
         <form onSubmit={handleSubmit(submitFunction)}>

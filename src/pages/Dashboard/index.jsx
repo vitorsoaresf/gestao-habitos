@@ -54,7 +54,7 @@ const Dashboard = () => {
       )}
 
       {showAddGroupModal && (
-        <ModalAddGroup showAddGroupModal={showAddGroupModal} />
+        <ModalAddGroup setShowAddGroupModal={setShowAddGroupModal} />
       )}
 
       <Header />
@@ -73,7 +73,7 @@ const Dashboard = () => {
         <CardGeneric
           title={"My Groups"}
           list={myGroups}
-          setShowAddModal={setShowAddModal}
+          setShowAddModal={setShowAddGroupModal}
           addClick={createGroup}
         />
       </Container>
