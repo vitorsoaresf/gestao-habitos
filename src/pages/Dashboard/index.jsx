@@ -55,10 +55,11 @@ const Dashboard = () => {
       )}
 
       {showAddGroupModal && (
-        <ModalAddGroup showAddGroupModal={showAddGroupModal} />
+        <ModalAddGroup setShowAddGroupModal={setShowAddGroupModal} />
       )}
 
       <Header />
+
       <motion.div
         initial={{ y: 900 }}
         animate={{ y: 0 }}
@@ -80,7 +81,7 @@ const Dashboard = () => {
           <CardGeneric
             title={"My Groups"}
             list={myGroups}
-            setShowAddModal={setShowAddModal}
+            setShowAddModal={setShowAddGroupModal}
             addClick={createGroup}
           />
         </Container>

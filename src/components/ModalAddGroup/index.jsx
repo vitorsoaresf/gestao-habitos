@@ -10,7 +10,7 @@ import { Container } from "./style";
 import { useContext } from "react";
 import { motion } from "framer-motion";
 
-const ModalAddGroup = ({ userId, setShowAddModal }) => {
+const ModalAddGroup = ({ userId, setShowAddGroupModal }) => {
   const { createGroup } = useContext(GroupsContext);
 
   const schema = yup.object().shape({
@@ -32,12 +32,12 @@ const ModalAddGroup = ({ userId, setShowAddModal }) => {
       category: data.category,
     };
 
-    setShowAddModal(false);
+    setShowAddGroupModal(false);
     createGroup(newGroup);
   };
 
   return (
-    <Container>
+    <Container onClick={() => setShowAddGroupModal(false)}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
