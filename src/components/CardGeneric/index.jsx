@@ -14,6 +14,7 @@ const CardGeneric = ({
   setCurrentHabit,
   setShowDeleteModal,
   setShowAddModal,
+  setShowAddGroupModal,
   searchFunction,
 }) => {
   const [input, setInput] = useState("");
@@ -33,13 +34,25 @@ const CardGeneric = ({
           </span>
         </div>
         {cardType !== "groups" && (
-          <Button
-            onClick={() => {
-              setShowAddModal(true);
-            }}
-          >
-            +
-          </Button>
+          <>
+            {cardType === "habit" ? (
+              <Button
+                onClick={() => {
+                  setShowAddModal(true);
+                }}
+              >
+                +
+              </Button>
+            ) : (
+              <Button
+                onClick={() => {
+                  setShowAddGroupModal(true);
+                }}
+              >
+                +
+              </Button>
+            )}
+          </>
         )}
       </div>
       <ListBox>
