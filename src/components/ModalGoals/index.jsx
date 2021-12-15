@@ -35,7 +35,7 @@ const ModalGoals = ({ groupId, setModalGoals, updateActivitiesGoals }) => {
   };
 
   return (
-    <Container>
+    <Container onClick={() => setModalGoals(false)}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
