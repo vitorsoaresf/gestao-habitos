@@ -10,7 +10,7 @@ export const Container = styled.div`
 
   border-radius: 10px;
   width: 280px;
-  height: 450px;
+  height: 540px;
 
   h2 {
     font-size: 45px;
@@ -24,13 +24,10 @@ export const Container = styled.div`
 
     height: 42px;
     margin: 16px auto;
-    /* background: red; */
     border-radius: 10px;
-    /* background: white; */
     width: 250px;
 
     div {
-      /* background: transparent; */
       background: white;
       display: flex;
 
@@ -62,10 +59,10 @@ export const ListBox = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background: red; */
 
   ul {
     overflow-y: scroll;
+
     > li {
       background: white;
       width: 250px;
