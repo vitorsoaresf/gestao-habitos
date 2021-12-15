@@ -30,7 +30,7 @@ export const Container = styled.div`
       height: 50px;
       border-radius: 8px 8px 0 0;
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       align-items: center;
       background: var(--darkGreen);
       text-align: center;

@@ -15,11 +15,24 @@ export const Container = styled.div`
       height: 50px;
       border-radius: 8px 8px 0 0;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
       background: var(--darkGreen);
+      text-align: center;
+
       color: white;
       font-size: larger;
+
+      p {
+        margin-left: 5px;
+      }
+
+      button {
+        width: 30px;
+        height: 30px;
+        background-color: var(--red);
+        margin-right: 5px;
+      }
     }
 
     Input {
