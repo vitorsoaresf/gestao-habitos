@@ -10,7 +10,7 @@ const ModalDelete = ({
   currentHabit,
 }) => {
   return (
-    <Container>
+    <Container onClick={() => setShowDeleteModal(false)}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

@@ -8,6 +8,8 @@ import Input from "../Input";
 import Button from "../Button";
 import { motion } from "framer-motion";
 
+import { FaPencilAlt } from "react-icons/all";
+
 const ModalActivities = ({
   groupId,
   setModalActivities,
@@ -35,7 +37,7 @@ const ModalActivities = ({
   };
 
   return (
-    <Container>
+    <Container onClick={() => setModalActivities(false)}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -54,7 +56,9 @@ const ModalActivities = ({
               register={register}
               name="title"
               error={errors.title?.message}
-            />
+            >
+              <FaPencilAlt />
+            </Input>
 
             <Button type="submit">Create</Button>
           </form>
