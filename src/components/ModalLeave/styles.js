@@ -28,13 +28,14 @@ export const Container = styled.div`
 
       p {
         margin-left: 5px;
+        text-align: center;
       }
 
       button {
         color: var(--white);
         width: 30px;
         height: 30px;
-        background: var(--green);
+        background: var(--red);
         margin-right: 5px;
       }
     }

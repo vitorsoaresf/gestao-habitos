@@ -22,6 +22,7 @@ export const Container = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
+      width: 100%;
     }
 
     h3 {
@@ -32,6 +33,8 @@ export const Container = styled.div`
       justify-content: space-between;
       align-items: center;
       background: var(--darkGreen);
+      text-align: center;
+
       color: white;
       font-size: larger;
 
@@ -42,7 +45,7 @@ export const Container = styled.div`
       button {
         width: 30px;
         height: 30px;
-        background-color: var(--green);
+        background-color: var(--red);
         margin-right: 5px;
       }
     }
@@ -51,11 +54,13 @@ export const Container = styled.div`
       background: var(--white);
       border-radius: 8px;
       width: 90%;
+      height: 90%;
     }
 
     button {
       margin-bottom: 10px;
       color: var(--white);
+      width: 80%;
     }
   }
 `;

@@ -7,6 +7,7 @@ import { Container } from "./styles";
 import Input from "../Input";
 import Button from "../Button";
 import { motion } from "framer-motion";
+import { FaPencilAlt, AiFillSignal } from "react-icons/all";
 
 const ModalEditGoals = ({
   updateActivitiesGoals,
@@ -53,7 +54,7 @@ const ModalEditGoals = ({
   };
 
   return (
-    <Container>
+    <Container onClick={() => setModalEditGoals(false)}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -74,7 +75,9 @@ const ModalEditGoals = ({
               register={register}
               name="title"
               error={errors.title?.message}
-            />
+            >
+              <FaPencilAlt />
+            </Input>
             <Input
               value={difficulty}
               onChange={(e) => setDifficulty(e.target.value)}
@@ -83,7 +86,9 @@ const ModalEditGoals = ({
               register={register}
               name="difficulty"
               error={errors.difficulty?.message}
-            />
+            >
+              <AiFillSignal />
+            </Input>
 
             <label htmlFor="achieved">
               <Input

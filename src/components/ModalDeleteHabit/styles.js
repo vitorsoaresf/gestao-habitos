@@ -28,7 +28,7 @@ export const Container = styled.div`
 
       button {
         margin-right: 5px;
-        background-color: var(--green);
+        background-color: var(--red);
         width: 30px;
         height: 30px;
       }

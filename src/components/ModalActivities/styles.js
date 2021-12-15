@@ -34,7 +34,7 @@ export const Container = styled.div`
         color: var(--white);
         width: 30px;
         height: 30px;
-        background: var(--green);
+        background: var(--red);
         margin-right: 5px;
       }
     }
@@ -48,11 +48,12 @@ export const Container = styled.div`
       border-radius: 0 0 5px 5px;
 
       input {
-        width: 100%;
+        width: 80%;
       }
 
       button {
         margin: 10px 0;
+        width: 80%;
       }
     }
   }

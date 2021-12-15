@@ -18,7 +18,7 @@ const ModalLeave = ({ groupId, setModalLeave }) => {
   };
 
   return (
-    <Container>
+    <Container onClick={() => setModalLeave(false)}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
