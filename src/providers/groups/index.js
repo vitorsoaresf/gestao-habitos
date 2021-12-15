@@ -262,6 +262,7 @@ export const GroupsProvider = ({ children }) => {
         updateGroup,
         inscribeGroup,
         unsubscribeGroup,
+        setMyGroups,
       }}
     >
       {children}

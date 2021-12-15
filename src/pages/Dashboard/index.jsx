@@ -6,7 +6,6 @@ import Header from "../../components/Header";
 import CardGeneric from "../../components/CardGeneric";
 import { HabitsContext } from "../../providers/habits";
 import { GroupsContext } from "../../providers/groups";
-import CardGroups from "../../components/CardGroups";
 import ModalDelete from "../../components/ModalDeleteHabit/index";
 import ModalAdd from "../../components/ModalAddHabit";
 import { motion } from "framer-motion";
@@ -15,9 +14,18 @@ import ModalAddGroup from "../../components/ModalAddGroup";
 import { Container } from "./styles";
 
 const Dashboard = () => {
-  const { getHabits, allHabits, updateHabit, deleteHabit, createHabit } =
-    useContext(HabitsContext);
-  const { getGroupsUser, myGroups, createGroup } = useContext(GroupsContext);
+  const {
+    getHabits,
+    allHabits,
+    updateHabit,
+    deleteHabit,
+    createHabit,
+    setAllHabits,
+  } = useContext(HabitsContext);
+
+  const { getGroupsUser, myGroups, createGroup, setMyGroups } =
+    useContext(GroupsContext);
+
   const params = useParams();
 
   const [currentHabit, setCurrentHabit] = useState([]);
@@ -27,6 +35,28 @@ const Dashboard = () => {
   const [showAddModal, setShowAddModal] = useState(false);
 
   const [showAddGroupModal, setShowAddGroupModal] = useState(false);
+
+  const searchHabitFunction = (pesq) => {
+    if (pesq) {
+      const searchHabit = allHabits.filter((element) =>
+        element.title.toLowerCase().includes(pesq.toLowerCase())
+      );
+      setAllHabits(searchHabit);
+    } else {
+      getHabits(params.token);
+    }
+  };
+
+  const searchMyGroupsFunction = (pesq) => {
+    if (pesq) {
+      const searchMyGroups = myGroups.filter((element) =>
+        element.name.toLowerCase().includes(pesq.toLowerCase())
+      );
+      setMyGroups(searchMyGroups);
+    } else {
+      getGroupsUser(params.token);
+    }
+  };
 
   useEffect(() => {
     getGroupsUser(params.token);
@@ -67,23 +97,27 @@ const Dashboard = () => {
         transition={{ duration: 1 }}
       >
         <Container>
-          <CardGeneric
-            title={"My Habits"}
-            cardType={"habit"}
-            list={allHabits}
-            updateClick={updateHabit}
-            habitUptadeData={habitUptadeData}
-            setCurrentHabit={setCurrentHabit}
-            setShowDeleteModal={setShowDeleteModal}
-            setShowAddModal={setShowAddModal}
-            addClick={createHabit}
-          />
-          <CardGeneric
-            title={"My Groups"}
-            list={myGroups}
-            setShowAddModal={setShowAddGroupModal}
-            addClick={createGroup}
-          />
+          <div>
+            <CardGeneric
+              title={"My Habits"}
+              cardType={"habit"}
+              list={allHabits}
+              updateClick={updateHabit}
+              habitUptadeData={habitUptadeData}
+              setCurrentHabit={setCurrentHabit}
+              setShowDeleteModal={setShowDeleteModal}
+              setShowAddModal={setShowAddModal}
+              addClick={createHabit}
+              searchFunction={searchHabitFunction}
+            />
+            <CardGeneric
+              title={"My Groups"}
+              list={myGroups}
+              setShowAddModal={setShowAddGroupModal}
+              addClick={createGroup}
+              searchFunction={searchMyGroupsFunction}
+            />
+          </div>
         </Container>
       </motion.div>
     </>

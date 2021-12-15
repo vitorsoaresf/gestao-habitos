@@ -37,7 +37,7 @@ const ModalAddGroup = ({ userId, setShowAddGroupModal }) => {
   };
 
   return (
-    <Container onClick={() => setShowAddGroupModal(false)}>
+    <Container>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -45,7 +45,10 @@ const ModalAddGroup = ({ userId, setShowAddGroupModal }) => {
         transition={{ duration: 0.5 }}
       >
         <div>
-          <h3>Create New Group</h3>
+          <h3>
+            <p>Create New Group</p>
+            <Button onClick={() => setShowAddGroupModal(false)}>X</Button>
+          </h3>
           <form onSubmit={handleSubmit(submitFunction)}>
             <Input
               type="text"
