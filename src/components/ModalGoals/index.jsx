@@ -6,6 +6,7 @@ import { GroupsContext } from "../../providers/groups";
 import { Container } from "./styles";
 import Input from "../Input";
 import Button from "../Button";
+import { motion } from "framer-motion";
 
 const ModalGoals = ({ groupId, setModalGoals, updateActivitiesGoals }) => {
   const { createGoalsGroup } = useContext(GroupsContext);
@@ -34,30 +35,37 @@ const ModalGoals = ({ groupId, setModalGoals, updateActivitiesGoals }) => {
 
   return (
     <Container>
-      <div>
-        <h1>
-          New goal
-          <Button onClick={() => setModalGoals(false)}>x</Button>
-        </h1>
-        <form onSubmit={handleSubmit(onSubmitFunction)}>
-          <Input
-            type="text"
-            placeholder=" Title"
-            register={register}
-            name="title"
-            error={errors.title?.message}
-          />
-          <Input
-            type="text"
-            placeholder=" Difficulty"
-            register={register}
-            name="difficulty"
-            error={errors.difficulty?.message}
-          />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div>
+          <h1>
+            <p>New goal</p>
+            <Button onClick={() => setModalGoals(false)}>x</Button>
+          </h1>
+          <form onSubmit={handleSubmit(onSubmitFunction)}>
+            <Input
+              type="text"
+              placeholder=" Title"
+              register={register}
+              name="title"
+              error={errors.title?.message}
+            />
+            <Input
+              type="text"
+              placeholder=" Difficulty"
+              register={register}
+              name="difficulty"
+              error={errors.difficulty?.message}
+            />
 
-          <Button type="submit">Create Goal</Button>
-        </form>
-      </div>
+            <Button type="submit">Create Goal</Button>
+          </form>
+        </div>
+      </motion.div>
     </Container>
   );
 };

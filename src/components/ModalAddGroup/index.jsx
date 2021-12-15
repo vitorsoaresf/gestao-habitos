@@ -8,6 +8,7 @@ import { GroupsContext } from "../../providers/groups";
 
 import { Container } from "./style";
 import { useContext } from "react";
+import { motion } from "framer-motion";
 
 const ModalAddGroup = ({ userId, setShowAddGroupModal }) => {
   const { createGroup } = useContext(GroupsContext);
@@ -32,42 +33,45 @@ const ModalAddGroup = ({ userId, setShowAddGroupModal }) => {
     };
 
     setShowAddGroupModal(false);
-    createGroup(newGroup)
-      .then((_) => {
-        setShowAddGroupModal(false);
-      })
-      .catch((error) => console.log(error));
+    createGroup(newGroup);
   };
 
   return (
-    <Container>
-      <div>
-        <h3>Create New Group</h3>
-        <form onSubmit={handleSubmit(submitFunction)}>
-          <Input
-            type="text"
-            placeholder="Name"
-            name="name"
-            register={register}
-            error={errors.name?.message}
-          />
-          <Input
-            type="text"
-            placeholder="Category"
-            name="category"
-            register={register}
-            error={errors.category?.message}
-          />
-          <Input
-            type="text"
-            placeholder="Description"
-            name="description"
-            register={register}
-            error={errors.description?.message}
-          />
-          <Button type="submit">Create Group</Button>
-        </form>
-      </div>
+    <Container onClick={() => setShowAddGroupModal(false)}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div>
+          <h3>Create New Group</h3>
+          <form onSubmit={handleSubmit(submitFunction)}>
+            <Input
+              type="text"
+              placeholder="Name"
+              name="name"
+              register={register}
+              error={errors.name?.message}
+            />
+            <Input
+              type="text"
+              placeholder="Category"
+              name="category"
+              register={register}
+              error={errors.category?.message}
+            />
+            <Input
+              type="text"
+              placeholder="Description"
+              name="description"
+              register={register}
+              error={errors.description?.message}
+            />
+            <Button type="submit">Create Group</Button>
+          </form>
+        </div>
+      </motion.div>
     </Container>
   );
 };

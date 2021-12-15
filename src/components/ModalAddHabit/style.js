@@ -10,34 +10,52 @@ export const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
 
   div {
+    width: 310px;
+    border-radius: 8px;
+    background-color: var(--gray);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     h3 {
       width: 100%;
       height: 50px;
       border-radius: 8px 8px 0 0;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
       background: var(--darkGreen);
       color: white;
       font-size: larger;
+
+      p {
+        margin-left: 5px;
+      }
+
+      button {
+        width: 30px;
+        height: 30px;
+        background-color: var(--green);
+        margin-right: 5px;
+      }
     }
 
-    Input {
-      background: var(--gray);
+    input {
+      background: var(--white);
       border-radius: 8px;
+      width: 90%;
     }
 
-    Button {
+    button {
       margin-bottom: 10px;
       color: var(--white);
     }
-
-    width: 350px;
-    border-radius: 8px;
-    background-color: var(--white);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
   }
 `;

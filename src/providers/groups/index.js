@@ -183,14 +183,14 @@ export const GroupsProvider = ({ children }) => {
       });
   };
 
-  const createGroup = async (data) => {
-    await api
+  const createGroup = (data) => {
+    api
       .post("/groups/", data, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((_) => {
-        getGroupsUser(token);
         toast.success("Group created successfully");
+        getGroupsUser(token);
       })
       .catch((err) => {
         console.log(err);
@@ -228,7 +228,10 @@ export const GroupsProvider = ({ children }) => {
       .delete(`/groups/${groupId}/unsubscribe/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((_) => toast.success("successfully unsubscribed"))
+      .then((_) => {
+        toast.success("successfully unsubscribed");
+        getGroupsUser(token);
+      })
       .catch((err) => {
         console.log(err);
         toast.error("some error on the server");
