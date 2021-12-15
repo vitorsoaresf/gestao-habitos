@@ -17,7 +17,9 @@ import { Container } from "./styles";
 const Dashboard = () => {
   const { getHabits, allHabits, updateHabit, deleteHabit, createHabit } =
     useContext(HabitsContext);
+
   const { getGroupsUser, myGroups, createGroup } = useContext(GroupsContext);
+
   const params = useParams();
 
   const [currentHabit, setCurrentHabit] = useState([]);
@@ -67,23 +69,25 @@ const Dashboard = () => {
         transition={{ duration: 1 }}
       >
         <Container>
-          <CardGeneric
-            title={"My Habits"}
-            cardType={"habit"}
-            list={allHabits}
-            updateClick={updateHabit}
-            habitUptadeData={habitUptadeData}
-            setCurrentHabit={setCurrentHabit}
-            setShowDeleteModal={setShowDeleteModal}
-            setShowAddModal={setShowAddModal}
-            addClick={createHabit}
-          />
-          <CardGeneric
-            title={"My Groups"}
-            list={myGroups}
-            setShowAddModal={setShowAddGroupModal}
-            addClick={createGroup}
-          />
+          <div>
+            <CardGeneric
+              title={"My Habits"}
+              cardType={"habit"}
+              list={allHabits}
+              updateClick={updateHabit}
+              habitUptadeData={habitUptadeData}
+              setCurrentHabit={setCurrentHabit}
+              setShowDeleteModal={setShowDeleteModal}
+              setShowAddModal={setShowAddModal}
+              addClick={createHabit}
+            />
+            <CardGeneric
+              title={"My Groups"}
+              list={myGroups}
+              setShowAddModal={setShowAddGroupModal}
+              addClick={createGroup}
+            />
+          </div>
         </Container>
       </motion.div>
     </>
