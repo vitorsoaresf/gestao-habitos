@@ -54,10 +54,11 @@ table {
     --darkGreen: #126260;
     --green: #65A491;
     --lightGreen: #7FCD77;
-    --gray: #C4C4C4;
+    --darkGray: #718093;
+    --gray: #dcdde1;
     --purple: #9C5DB3;
     --white: #fff;
-    --red: #9b2d14;
+    --red: #c44e4e;
 }
 
 `;

@@ -7,6 +7,7 @@ import { Container } from "./styles";
 import Input from "../Input";
 import Button from "../Button";
 import { motion } from "framer-motion";
+import { FaPencilAlt, AiFillSignal } from "react-icons/all";
 
 const ModalGoals = ({ groupId, setModalGoals, updateActivitiesGoals }) => {
   const { createGoalsGroup } = useContext(GroupsContext);
@@ -53,16 +54,20 @@ const ModalGoals = ({ groupId, setModalGoals, updateActivitiesGoals }) => {
               register={register}
               name="title"
               error={errors.title?.message}
-            />
+            >
+              <FaPencilAlt />
+            </Input>
             <Input
               type="text"
               placeholder=" Difficulty"
               register={register}
               name="difficulty"
               error={errors.difficulty?.message}
-            />
+            >
+              <AiFillSignal />
+            </Input>
 
-            <Button type="submit">Create Goal</Button>
+            <Button type="submit">Create</Button>
           </form>
         </div>
       </motion.div>
