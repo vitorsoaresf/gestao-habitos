@@ -12,6 +12,10 @@ export const Container = styled.div`
   width: 280px;
   height: 540px;
 
+  @media (min-width: 1400px) {
+    width: 380px;
+  }
+
   h2 {
     font-size: 45px;
     margin: 16px 0;
@@ -21,15 +25,19 @@ export const Container = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
 
     height: 42px;
     margin: 16px auto;
     border-radius: 10px;
     width: 250px;
+    width: 90%;
 
     div {
       background: white;
       display: flex;
+      width: 100%;
+      margin: 0;
 
       input {
         height: 42px;
@@ -37,6 +45,7 @@ export const Container = styled.div`
         outline: none;
         border: none;
         margin: 0 8px;
+        width: 90%;
       }
 
       span {
@@ -48,13 +57,14 @@ export const Container = styled.div`
 
     button {
       height: 42px;
-      margin-left: 16px;
+      width: 42px;
+      margin-left: 8px;
     }
   }
 `;
 
 export const ListBox = styled.section`
-  width: 250px;
+  width: 100%;
   height: 380px;
   display: flex;
   flex-direction: column;
@@ -62,10 +72,10 @@ export const ListBox = styled.section`
 
   ul {
     overflow-y: scroll;
+    width: 90%;
 
     > li {
       background: white;
-      width: 250px;
       height: 50px;
       display: flex;
       align-items: center;
