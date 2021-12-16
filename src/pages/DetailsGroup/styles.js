@@ -5,6 +5,7 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  background-color: #a59de8;
 `;
 
 export const ContainerTitle = styled.section`
@@ -12,9 +13,24 @@ export const ContainerTitle = styled.section`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  margin: 20px 0;
+  width: 310px;
+  /* height: 300px; */
+  /* border-radius: 10px; */
+  color: var(--darkGreen);
 
   h1 {
-    font-size: 2rem;
+    width: 100%;
+    p {
+      font-size: 2.5rem;
+    }
+  }
+
+  p {
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
   }
 `;
 

@@ -76,7 +76,9 @@ const DetailsGroup = () => {
           )}
 
           <ContainerTitle>
-            <h1>{dataGroup.name}</h1>
+            <h1>
+              <p>{dataGroup.name}</p>
+            </h1>
             <p>{dataGroup.description}</p>
           </ContainerTitle>
           <ContainerBody>

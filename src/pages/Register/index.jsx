@@ -10,10 +10,8 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import SignUp from "../../assets/Svg/signUp.svg";
 import { motion } from "framer-motion";
-import { Container, LogoBox } from "./styles";
+import { Container } from "./styles";
 import { FaUserAlt, FaLock, MdEmail } from "react-icons/all";
-import HeaderInitial from "../../components/HeaderInitial";
-import Logo from "../../assets/anima-logo.png";
 
 const Register = () => {
   const { registerUser } = useContext(UserContext);

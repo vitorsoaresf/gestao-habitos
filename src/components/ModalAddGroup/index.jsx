@@ -9,6 +9,7 @@ import { GroupsContext } from "../../providers/groups";
 import { Container } from "./style";
 import { useContext } from "react";
 import { motion } from "framer-motion";
+import { FaPencilAlt, BiCategoryAlt, MdDescription } from "react-icons/all";
 
 const ModalAddGroup = ({ userId, setShowAddGroupModal }) => {
   const { createGroup } = useContext(GroupsContext);
@@ -56,21 +57,27 @@ const ModalAddGroup = ({ userId, setShowAddGroupModal }) => {
               name="name"
               register={register}
               error={errors.name?.message}
-            />
+            >
+              <FaPencilAlt />
+            </Input>
             <Input
               type="text"
               placeholder="Category"
               name="category"
               register={register}
               error={errors.category?.message}
-            />
+            >
+              <BiCategoryAlt />
+            </Input>
             <Input
               type="text"
               placeholder="Description"
               name="description"
               register={register}
               error={errors.description?.message}
-            />
+            >
+              <MdDescription />
+            </Input>
             <Button type="submit">Create Group</Button>
           </form>
         </div>
