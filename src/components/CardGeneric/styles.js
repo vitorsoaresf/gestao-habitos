@@ -7,10 +7,13 @@ export const Container = styled.div`
   justify-content: flex-start;
   background: var(--green);
   align-items: center;
-
   border-radius: 10px;
   width: 280px;
-  height: 450px;
+  height: 540px;
+
+  @media (min-width: 1400px) {
+    width: 380px;
+  }
 
   h2 {
     font-size: 45px;
@@ -21,24 +24,26 @@ export const Container = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-
+    justify-content: center;
     height: 42px;
     margin: 16px auto;
-    /* background: red; */
     border-radius: 10px;
-    /* background: white; */
     width: 250px;
+    width: 90%;
 
     div {
-      /* background: transparent; */
       background: white;
       display: flex;
+      width: 100%;
+      margin: 0;
 
       input {
         height: 42px;
         background: transparent;
         outline: none;
         border: none;
+        margin: 0 8px;
+        width: 90%;
       }
 
       span {
@@ -50,19 +55,18 @@ export const Container = styled.div`
 
     button {
       height: 42px;
-      margin-left: 16px;
+      width: 42px;
+      margin-left: 8px;
     }
   }
 `;
 
 export const ListBox = styled.section`
-  width: 250px;
+  width: 100%;
   height: 380px;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  /* background: red; */
 
   ul {
     overflow-y: scroll;
@@ -79,15 +83,16 @@ export const ListBox = styled.section`
       border-radius: 100px;
     }
 
+    width: 90%;
+
     > li {
       background: white;
-      width: 250px;
       height: 50px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-radius: 8px;
-      margin-top: 10px;
+      margin: 10px 12px 0px 0px;
 
       h3 {
         font-size: 15px;
@@ -109,6 +114,7 @@ export const ListBox = styled.section`
         margin-right: 3px;
         max-width: 80px;
       }
+
       Button {
         width: 80px;
         font-size: 15px;

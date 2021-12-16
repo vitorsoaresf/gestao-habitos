@@ -1,11 +1,17 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    background-color: var(--darkGreen)
+    background-color: var(--darkGreen);
     width: 100%;
     height: 80px;
     display: flex;
+    justify-content: center;
 
+    header {
+      display: flex;
+      width: 100%;
+      max-width: 1200px;
+    }
 `;
 export const RightSide = styled.div`
   flex: 50%;
