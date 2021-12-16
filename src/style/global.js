@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import img from "../assets/background2.jpg";
 
 const GlobalStyle = createGlobalStyle`
 //----------------------reset css------------------//
@@ -32,6 +33,9 @@ body {
     line-height: 1;
     box-sizing: border-box;
     font-family: 'Lobster Two', cursive;
+
+    background-image: url(${img});
+    background-size: cover;
 }
 ol, ul {
     list-style: none;

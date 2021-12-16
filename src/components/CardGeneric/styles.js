@@ -39,7 +39,6 @@ export const Container = styled.div`
         background: transparent;
         outline: none;
         border: none;
-        margin: 0 8px;
       }
 
       span {
