@@ -11,10 +11,7 @@ import SignUp from "../../assets/Svg/signUp.svg";
 import { motion } from "framer-motion";
 import { Container } from "./styles";
 import { FaUserAlt, FaLock, MdEmail } from "react-icons/all";
-<<<<<<< HEAD
 import HeaderInitial from "../../components/HeaderInitial";
-=======
->>>>>>> 1cf2a471ffbd2aca4356e901386bb9f5363580f5
 
 const Register = () => {
   const { registerUser } = useContext(UserContext);
