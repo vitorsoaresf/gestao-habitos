@@ -6,6 +6,9 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center; 
   background-color: var(--green);
+  border-radius:10px; 
+  margin: 15px 0;
+  
 }
 `;
 
@@ -19,7 +22,6 @@ export const ContainerTitle = styled.div`
   margin: 10px 0;
   color: var(--white);
   font-weight: 600;
-  /* background-color: violet; */
 
   h1 {
     font-size: 2rem;
@@ -47,15 +49,19 @@ export const ContainerUl = styled.ul`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* margin-top: 10px; */
     margin-bottom: 10px;
     background-color: #ecf0f1;
     border-radius: 5px;
+    font-size: 1.2rem;
+    color: var(--purple-0);
+    font-weight: 600;
+    font-family: "Indie Flower", cursive;
+    letter-spacing: 2px;
 
     button {
       width: 50px;
       height: 30px;
-      background-color: var(--lightGreen);
+      background-color: var(--purple-0);
       color: var(--white);
       border-radius: 5px;
       margin-right: 5px;

@@ -8,8 +8,24 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 
   div {
+    width: 310px;
+    border-radius: 8px;
+    background-color: var(--gray);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
     h3 {
       width: 100%;
       height: 50px;
@@ -32,25 +48,21 @@ export const Container = styled.div`
         height: 30px;
         background-color: var(--red);
         margin-right: 5px;
+        margin-bottom: 0;
       }
     }
 
-    Input {
-      background: var(--gray);
+    input {
+      background: var(--white);
       border-radius: 8px;
+      width: 90%;
+      height: 90%;
     }
 
-    Button {
+    button {
       margin-bottom: 10px;
       color: var(--white);
+      width: 80%;
     }
-
-    width: 350px;
-    border-radius: 8px;
-    background-color: var(--white);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
   }
 `;
