@@ -36,9 +36,6 @@ body {
 
     background-image: url(${img});
     background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
 }
 ol, ul {
     list-style: none;
