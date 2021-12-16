@@ -33,8 +33,6 @@ const ModalEditGoals = ({
 
   const onSubmitFunction = (data) => {
     data.how_much_achieved = 0;
-    console.log("current", currentGoal);
-    console.log("atual", data);
 
     updateGoalsGroup(currentGoal.id, data)
       .then((_) => {

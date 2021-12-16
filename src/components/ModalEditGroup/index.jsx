@@ -27,8 +27,6 @@ const ModalEditGroup = ({
   } = useForm({ resolver: yupResolver(formSchema) });
 
   const onSubmitFunction = (data) => {
-    console.log("groupId", groupId);
-    console.log("data", data);
     setModalEditGroup(false);
     updateGroup(groupId, data);
     updateActivitiesGoals();

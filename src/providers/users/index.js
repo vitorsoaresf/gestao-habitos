@@ -1,8 +1,7 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 import api from "../../services/api";
 import { toast } from "react-hot-toast";
 import jwt_decode from "jwt-decode";
-import { AuthenticatedContext } from "../authenticated";
 
 export const UserContext = createContext();
 
@@ -32,9 +31,6 @@ export const UserProvider = ({ children }) => {
   const getAllUsers = () => {
     api
       .get("/users/")
-      .then((response) => {
-        console.log(response.results);
-      })
       .catch((err) => console.log(err));
   };
 

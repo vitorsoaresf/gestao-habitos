@@ -39,7 +39,6 @@ export const Container = styled.div`
         background: transparent;
         outline: none;
         border: none;
-        margin: 0 8px;
       }
 
       span {
@@ -62,10 +61,24 @@ export const ListBox = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   /* background: red; */
 
   ul {
     overflow-y: scroll;
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: transparent;
+      border-radius: 100px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--white);
+      border-radius: 100px;
+    }
+
     > li {
       background: white;
       width: 250px;

@@ -1,8 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import { Redirect, useParams } from "react-router-dom";
-
-import { AuthenticatedContext } from "../../providers/authenticated";
-// import Header from "../../components/Header";
 import CardGeneric from "../../components/CardGeneric";
 import { HabitsContext } from "../../providers/habits";
 import { GroupsContext } from "../../providers/groups";
@@ -88,8 +85,6 @@ const Dashboard = () => {
       {showAddGroupModal && (
         <ModalAddGroup setShowAddGroupModal={setShowAddGroupModal} />
       )}
-
-      {/* <Header /> */}
 
       <motion.div
         initial={{ y: 900 }}
