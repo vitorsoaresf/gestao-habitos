@@ -6,7 +6,7 @@ import HeaderInitial from "./components/HeaderInitial";
 const App = () => {
   return (
     <>
-      <HeaderInitial />
+      {/* <HeaderInitial /> */}
       <Toaster />
       <Routes />
       <GlobalStyle />

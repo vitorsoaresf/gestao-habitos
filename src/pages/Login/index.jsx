@@ -66,6 +66,7 @@ const Login = () => {
       exit={{ x: 0 }}
       transition={{ duration: 1 }}
     >
+      <HeaderInitial />
       <Container>
         <div>
           <img src={yoga} alt="Yoga svg" />

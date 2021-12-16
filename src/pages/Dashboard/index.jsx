@@ -12,7 +12,7 @@ import { motion } from "framer-motion";
 import ModalAddGroup from "../../components/ModalAddGroup";
 
 import { Container } from "./styles";
-
+import HeaderInitial from "../../components/HeaderInitial";
 const Dashboard = () => {
   const {
     getHabits,
@@ -74,6 +74,7 @@ const Dashboard = () => {
 
   return (
     <>
+      <HeaderInitial />
       {showAddModal && <ModalAdd setShowAddModal={setShowAddModal} />}
       {showDeleteModal && (
         <ModalDelete
