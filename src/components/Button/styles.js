@@ -9,4 +9,5 @@ export const Container = styled.button`
   border-radius: 8px;
   font-size: large;
   cursor: pointer;
+  font-family: "Itim", cursive;
 `;
