@@ -7,13 +7,12 @@ import {
 import { useContext, useEffect, useState } from "react";
 import { GroupsContext } from "../../providers/groups";
 import { Redirect, useHistory, useParams } from "react-router-dom";
-// import Header from "../../components/Header";
 import CardGroups from "../../components/CardGroups";
 import Button from "../../components/Button";
 import ModalLeave from "../../components/ModalLeave";
 import ModalEditGroup from "../../components/ModalEditGroup";
 import { motion } from "framer-motion";
-
+import HeaderInitial from "../../components/HeaderInitial";
 const DetailsGroup = () => {
   const { id: groupId } = useParams();
   const [update, setUpdate] = useState(false);
@@ -51,11 +50,9 @@ const DetailsGroup = () => {
   const updateActivitiesGoals = () => {
     setUpdate(!update);
   };
-
-  console.log(isParticipant);
   return isParticipant ? (
     <>
-      {/* <Header /> */}
+      <HeaderInitial />
       <motion.div
         initial={{ x: -900 }}
         animate={{ x: 0 }}
@@ -75,7 +72,9 @@ const DetailsGroup = () => {
           )}
 
           <ContainerTitle>
-            <h1>{dataGroup.name}</h1>
+            <h1>
+              <p>{dataGroup.name}</p>
+            </h1>
             <p>{dataGroup.description}</p>
           </ContainerTitle>
           <ContainerBody>
@@ -104,7 +103,7 @@ const DetailsGroup = () => {
     </>
   ) : (
     <>
-      {/* <Header /> */}
+      <HeaderInitial />
       <motion.div
         initial={{ x: -900 }}
         animate={{ x: 0 }}

@@ -26,7 +26,6 @@ export const GroupsProvider = ({ children }) => {
 
   const getFilteredGroups = (filter) => {
     if (filter) {
-      console.log("filter: " + filter);
       api
         .get(`/groups/?search=${filter}`)
         .then((response) => {
@@ -95,7 +94,6 @@ export const GroupsProvider = ({ children }) => {
   };
 
   const createGoalsGroup = (groupId, data) => {
-    console.log("provider", data);
     api
       .post(`/goals/`, data, {
         headers: { Authorization: `Bearer ${token}` },
@@ -199,7 +197,6 @@ export const GroupsProvider = ({ children }) => {
   };
 
   const updateGroup = (groupId, data) => {
-    console.log(data);
     api
       .patch(`/groups/${groupId}/`, data, {
         headers: { Authorization: `Bearer ${token}` },
@@ -253,6 +250,8 @@ export const GroupsProvider = ({ children }) => {
         getGroupsUser,
         getGroupAllParticipants,
         getGoalsGroup,
+        deleteGoalsGroup,
+        deleteActivitiesGroup,
         createGoalsGroup,
         updateGoalsGroup,
         getActivitiesGroup,

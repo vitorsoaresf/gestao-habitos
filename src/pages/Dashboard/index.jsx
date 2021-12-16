@@ -1,8 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import { Redirect, useParams } from "react-router-dom";
-
-import { AuthenticatedContext } from "../../providers/authenticated";
-// import Header from "../../components/Header";
 import CardGeneric from "../../components/CardGeneric";
 import { HabitsContext } from "../../providers/habits";
 import { GroupsContext } from "../../providers/groups";
@@ -12,7 +9,7 @@ import { motion } from "framer-motion";
 import ModalAddGroup from "../../components/ModalAddGroup";
 
 import { Container } from "./styles";
-
+import HeaderInitial from "../../components/HeaderInitial";
 const Dashboard = () => {
   const {
     getHabits,
@@ -74,6 +71,7 @@ const Dashboard = () => {
 
   return (
     <>
+      <HeaderInitial />
       {showAddModal && <ModalAdd setShowAddModal={setShowAddModal} />}
       {showDeleteModal && (
         <ModalDelete
@@ -87,8 +85,6 @@ const Dashboard = () => {
       {showAddGroupModal && (
         <ModalAddGroup setShowAddGroupModal={setShowAddGroupModal} />
       )}
-
-      {/* <Header /> */}
 
       <motion.div
         initial={{ y: 900 }}

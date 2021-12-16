@@ -1,13 +1,11 @@
 import { Redirect } from "react-router-dom";
 import { Container } from "./styles";
-// import Header from "../../components/Header";
 import CardGeneric from "../../components/CardGeneric";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { GroupsContext } from "../../providers/groups";
 import { useHistory } from "react-router";
-import Loading from "../../components/Loading";
 import { motion } from "framer-motion";
-
+import HeaderInitial from "../../components/HeaderInitial";
 const Groups = () => {
   const history = useHistory();
 
@@ -26,7 +24,7 @@ const Groups = () => {
   };
   return (
     <Container>
-      {/* <Header /> */}
+      <HeaderInitial />
       <motion.div
         initial={{ x: 1000 }}
         animate={{ x: 0 }}

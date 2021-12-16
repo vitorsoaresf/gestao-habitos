@@ -1,47 +1,90 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-
-  header {
-    background: var(--darkGreen);
+    background-color: var(--darkGreen);
+    width: 100%;
+    height: 80px;
     display: flex;
     justify-content: center;
-    height: 70px;
-    align-items: center;
 
-    > div {
-      width: 100%;
-      height: 50px;
+    header {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 1000px;
-
-      section {
-        > a {
-          text-decoration: none;
-          margin-left: 15px;
-          font-size: 24px;
-          color: var(--white);
-          cursor: pointer;
-          padding: 5px 0;
-
-          :hover {
-            border-bottom: 1px solid var(--white);
-          }
-
-          :focus {
-            border-bottom: 1px solid var(--white);
-          }
-        }
-        a + a + a {
-          margin-right: 10px;
-        }
-      }
+      width: 100%;
+      max-width: 1200px;
     }
+`;
+export const RightSide = styled.div`
+  flex: 50%;
+  background-color: var(--darkGreen);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  button {
+    display: none;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--green);
+    }
+  }
+
+  #hidden {
+    display: flex;
+  }
+
+  @media (max-width: 768px) {
+    button {
+      display: flex;
+      background: none;
+      border: none;
+      font-size: 35px;
+      color: var(--white);
+    }
+
+    #hidden {
+      position: absolute;
+      left: 0px;
+      top: 80px;
+      max-height: 230px;
+      width: 100%;
+      background-color: var(--darkGreen);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+`;
+export const LeftSide = styled.div`
+  flex: 50%;
+  background-color: var(--darkGreen);
+  display: flex;
+  justify-content: left;
+  padding-right: 25px;
+  align-items: center;
+`;
+export const Links = styled.div`
+  max-height: 80px;
+  display: flex;
+
+  a {
+    text-decoration: none;
+    color: var(--white);
+
+    &:hover {
+      color: var(--green);
+    }
+  }
+  p {
+    font-size: 1.3rem;
+    padding: 15px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 
@@ -50,12 +93,18 @@ export const LogoBox = styled.div`
   align-items: center;
   cursor: pointer;
 
+  :hover {
+    p {
+      display: block;
+    }
+  }
   > div {
     background: var(--white);
     width: 40px;
     margin-left: 12px;
     border-radius: 100%;
     padding: 5px;
+    z-index: 1;
 
     img {
       width: 41px;
@@ -63,25 +112,21 @@ export const LogoBox = styled.div`
   }
 
   p {
+    display: none;
     margin-left: 8px;
     font-size: 24px;
     color: var(--white);
-  }
-`;
-
-export const TitleBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-
-  h1 {
-    font-size: 64px;
+    animation-name: titleMotion;
+    animation-duration: 1s;
+    z-index: 0;
   }
 
-  p {
-    font-size: 25px;
-    text-align: center;
-    margin: 25px 10px 0 10px;
+  @keyframes titleMotion {
+    from {
+      margin-left: -50px;
+    }
+    to {
+      margin-left: 8px;
+    }
   }
 `;

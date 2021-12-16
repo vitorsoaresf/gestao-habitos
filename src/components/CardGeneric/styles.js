@@ -10,13 +10,16 @@ export const Container = styled.div`
   border-radius: 10px;
   width: 280px;
   height: 540px;
+
   @media (min-width: 1400px) {
     width: 380px;
   }
+
   h2 {
     font-size: 45px;
     margin: 16px 0;
   }
+
   div {
     display: flex;
     flex-direction: row;
@@ -27,11 +30,13 @@ export const Container = styled.div`
     border-radius: 10px;
     width: 250px;
     width: 90%;
+
     div {
       background: white;
       display: flex;
       width: 100%;
       margin: 0;
+
       input {
         height: 42px;
         background: transparent;
@@ -40,12 +45,14 @@ export const Container = styled.div`
         margin: 0 8px;
         width: 90%;
       }
+
       span {
         background: transparent;
         color: var(--darkGreen);
         padding-right: 6px;
       }
     }
+
     button {
       height: 42px;
       width: 42px;
@@ -60,7 +67,6 @@ export const ListBox = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* padding-right: 4px; */
 
   ul {
     overflow-y: scroll;
