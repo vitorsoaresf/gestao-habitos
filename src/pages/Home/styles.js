@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   > div {
     display: flex;
@@ -64,6 +65,8 @@ export const ButtonBox = styled.section`
   > Button {
     margin: 8px;
     width: 200px;
+    font-family: "Oswald", sans-serif;
+    letter-spacing: 2px;
   }
 
   @media (min-width: 768px) {
@@ -100,15 +103,92 @@ export const TitleBox = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  max-width: 425px;
 
   h1 {
     font-size: 64px;
+    color: var(--darkGreen);
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
   }
 
-  p {
+  .p1 {
     font-size: 25px;
     text-align: center;
     margin: 25px 10px 0 10px;
+    font-family: "Oswald", sans-serif;
+    line-height: 35px;
+    color: var(--darkGray);
+    font-weight: 400;
+    text-align: center;
+
+    strong {
+      color: var(--purple-0);
+      font-family: "Lobster Two", cursive;
+      font-size: 2rem;
+    }
+
+    i {
+      color: var(--darkGreen);
+      font-style: italic;
+    }
+  }
+
+  .p2 {
+    font-size: 20px;
+    margin: 25px 10px 0 10px;
+    font-family: "Oswald", sans-serif;
+    line-height: 35px;
+    color: var(--darkGray);
+    font-weight: 400;
+    text-align: center;
+
+    strong {
+      color: var(--purple-0);
+      font-size: 2rem;
+    }
+  }
+
+  .p3 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px 0;
+
+    p {
+      color: var(--purple-0);
+      font-family: "Lobster Two", cursive;
+      font-size: 3rem;
+    }
+    img {
+      width: 50px;
+      height: 50px;
+      margin-left: 10px;
+      opacity: 0.5;
+      /* position: absolute; */
+    }
+  }
+
+  @media (min-width: 768px) {
+    h1 {
+      text-align: right;
+      margin-right: 10px;
+    }
+
+    .p1 {
+      text-align: right;
+    }
+
+    .p2 {
+      text-align: right;
+    }
+
+    .p3 {
+      text-align: left;
+    }
   }
 `;
 

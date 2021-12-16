@@ -1,7 +1,7 @@
 import { Redirect, useHistory } from "react-router";
 import { BsLinkedin } from "react-icons/bs";
 import { motion } from "framer-motion";
-
+import Logo from "../../assets/anima-logo.png";
 import Button from "../../components/Button";
 import AboutUs from "../../components/AboutUs";
 import love from "../../assets/Svg/love_svg.svg";
@@ -42,10 +42,22 @@ const Home = () => {
               <div>
                 <TitleBox>
                   <h1>Anima</h1>
-                  <p>
-                    A great way to manage your habits and connect you with
-                    people who share the same habits.
+                  <p className="p1">
+                    The <strong>Anima</strong> platform is a great way to manage
+                    your <i>habits</i> and connect you with people who share the
+                    same habits.
                   </p>
+                  <p className="p2">
+                    In this sense, our <strong>objective</strong> is to enable
+                    people, bonds with those who are far away, but who are
+                    united by exercising and searching for new habits.
+                  </p>
+
+                  <div className="p3">
+                    <p>Welcome</p>
+                    <sup></sup>
+                    <img src={Logo} alt="project Logo" />{" "}
+                  </div>
                 </TitleBox>
                 <ButtonBox>
                   <Button onClick={() => history.push("/login")}>Login</Button>

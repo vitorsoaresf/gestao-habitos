@@ -51,6 +51,8 @@ export const Container = styled.div`
         button {
           margin: 10px 0 10px 0;
           color: var(--white);
+          font-family: "Itim", cursive;
+          letter-spacing: 2px;
         }
 
         a {

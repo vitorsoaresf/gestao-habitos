@@ -13,6 +13,9 @@ export const Container = styled.section`
   margin: 10px 0;
 
   input {
+    /* font-family: "Oswald", sans-serif; */
+    font-family: "Itim", cursive;
+    /* letter-spacing: 1px; */
     background: transparent;
     outline: none;
     border: none;

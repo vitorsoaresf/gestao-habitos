@@ -36,6 +36,8 @@ body {
 
     background-image: url(${img});
     background-size: cover;
+
+    
 }
 ol, ul {
     list-style: none;
