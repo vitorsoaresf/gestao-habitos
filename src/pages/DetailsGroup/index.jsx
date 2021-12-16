@@ -13,7 +13,7 @@ import Button from "../../components/Button";
 import ModalLeave from "../../components/ModalLeave";
 import ModalEditGroup from "../../components/ModalEditGroup";
 import { motion } from "framer-motion";
-
+import HeaderInitial from "../../components/HeaderInitial";
 const DetailsGroup = () => {
   const { id: groupId } = useParams();
   const [update, setUpdate] = useState(false);
@@ -55,6 +55,7 @@ const DetailsGroup = () => {
   console.log(isParticipant);
   return isParticipant ? (
     <>
+      <HeaderInitial />
       {/* <Header /> */}
       <motion.div
         initial={{ x: -900 }}
@@ -104,6 +105,7 @@ const DetailsGroup = () => {
     </>
   ) : (
     <>
+      <HeaderInitial />
       {/* <Header /> */}
       <motion.div
         initial={{ x: -900 }}

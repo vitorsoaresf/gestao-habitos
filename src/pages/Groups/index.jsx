@@ -7,7 +7,7 @@ import { GroupsContext } from "../../providers/groups";
 import { useHistory } from "react-router";
 import Loading from "../../components/Loading";
 import { motion } from "framer-motion";
-
+import HeaderInitial from "../../components/HeaderInitial";
 const Groups = () => {
   const history = useHistory();
 
@@ -26,6 +26,7 @@ const Groups = () => {
   };
   return (
     <Container>
+      <HeaderInitial />
       {/* <Header /> */}
       <motion.div
         initial={{ x: 1000 }}

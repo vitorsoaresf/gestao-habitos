@@ -75,6 +75,7 @@ const Register = () => {
       exit={{ x: 0 }}
       transition={{ duration: 1 }}
     >
+      <HeaderInitial />
       <Container>
         <div>
           <img src={SignUp} alt="Signup svg" />

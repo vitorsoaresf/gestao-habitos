@@ -36,6 +36,7 @@ const Home = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
     >
+      <HeaderInitial />
       <Container>
         <div>
           <img src={love} alt="svg balao" />
