@@ -18,56 +18,58 @@ const NavBar = () => {
 
   return (
     <Container>
-      <LeftSide>
-        <LogoBox onClick={() => history.push("/")}>
-          <div>
-            <img src={Logo} alt="project Logo" />
-          </div>
-          <p>Anima</p>
-        </LogoBox>
-      </LeftSide>
-      <RightSide>
-        <Links
-          id={showLinks ? "hidden" : ""}
-          onClick={() => setShowLinks(false)}
-        >
-          {authenticated ? (
-            <>
-              <p>
-                <Link to={"/"}>Dashboard</Link>
-              </p>
-              <p>
-                <Link to={"/groups"}>Groups</Link>
-              </p>
-              <p>
-                <Link
-                  to={"/"}
-                  onClick={() => {
-                    localStorage.clear();
-                  }}
-                >
-                  Logout
-                </Link>
-              </p>
-            </>
-          ) : (
-            <>
-              <p>
-                <Link to={"/"}>Home</Link>
-              </p>
-              <p>
-                <Link to={"/login"}>Login</Link>
-              </p>
-              <p>
-                <Link to={"/register"}>Register</Link>
-              </p>
-            </>
-          )}
-        </Links>
-        <button>
-          <BsList onClick={() => setShowLinks(!showLinks)} />
-        </button>
-      </RightSide>
+      <header>
+        <LeftSide>
+          <LogoBox onClick={() => history.push("/")}>
+            <div>
+              <img src={Logo} alt="project Logo" />
+            </div>
+            <p>Anima</p>
+          </LogoBox>
+        </LeftSide>
+        <RightSide>
+          <Links
+            id={showLinks ? "hidden" : ""}
+            onClick={() => setShowLinks(false)}
+          >
+            {authenticated ? (
+              <>
+                <p>
+                  <Link to={"/"}>Dashboard</Link>
+                </p>
+                <p>
+                  <Link to={"/groups"}>Groups</Link>
+                </p>
+                <p>
+                  <Link
+                    to={"/"}
+                    onClick={() => {
+                      localStorage.clear();
+                    }}
+                  >
+                    Logout
+                  </Link>
+                </p>
+              </>
+            ) : (
+              <>
+                <p>
+                  <Link to={"/"}>Home</Link>
+                </p>
+                <p>
+                  <Link to={"/login"}>Login</Link>
+                </p>
+                <p>
+                  <Link to={"/register"}>Register</Link>
+                </p>
+              </>
+            )}
+          </Links>
+          <button>
+            <BsList onClick={() => setShowLinks(!showLinks)} />
+          </button>
+        </RightSide>
+      </header>
     </Container>
   );
 };
