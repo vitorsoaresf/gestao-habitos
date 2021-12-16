@@ -33,10 +33,10 @@ const Dashboard = () => {
 
   const [showAddGroupModal, setShowAddGroupModal] = useState(false);
 
-  const searchHabitFunction = (pesq) => {
-    if (pesq) {
+  const searchHabitFunction = (search) => {
+    if (search) {
       const searchHabit = allHabits.filter((element) =>
-        element.title.toLowerCase().includes(pesq.toLowerCase())
+        element.title.toLowerCase().includes(search.toLowerCase())
       );
       setAllHabits(searchHabit);
     } else {
@@ -44,10 +44,10 @@ const Dashboard = () => {
     }
   };
 
-  const searchMyGroupsFunction = (pesq) => {
-    if (pesq) {
+  const searchMyGroupsFunction = (search) => {
+    if (search) {
       const searchMyGroups = myGroups.filter((element) =>
-        element.name.toLowerCase().includes(pesq.toLowerCase())
+        element.name.toLowerCase().includes(search.toLowerCase())
       );
       setMyGroups(searchMyGroups);
     } else {
