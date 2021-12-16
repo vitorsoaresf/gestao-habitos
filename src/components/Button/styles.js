@@ -10,4 +10,10 @@ export const Container = styled.button`
   font-size: large;
   cursor: pointer;
   font-family: "Itim", cursive;
+  transition: background-color 1s;
+
+  :hover {
+    background-color: var(--purple-0);
+    color: var(--white);
+  }
 `;
