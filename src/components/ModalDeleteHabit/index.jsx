@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Button from "../Button";
 
-import { Container } from "./styles";
+import { Container, ButtonBox } from "./styles";
 
 const ModalDelete = ({
   deleteClick,
@@ -31,24 +31,27 @@ const ModalDelete = ({
             <p>Habit - {currentHabit.title} </p>
             <Button onClick={() => setShowEditModal(false)}>x</Button>
           </h3>
-          <p>Do you really want to delete this habit?</p>
-          <Button
-            onClick={() => {
-              updateClick(habitUpdateData, currentHabit.id);
-              setShowEditModal(false);
-            }}
-          >
-            {currentHabit.achieved ? <p>Undone</p> : <p>Done</p>}
-          </Button>
-          <Button
-            onClick={() => {
-              deleteClick(currentHabit.id);
-              setShowEditModal(false);
-              getHabits(JSON.parse(localStorage.getItem("@Anima/token")));
-            }}
-          >
-            Delete
-          </Button>
+          <p>You can Edit or Delete this habit</p>
+
+          <ButtonBox>
+            <Button
+              onClick={() => {
+                updateClick(habitUpdateData, currentHabit.id);
+                setShowEditModal(false);
+              }}
+            >
+              {currentHabit.achieved ? <p>Undone</p> : <p>Done</p>}
+            </Button>
+            <Button
+              onClick={() => {
+                deleteClick(currentHabit.id);
+                setShowEditModal(false);
+                getHabits(JSON.parse(localStorage.getItem("@Anima/token")));
+              }}
+            >
+              Delete
+            </Button>
+          </ButtonBox>
         </div>
       </motion.div>
     </Container>

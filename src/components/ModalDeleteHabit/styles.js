@@ -11,6 +11,15 @@ export const Container = styled.div`
   top: 0;
 
   div {
+    width: 310px;
+    height: 200px;
+    border-radius: 8px;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
     h3 {
       width: 100%;
       height: 50px;
@@ -39,18 +48,15 @@ export const Container = styled.div`
       font-size: 1.5rem;
       text-align: center;
     }
+`;
 
-    button {
-      margin-bottom: 10px;
-    }
+export const ButtonBox = styled.section`
+  width: 100%;
 
-    width: 310px;
-    height: 300px;
-    border-radius: 8px;
-    background-color: var(--white);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+
+  button {
+    margin-bottom: 10px;
   }
 `;
