@@ -7,12 +7,11 @@ import { AuthenticatedContext } from "../../providers/authenticated";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import yoga from "../../assets/Svg/yoga.svg";
-import { Container, LogoBox } from "./styles";
+import { Container } from "./styles";
 import api from "../../services/api";
 import { toast } from "react-hot-toast";
 import { motion } from "framer-motion";
 import { FaUserAlt, FaLock } from "react-icons/all";
-import Logo from "../../assets/anima-logo.png";
 import HeaderInitial from "../../components/HeaderInitial";
 
 const Login = () => {

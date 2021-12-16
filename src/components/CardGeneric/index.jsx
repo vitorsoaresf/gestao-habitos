@@ -2,7 +2,6 @@ import { Container, ListBox } from "./styles";
 import { BsSearch } from "react-icons/bs";
 import { useHistory } from "react-router";
 import Button from "../Button";
-import Loading from "../Loading";
 import { useState } from "react";
 
 const CardGeneric = ({

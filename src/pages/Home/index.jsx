@@ -3,19 +3,16 @@ import { BsLinkedin } from "react-icons/bs";
 import { motion } from "framer-motion";
 
 import Button from "../../components/Button";
-import Logo from "../../assets/anima-logo.png";
 import AboutUs from "../../components/AboutUs";
 import love from "../../assets/Svg/love_svg.svg";
 import {
   Container,
   TitleBox,
-  LogoBox,
   AboutUsBox,
   PicBox,
   NameBox,
   ButtonBox,
 } from "./styles";
-import { Link } from "react-router-dom";
 import HeaderInitial from "../../components/HeaderInitial";
 
 const Home = () => {

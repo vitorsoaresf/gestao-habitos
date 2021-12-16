@@ -1,10 +1,8 @@
 import Logo from "../../assets/anima-logo.png";
 import { BsList } from "react-icons/bs";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { AuthenticatedContext } from "../../providers/authenticated";
 import { Container, LeftSide, RightSide, Links, LogoBox } from "./styles";
-import { useParams } from "react-router-dom";
 
 const NavBar = () => {
   const history = useHistory();

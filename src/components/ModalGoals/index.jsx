@@ -27,7 +27,6 @@ const ModalGoals = ({ groupId, setModalGoals, updateActivitiesGoals }) => {
     data.group = groupId;
     data.how_much_achieved = 0;
     data.achieved = false;
-    console.log(data);
 
     setModalGoals(false);
     createGoalsGroup(groupId, data);
