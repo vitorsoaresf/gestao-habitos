@@ -94,6 +94,12 @@ export const ListBox = styled.section`
       border-radius: 8px;
       margin: 10px 12px 0px 0px;
 
+      section {
+        width: 28px;
+        padding: 2px;
+        color: green;
+      }
+
       h3 {
         font-size: 15px;
         font-weight: 550;
@@ -102,7 +108,6 @@ export const ListBox = styled.section`
         overflow: hidden;
         display: flex;
         align-items: center;
-        margin-left: 8px;
       }
 
       > div {
