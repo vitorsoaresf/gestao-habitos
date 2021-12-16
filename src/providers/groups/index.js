@@ -18,8 +18,10 @@ export const GroupsProvider = ({ children }) => {
     api
       .get(next)
       .then((response) => {
-        setGroups([...groups, ...response.data.results]);
-        next && setNext(response.data.next);
+        if (next) {
+          setGroups([...groups, ...response.data.results]);
+          setNext(response.data.next);
+        }
       })
       .catch((err) => console.log(err));
   }, [next]);

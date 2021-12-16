@@ -50,6 +50,7 @@ const DetailsGroup = () => {
   const updateActivitiesGoals = () => {
     setUpdate(!update);
   };
+
   return isParticipant ? (
     <>
       <HeaderInitial />
