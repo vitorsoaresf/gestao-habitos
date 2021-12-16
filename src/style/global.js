@@ -57,6 +57,7 @@ table {
     --darkGray: #718093;
     --gray: #dcdde1;
     --purple: #9C5DB3;
+    --purple-0: #6c5ce7;
     --white: #fff;
     --red: #c44e4e;
 }
