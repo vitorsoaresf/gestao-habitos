@@ -12,10 +12,6 @@ import { motion } from "framer-motion";
 import { Container } from "./styles";
 import { FaUserAlt, FaLock, MdEmail } from "react-icons/all";
 import HeaderInitial from "../../components/HeaderInitial";
-<<<<<<< HEAD
-=======
-
->>>>>>> a66f5dd45cd3fe914b3d0dfe5efda527e2325b38
 const Register = () => {
   const { registerUser } = useContext(UserContext);
   const history = useHistory();
