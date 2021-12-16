@@ -3,15 +3,15 @@ import { BsSearch } from "react-icons/bs";
 import { useHistory } from "react-router";
 import Button from "../Button";
 import { useState } from "react";
+import { BsFillCheckCircleFill } from "react-icons/bs";
 
 const CardGeneric = ({
   title,
   cardType,
   updateClick,
   list,
-  habitUptadeData,
   setCurrentHabit,
-  setShowDeleteModal,
+  setShowEditModal,
   setShowAddModal,
   searchFunction,
 }) => {
@@ -44,24 +44,20 @@ const CardGeneric = ({
       <ListBox>
         <ul>
           {cardType === "habit" && list
-            ? list.map((habit, index) => (
+            ? list.map((element, index) => (
                 <li key={index}>
-                  <h3> {habit.title}</h3>
+                  <section>
+                    {element.achieved && <BsFillCheckCircleFill />}
+                  </section>
+                  <h3> {element.title}</h3>
                   <div>
                     <Button
                       onClick={() => {
-                        updateClick(habitUptadeData, habit.id);
+                        setCurrentHabit(element);
+                        setShowEditModal(true);
                       }}
                     >
-                      Done
-                    </Button>
-                    <Button
-                      onClick={() => {
-                        setCurrentHabit(habit);
-                        setShowDeleteModal(true);
-                      }}
-                    >
-                      Delete
+                      Edit
                     </Button>
                   </div>
                 </li>

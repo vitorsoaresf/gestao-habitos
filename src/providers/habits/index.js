@@ -39,6 +39,7 @@ export const HabitsProvider = ({ children }) => {
       //Adicionar toast no .then
       .then((response) => {
         console.log(response);
+        getHabits(token);
       })
       .catch((err) => console.log(err));
   };

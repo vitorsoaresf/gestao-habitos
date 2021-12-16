@@ -27,7 +27,7 @@ const Dashboard = () => {
 
   const [currentHabit, setCurrentHabit] = useState([]);
 
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   const [showAddModal, setShowAddModal] = useState(false);
 
@@ -64,21 +64,17 @@ const Dashboard = () => {
     return <Redirect to="/" />;
   }
 
-  const habitUptadeData = {
-    achieved: true,
-    how_much_achieved: 100,
-  };
-
   return (
     <>
       <HeaderInitial />
       {showAddModal && <ModalAdd setShowAddModal={setShowAddModal} />}
-      {showDeleteModal && (
+      {showEditModal && (
         <ModalDelete
           getHabits={getHabits}
-          setShowDeleteModal={setShowDeleteModal}
+          setShowEditModal={setShowEditModal}
           currentHabit={currentHabit}
-          deleteClick={() => deleteHabit(currentHabit.id)}
+          updateClick={updateHabit}
+          deleteClick={deleteHabit}
         />
       )}
 
@@ -98,10 +94,8 @@ const Dashboard = () => {
               title={"My Habits"}
               cardType={"habit"}
               list={allHabits}
-              updateClick={updateHabit}
-              habitUptadeData={habitUptadeData}
               setCurrentHabit={setCurrentHabit}
-              setShowDeleteModal={setShowDeleteModal}
+              setShowEditModal={setShowEditModal}
               setShowAddModal={setShowAddModal}
               addClick={createHabit}
               searchFunction={searchHabitFunction}
