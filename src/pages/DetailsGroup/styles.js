@@ -6,6 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #a59de8;
+  height: 100vh;
 `;
 
 export const ContainerTitle = styled.section`

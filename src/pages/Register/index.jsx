@@ -12,7 +12,7 @@ import SignUp from "../../assets/Svg/signUp.svg";
 import { motion } from "framer-motion";
 import { Container } from "./styles";
 import { FaUserAlt, FaLock, MdEmail } from "react-icons/all";
-
+import HeaderInitial from "../../components/HeaderInitial";
 const Register = () => {
   const { registerUser } = useContext(UserContext);
   const history = useHistory();
