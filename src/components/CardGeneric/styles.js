@@ -112,7 +112,7 @@ export const ListBox = styled.section`
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
-        width: 155px;
+        width: 145px;
         height: 100%;
         display: flex;
         align-items: center;
@@ -123,10 +123,15 @@ export const ListBox = styled.section`
       }
 
       > Button {
+        background: var(--lightGreen);
         width: 70px;
         font-size: 15px;
         height: 20px;
         margin-right: 4px;
+
+        :hover {
+          background: var(--purple-0);
+        }
       }
     }
 
@@ -139,7 +144,7 @@ export const ListBox = styled.section`
       border-radius: 8px;
       margin: 10px 12px 0px 0px;
       transition: 0.4s;
-      width: 240px;
+      width: 95%;
 
       > div {
         width: 100%;
@@ -186,6 +191,7 @@ export const ListBox = styled.section`
             align-items: center;
 
             > Button {
+              background: var(--lightGreen);
               width: 50px;
               font-size: 15px;
               height: 20px;
