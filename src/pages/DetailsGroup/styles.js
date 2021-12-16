@@ -36,7 +36,14 @@ export const ContainerBody = styled.section`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
+  max-width: 1024px;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-around;
+  }
 `;
 
 export const ContainerButton = styled.div`
@@ -50,5 +57,6 @@ export const ContainerButton = styled.div`
     background-color: var(--darkGreen);
     color: var(--white);
     margin-left: 5px;
+    margin-bottom: 50px;
   }
 `;

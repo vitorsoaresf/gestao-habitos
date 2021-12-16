@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  overflow: hidden;
   width: 310px;
+  max-height: 540px;
   display: flex;
   flex-direction: column;
   align-items: center; 
@@ -43,13 +45,27 @@ export const ContainerUl = styled.ul`
   padding-top: 20px;
   padding-bottom: 10px;
 
+  overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 100px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--white);
+    border-radius: 100px;
+  }
+
   li {
     width: 90%;
+    min-height: 50px;
     height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
     background-color: #ecf0f1;
     border-radius: 5px;
     font-size: 1.2rem;
@@ -57,6 +73,7 @@ export const ContainerUl = styled.ul`
     font-weight: 600;
     font-family: "Itim", cursive;
     letter-spacing: 2px;
+    margin: 10px 12px 0px 0px;
 
     button {
       width: 50px;
@@ -68,8 +85,26 @@ export const ContainerUl = styled.ul`
     }
 
     p {
+      display: flex;
       width: 200px;
+      /* max-width: 200px; */
+      flex-wrap: wrap;
       margin-left: 5px;
+      /* overflow: hidden; */
+
+      overflow-x: scroll;
+
+      ::-webkit-scrollbar {
+        width: 0px;
+      }
+      ::-webkit-scrollbar-track {
+        background-color: transparent;
+        border-radius: 100px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: var(--purple-0);
+        border-radius: 100px;
+      }
     }
   }
 `;
