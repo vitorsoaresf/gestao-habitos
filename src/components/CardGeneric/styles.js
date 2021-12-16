@@ -7,38 +7,31 @@ export const Container = styled.div`
   justify-content: flex-start;
   background: var(--green);
   align-items: center;
-
   border-radius: 10px;
   width: 280px;
   height: 540px;
-
   @media (min-width: 1400px) {
     width: 380px;
   }
-
   h2 {
     font-size: 45px;
     margin: 16px 0;
   }
-
   div {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-
     height: 42px;
     margin: 16px auto;
     border-radius: 10px;
     width: 250px;
     width: 90%;
-
     div {
       background: white;
       display: flex;
       width: 100%;
       margin: 0;
-
       input {
         height: 42px;
         background: transparent;
@@ -47,14 +40,12 @@ export const Container = styled.div`
         margin: 0 8px;
         width: 90%;
       }
-
       span {
         background: transparent;
         color: var(--darkGreen);
         padding-right: 6px;
       }
     }
-
     button {
       height: 42px;
       width: 42px;
@@ -69,9 +60,23 @@ export const ListBox = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* padding-right: 4px; */
 
   ul {
     overflow-y: scroll;
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: transparent;
+      border-radius: 100px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--white);
+      border-radius: 100px;
+    }
+
     width: 90%;
 
     > li {
@@ -81,7 +86,7 @@ export const ListBox = styled.section`
       align-items: center;
       justify-content: space-between;
       border-radius: 8px;
-      margin-top: 10px;
+      margin: 10px 12px 0px 0px;
 
       h3 {
         font-size: 15px;
@@ -103,6 +108,7 @@ export const ListBox = styled.section`
         margin-right: 3px;
         max-width: 80px;
       }
+
       Button {
         width: 80px;
         font-size: 15px;
