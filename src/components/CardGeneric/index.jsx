@@ -46,10 +46,21 @@ const CardGeneric = ({
           {cardType === "habit" && list
             ? list.map((element, index) => (
                 <li key={index}>
-                  <section>
+
+                <section>
                     {element.achieved && <BsFillCheckCircleFill />}
                   </section>
-                  <h3> {element.title}</h3>
+                  <h3>
+                    {element.title}
+                    <span>
+                      <p>Category: {element.category}</p>
+                      <p>Difficulty: {element.difficulty}</p>
+                      <p>Frequency: {element.frequency}</p>
+                    </span>
+                  </h3>
+
+
+                  
                   <div>
                     <Button
                       onClick={() => {

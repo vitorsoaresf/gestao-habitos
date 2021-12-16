@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import img from "../assets/background2.jpg";
+import img from "../assets/background.jpg";
 
 const GlobalStyle = createGlobalStyle`
 //----------------------reset css------------------//
@@ -36,8 +36,6 @@ body {
 
     background-image: url(${img});
     background-size: cover;
-
-    
 }
 ol, ul {
     list-style: none;
