@@ -74,7 +74,7 @@ export const Links = styled.div`
     padding: 15px;
 
     &:hover {
-      text-decoration: underline;
+      border-bottom: solid 1px white;
     }
   }
   @media (max-width: 768px) {
