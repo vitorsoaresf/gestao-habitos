@@ -3,6 +3,8 @@ import {
   ContainerBody,
   ContainerTitle,
   ContainerButton,
+  ContainerTitleNotParticipant,
+  ContainerBodyNotParticipant,
 } from "./styles";
 import { useContext, useEffect, useState } from "react";
 import { GroupsContext } from "../../providers/groups";
@@ -13,6 +15,7 @@ import ModalLeave from "../../components/ModalLeave";
 import ModalEditGroup from "../../components/ModalEditGroup";
 import { motion } from "framer-motion";
 import HeaderInitial from "../../components/HeaderInitial";
+
 const DetailsGroup = () => {
   const { id: groupId } = useParams();
   const [update, setUpdate] = useState(false);
@@ -126,11 +129,13 @@ const DetailsGroup = () => {
         transition={{ duration: 1 }}
       >
         <Container>
-          <ContainerTitle>
-            <h1>{dataGroup.name}</h1>
+          <ContainerTitleNotParticipant>
+            <h1>
+              <p>{dataGroup.name}</p>
+            </h1>
             <p>{dataGroup.description}</p>
-          </ContainerTitle>
-          <ContainerBody>
+          </ContainerTitleNotParticipant>
+          <ContainerBodyNotParticipant>
             <CardGroups title="participants" list={groupParticipants} />
             <ContainerButton>
               <Button
@@ -159,7 +164,7 @@ const DetailsGroup = () => {
                 </Button>
               )}
             </ContainerButton>
-          </ContainerBody>
+          </ContainerBodyNotParticipant>
         </Container>
       </motion.div>
     </>
