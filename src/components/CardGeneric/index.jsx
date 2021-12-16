@@ -45,61 +45,61 @@ const CardGeneric = ({
         <ul>
           {cardType === "habit" && list
             ? list.map((element, index) => (
-                <li key={index}>
-
-                <section>
-                    {element.achieved && <BsFillCheckCircleFill />}
-                  </section>
-                  <h3>
-                    {element.title}
-                    <span>
-                      <p>Category: {element.category}</p>
-                      <p>Difficulty: {element.difficulty}</p>
-                      <p>Frequency: {element.frequency}</p>
-                    </span>
-                  </h3>
-
-
-                  
+                <li className="habitLi" key={index}>
                   <div>
-                    <Button
-                      onClick={() => {
-                        setCurrentHabit(element);
-                        setShowEditModal(true);
-                      }}
-                    >
-                      Edit
-                    </Button>
+                    <section>
+                      {element.achieved && <BsFillCheckCircleFill />}
+                    </section>
+
+                    <div>
+                      <h3>
+                        <p>{element.title}</p>
+                        <span>
+                          <p>Category: {element.category}</p>
+                          <p>Difficulty: {element.difficulty}</p>
+                          <p>Frequency: {element.frequency}</p>
+                        </span>
+                      </h3>
+                      <div>
+                        <Button
+                          onClick={() => {
+                            setCurrentHabit(element);
+                            setShowEditModal(true);
+                          }}
+                        >
+                          Edit
+                        </Button>
+                      </div>
+                    </div>
                   </div>
                 </li>
               ))
             : cardType === "groups" && list
             ? list.map((group, index) => (
-                <li key={index}>
-                  <h3>{group.name}</h3>
-                  <div>
-                    <Button
-                      onClick={() => {
-                        updateClick(group.id);
-                      }}
-                    >
-                      Details
-                    </Button>
-                  </div>
+                <li className="groupLi" key={index}>
+                  <h3>
+                    <p>{group.name}</p>
+                  </h3>
+                  <Button
+                    onClick={() => {
+                      updateClick(group.id);
+                    }}
+                  >
+                    Details
+                  </Button>
                 </li>
               ))
             : list.map((myGroup, index) => (
-                <li key={index}>
-                  <h3>{myGroup.name}</h3>
-                  <div>
-                    <Button
-                      onClick={() =>
-                        history.push(`/detailsgroup/${myGroup.id}`)
-                      }
-                    >
-                      Details
-                    </Button>
-                  </div>
+                <li className="groupLi" key={index}>
+                  <h3>
+                    <p>{myGroup.name}</p>
+                  </h3>
+
+                  <Button
+                    onClick={() => history.push(`/detailsgroup/${myGroup.id}`)}
+                  >
+                    Details
+                  </Button>
                 </li>
               ))}
         </ul>

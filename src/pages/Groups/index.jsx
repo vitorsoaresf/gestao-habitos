@@ -23,7 +23,7 @@ const Groups = () => {
     getFilteredGroups(valor);
   };
   return (
-    <Container>
+    <>
       <HeaderInitial />
       <motion.div
         initial={{ x: 1000 }}
@@ -31,17 +31,21 @@ const Groups = () => {
         exit={{ x: 0 }}
         transition={{ duration: 1 }}
       >
-        {groups && (
-          <CardGeneric
-            title="All Groups"
-            cardType="groups"
-            list={groups}
-            updateClick={accessGroup}
-            searchFunction={searchFunction}
-          />
-        )}
+        <Container>
+          <div>
+            {groups && (
+              <CardGeneric
+                title="All Groups"
+                cardType="groups"
+                list={groups}
+                updateClick={accessGroup}
+                searchFunction={searchFunction}
+              />
+            )}
+          </div>
+        </Container>
       </motion.div>
-    </Container>
+    </>
   );
 };
 
