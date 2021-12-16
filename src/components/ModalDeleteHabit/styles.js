@@ -14,7 +14,7 @@ export const Container = styled.div`
     width: 310px;
     height: 200px;
     border-radius: 8px;
-    background-color: var(--white);
+    background-color: var(--gray);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
