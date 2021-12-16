@@ -55,7 +55,7 @@ export const ContainerUl = styled.ul`
     font-size: 1.2rem;
     color: var(--purple-0);
     font-weight: 600;
-    font-family: "Indie Flower", cursive;
+    font-family: "Itim", cursive;
     letter-spacing: 2px;
 
     button {

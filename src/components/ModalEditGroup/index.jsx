@@ -7,6 +7,8 @@ import { Container, ContainerForm } from "./styles";
 import Input from "../Input";
 import Button from "../Button";
 import { motion } from "framer-motion";
+import { FaPencilAlt, BiCategoryAlt, MdDescription } from "react-icons/all";
+
 const ModalEditGroup = ({
   groupId,
   setModalEditGroup,
@@ -53,21 +55,27 @@ const ModalEditGroup = ({
                 register={register}
                 name="name"
                 error={errors.name?.message}
-              />
+              >
+                <FaPencilAlt />
+              </Input>
               <Input
                 type="text"
                 placeholder="Description"
                 register={register}
                 name="description"
                 error={errors.description?.message}
-              />
+              >
+                <BiCategoryAlt />
+              </Input>
               <Input
                 type="text"
                 placeholder="Category"
                 register={register}
                 name="category"
                 error={errors.category?.message}
-              />
+              >
+                <MdDescription />
+              </Input>
 
               <Button type="submit">Confirm</Button>
             </form>

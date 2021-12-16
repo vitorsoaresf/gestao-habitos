@@ -137,7 +137,7 @@ export const TitleBox = styled.div`
   }
 
   .p2 {
-    font-size: 20px;
+    font-size: 25px;
     margin: 25px 10px 0 10px;
     font-family: "Oswald", sans-serif;
     line-height: 35px;
