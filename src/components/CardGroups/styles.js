@@ -87,10 +87,8 @@ export const ContainerUl = styled.ul`
     p {
       display: flex;
       width: 200px;
-      /* max-width: 200px; */
       flex-wrap: wrap;
       margin-left: 5px;
-      /* overflow: hidden; */
 
       overflow-x: scroll;
 
@@ -101,9 +99,10 @@ export const ContainerUl = styled.ul`
         background-color: transparent;
         border-radius: 100px;
       }
-      ::-webkit-scrollbar-thumb {
-        background-color: var(--purple-0);
+      ::-webkit-scrollbar-thumb:horizontal {
+        background-color: var(--green);
         border-radius: 100px;
+        -webkit-width: 1;
       }
     }
   }
