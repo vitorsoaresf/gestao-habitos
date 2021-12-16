@@ -15,29 +15,29 @@ export const Container = styled.div`
     width: 380px;
   }
 
-  h2 {
+  > h2 {
     font-size: 45px;
     margin: 16px 0;
   }
 
-  div {
+  > div {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     height: 42px;
     margin: 16px auto;
-    border-radius: 10px;
     width: 250px;
     width: 90%;
 
-    div {
+    > div {
       background: white;
       display: flex;
       width: 100%;
       margin: 0;
+      border-radius: 10px;
 
-      input {
+      > input {
         height: 42px;
         background: transparent;
         outline: none;
@@ -46,14 +46,18 @@ export const Container = styled.div`
         width: 90%;
       }
 
-      span {
+      > span {
         background: transparent;
         color: var(--darkGreen);
         padding-right: 6px;
+        display: flex;
+        align-items: center;
+
+        cursor: pointer;
       }
     }
 
-    button {
+    > button {
       height: 42px;
       width: 42px;
       margin-left: 8px;
@@ -63,12 +67,12 @@ export const Container = styled.div`
 
 export const ListBox = styled.section`
   width: 100%;
-  height: 380px;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  ul {
+  > ul {
+    height: 380px;
     overflow-y: scroll;
 
     ::-webkit-scrollbar {
@@ -85,72 +89,109 @@ export const ListBox = styled.section`
 
     width: 90%;
 
-    > li {
-      background: white;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-radius: 8px;
-      margin: 10px 12px 0px 0px;
-      transition: 0.4s;
-
-      section {
-        width: 28px;
-        padding: 2px;
-        color: green;
-      }
-
-      h3 {
-        font-size: 15px;
-        font-weight: 550;
-        width: 80%;
-        height: 100%;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-      }
-
-      span {
-        font-size: 15px;
-        font-weight: 550;
-        width: 80%;
-        height: 100%;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        margin-left: 8px;
-        flex-direction: column;
-
-        visibility: hidden;
-      }
-
+    .habitLi {
       :hover {
-        flex-direction: column;
-
-        justify-contet: flex-start;
+        display: flex;
+        justify-content: flex-start;
         height: 100px;
         transition: 0.4s;
       }
 
       :hover span {
         visibility: visible;
+        transition-delay: 0.2s;
       }
+    }
 
-      > div {
-        display: flex;
-        flex-direction: column;
+    .groupLi {
+      display: flex;
+      align-items: center;
+
+      > h3 {
+        margin-left: 4px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 155px;
         height: 100%;
-        justify-content: space-around;
-        align-items: flex-end;
-        margin-right: 3px;
-        max-width: 80px;
+        display: flex;
+        align-items: center;
+
+        > p {
+          font-size: 1.4rem;
+        }
       }
 
-      Button {
-        width: 80px;
+      > Button {
+        width: 70px;
         font-size: 15px;
         height: 20px;
+        margin-right: 4px;
+      }
+    }
+
+    > li {
+      background: white;
+      height: 50px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      border-radius: 8px;
+      margin: 10px 12px 0px 0px;
+      transition: 0.4s;
+      width: 240px;
+
+      > div {
+        width: 100%;
+        height: 25px;
+        padding: 0 0 0 4px;
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 10px;
+
+        > section {
+          width: 28px;
+          color: green;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        > div {
+          display: flex;
+          justify-content: space-between;
+          padding: 0 4px;
+          width: 80%;
+
+          > h3 {
+            width: 70%;
+
+            > p {
+              font-size: 1.4rem;
+            }
+
+            > span {
+              display: flex;
+              flex-direction: column;
+              visibility: hidden;
+              display: flex;
+              width: 100%;
+              height: 100%;
+              gap: 4px;
+              color: var(--darkGreen);
+            }
+          }
+          > div {
+            display: flex;
+            align-items: center;
+
+            > Button {
+              width: 50px;
+              font-size: 15px;
+              height: 20px;
+            }
+          }
+        }
       }
     }
   }
