@@ -69,7 +69,7 @@ export const ContainerUl = styled.ul`
     background-color: #ecf0f1;
     border-radius: 5px;
     font-size: 1.2rem;
-    color: var(--purple-0);
+    color: var(--darkGreen);
     font-weight: 600;
     font-family: "Itim", cursive;
     letter-spacing: 2px;
@@ -78,7 +78,7 @@ export const ContainerUl = styled.ul`
     button {
       width: 50px;
       height: 30px;
-      background-color: var(--purple-0);
+      background-color: var(--lightGreen);
       color: var(--white);
       border-radius: 5px;
       margin-right: 5px;
