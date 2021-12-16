@@ -93,6 +93,7 @@ export const ListBox = styled.section`
       justify-content: space-between;
       border-radius: 8px;
       margin: 10px 12px 0px 0px;
+      transition: 0.4s;
 
       h3 {
         font-size: 15px;
@@ -103,6 +104,32 @@ export const ListBox = styled.section`
         display: flex;
         align-items: center;
         margin-left: 8px;
+      }
+
+      span {
+        font-size: 15px;
+        font-weight: 550;
+        width: 80%;
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        margin-left: 8px;
+        flex-direction: column;
+
+        visibility: hidden;
+      }
+
+      :hover {
+        flex-direction: column;
+
+        justify-contet: flex-start;
+        height: 100px;
+        transition: 0.4s;
+      }
+
+      :hover span {
+        visibility: visible;
       }
 
       > div {

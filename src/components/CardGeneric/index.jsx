@@ -46,7 +46,15 @@ const CardGeneric = ({
           {cardType === "habit" && list
             ? list.map((habit, index) => (
                 <li key={index}>
-                  <h3> {habit.title}</h3>
+                  <h3>
+                    {habit.title}
+                    <span>
+                      <p>Category: {habit.category}</p>
+                      <p>Difficulty: {habit.difficulty}</p>
+                      <p>Frequency: {habit.frequency}</p>
+                    </span>
+                  </h3>
+
                   <div>
                     <Button
                       onClick={() => {
