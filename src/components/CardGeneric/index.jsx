@@ -3,15 +3,15 @@ import { BsSearch } from "react-icons/bs";
 import { useHistory } from "react-router";
 import Button from "../Button";
 import { useState } from "react";
+import { BsFillCheckCircleFill } from "react-icons/bs";
 
 const CardGeneric = ({
   title,
   cardType,
   updateClick,
   list,
-  habitUptadeData,
   setCurrentHabit,
-  setShowDeleteModal,
+  setShowEditModal,
   setShowAddModal,
   searchFunction,
 }) => {
@@ -44,32 +44,31 @@ const CardGeneric = ({
       <ListBox>
         <ul>
           {cardType === "habit" && list
-            ? list.map((habit, index) => (
+            ? list.map((element, index) => (
                 <li key={index}>
+
+                <section>
+                    {element.achieved && <BsFillCheckCircleFill />}
+                  </section>
                   <h3>
-                    {habit.title}
+                    {element.title}
                     <span>
-                      <p>Category: {habit.category}</p>
-                      <p>Difficulty: {habit.difficulty}</p>
-                      <p>Frequency: {habit.frequency}</p>
+                      <p>Category: {element.category}</p>
+                      <p>Difficulty: {element.difficulty}</p>
+                      <p>Frequency: {element.frequency}</p>
                     </span>
                   </h3>
 
+
+                  
                   <div>
                     <Button
                       onClick={() => {
-                        updateClick(habitUptadeData, habit.id);
+                        setCurrentHabit(element);
+                        setShowEditModal(true);
                       }}
                     >
-                      Done
-                    </Button>
-                    <Button
-                      onClick={() => {
-                        setCurrentHabit(habit);
-                        setShowDeleteModal(true);
-                      }}
-                    >
-                      Delete
+                      Edit
                     </Button>
                   </div>
                 </li>

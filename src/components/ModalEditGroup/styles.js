@@ -13,13 +13,13 @@ export const Container = styled.div`
   top: 0;
 
   div {
-    width: 95%;
+    width: 310px;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     h1 {
-      width: 95%;
+      width: 100%;
       padding: 5px 0;
       border-radius: 5px 5px 0 0;
       background: var(--darkGreen);
@@ -36,7 +36,7 @@ export const Container = styled.div`
         color: var(--white);
         width: 30px;
         height: 30px;
-        background: var(--purple);
+        background: var(--red);
         margin-right: 5px;
       }
     }
@@ -53,18 +53,19 @@ export const ContainerForm = styled.div`
   width: 100%;
 
   form {
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     input {
       width: 100%;
     }
   }
 
   button {
-    width: 95%;
+    width: 80%;
     height: 40px;
     color: var(--white);
     margin: 10px;

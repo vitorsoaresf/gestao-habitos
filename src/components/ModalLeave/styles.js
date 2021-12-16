@@ -12,7 +12,7 @@ export const Container = styled.div`
   top: 0;
 
   div {
-    width: 90%;
+    width: 310px;
     display: flex;
     flex-direction: column;
     align-items: center;

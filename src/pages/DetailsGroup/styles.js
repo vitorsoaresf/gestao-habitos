@@ -5,8 +5,7 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background-color: #a59de8;
-  height: 100vh;
+  /* height: 100vh; */
 `;
 
 export const ContainerTitle = styled.section`
@@ -16,8 +15,6 @@ export const ContainerTitle = styled.section`
   align-items: center;
   margin: 20px 0;
   width: 310px;
-  /* height: 300px; */
-  /* border-radius: 10px; */
   color: var(--darkGreen);
 
   h1 {

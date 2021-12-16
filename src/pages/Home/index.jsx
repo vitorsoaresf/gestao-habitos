@@ -27,72 +27,76 @@ const Home = () => {
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 1 }}
-    >
+    <>
       <HeaderInitial />
-      <Container>
-        <div>
-          <img src={love} alt="svg balao" />
-          <div id="orange">
-            <div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <Container>
+          <div>
+            <img src={love} alt="svg balao" />
+            <div id="orange">
               <div>
-                <TitleBox>
-                  <h1>Anima</h1>
-                  <p className="p1">
-                    The <strong>Anima</strong> platform is a great way to manage
-                    your <i>habits</i> and connect you with people who share the
-                    same habits.
-                  </p>
-                  <p className="p2">
-                    In this sense, our <strong>objective</strong> is to enable
-                    people, bonds with those who are far away, but who are
-                    united by exercising and searching for new habits.
-                  </p>
+                <div className="box_title">
+                  <TitleBox>
+                    <h1>Anima</h1>
+                    <p className="p1">
+                      The <strong>Anima</strong> platform is a great way to
+                      manage your <i>habits</i> and connect you with people who
+                      share the same habits.
+                    </p>
+                    <p className="p2">
+                      In this sense, our <strong>objective</strong> is to enable
+                      people, bonds with those who are far away, but who are
+                      united by exercising and searching for new habits.
+                    </p>
 
-                  <div className="p3">
-                    <p>Welcome</p>
-                    <sup></sup>
-                    <img src={Logo} alt="project Logo" />{" "}
-                  </div>
-                </TitleBox>
-                <ButtonBox>
-                  <Button onClick={() => history.push("/login")}>Login</Button>
-                  <Button isGray onClick={() => history.push("/register")}>
-                    Sign up
-                  </Button>
-                </ButtonBox>
+                    <div className="p3">
+                      <p>Welcome</p>
+                      <sup></sup>
+                      <img src={Logo} alt="project Logo" />{" "}
+                    </div>
+                  </TitleBox>
+                  <ButtonBox>
+                    <Button onClick={() => history.push("/login")}>
+                      Login
+                    </Button>
+                    <Button isGray onClick={() => history.push("/register")}>
+                      Sign up
+                    </Button>
+                  </ButtonBox>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <AboutUsBox id="devTeam">
-          <div>
-            {AboutUs.map((element, index) => (
-              <div key={index}>
-                <NameBox>
-                  <h1>{element.name}</h1>
-                  <p>, {element.function}</p>
-                </NameBox>
-                <PicBox>
-                  <img src={element.img} alt="Dev in question" />
-                  <h4>{element.description}</h4>
-                </PicBox>
-                <div>
-                  <BsLinkedin />
-                  <a href={element.linkedin} target="_blank" rel="noreferrer">
-                    Linkedin
-                  </a>
+          <AboutUsBox id="devTeam">
+            <div>
+              {AboutUs.map((element, index) => (
+                <div key={index}>
+                  <NameBox>
+                    <h1>{element.name}</h1>
+                    <p>, {element.function}</p>
+                  </NameBox>
+                  <PicBox>
+                    <img src={element.img} alt="Dev in question" />
+                    <h4>{element.description}</h4>
+                  </PicBox>
+                  <div>
+                    <BsLinkedin />
+                    <a href={element.linkedin} target="_blank" rel="noreferrer">
+                      Linkedin
+                    </a>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </AboutUsBox>
-      </Container>
-    </motion.div>
+              ))}
+            </div>
+          </AboutUsBox>
+        </Container>
+      </motion.div>
+    </>
   );
 };
 

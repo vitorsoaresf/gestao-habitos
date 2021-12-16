@@ -7,6 +7,8 @@ export const Container = styled.div`
 
   > div {
     display: flex;
+    margin-bottom: 150px;
+    margin-top: 100px;
 
     @media (min-width: 1300px) {
       gap: 6vw;
@@ -28,7 +30,6 @@ export const Container = styled.div`
 
     > div {
       display: flex;
-      /* background: orange; */
       height: 100vh;
       align-items: center;
 
@@ -37,15 +38,11 @@ export const Container = styled.div`
       }
 
       > div {
-        /* display: flex; */
-        /* justify-content: center; */
-
         > div {
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: space-around;
-          /* background: green; */
 
           @media (min-width: 768px) {
             /* width: 80vw; */
@@ -54,6 +51,10 @@ export const Container = styled.div`
         }
       }
     }
+  }
+
+  @media (min-width: 1024px) {
+    justify-content: start;
   }
 `;
 
@@ -65,7 +66,7 @@ export const ButtonBox = styled.section`
   > Button {
     margin: 8px;
     width: 200px;
-    font-family: "Oswald", sans-serif;
+    font-family: "Itim", cursive;
     letter-spacing: 2px;
   }
 
@@ -117,7 +118,7 @@ export const TitleBox = styled.div`
     font-size: 25px;
     text-align: center;
     margin: 25px 10px 0 10px;
-    font-family: "Oswald", sans-serif;
+    font-family: "Itim", cursive;
     line-height: 35px;
     color: var(--darkGray);
     font-weight: 400;
@@ -136,13 +137,14 @@ export const TitleBox = styled.div`
   }
 
   .p2 {
-    font-size: 20px;
+    font-size: 25px;
     margin: 25px 10px 0 10px;
     font-family: "Oswald", sans-serif;
     line-height: 35px;
     color: var(--darkGray);
     font-weight: 400;
     text-align: center;
+    font-family: "Itim", cursive;
 
     strong {
       color: var(--purple-0);
@@ -173,21 +175,22 @@ export const TitleBox = styled.div`
   }
 
   @media (min-width: 768px) {
+    margin-right: 20px;
     h1 {
       text-align: right;
       margin-right: 10px;
     }
 
     .p1 {
-      text-align: right;
+      text-align: justify;
     }
 
     .p2 {
-      text-align: right;
+      text-align: justify;
     }
 
     .p3 {
-      text-align: left;
+      text-align: justify;
     }
   }
 `;

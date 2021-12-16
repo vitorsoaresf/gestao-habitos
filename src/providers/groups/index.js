@@ -18,8 +18,10 @@ export const GroupsProvider = ({ children }) => {
     api
       .get(next)
       .then((response) => {
-        setGroups([...groups, ...response.data.results]);
-        next && setNext(response.data.next);
+        if (next) {
+          setGroups([...groups, ...response.data.results]);
+          setNext(response.data.next);
+        }
       })
       .catch((err) => console.log(err));
   }, [next]);
@@ -51,9 +53,9 @@ export const GroupsProvider = ({ children }) => {
   };
 
   const [groupParticipants, setGroupParticipants] = useState([]);
-  const [groupCreator, setGroupCreator] = useState(false);
   const [dataGroup, setSpecificGroup] = useState([]);
   const [isParticipant, setIsParticipant] = useState(false);
+  const [isCreator, setIsCreator] = useState(false);
 
   const getGroupAllParticipants = (groupId) => {
     const { user_id } = jwt_decode(token);
@@ -67,7 +69,7 @@ export const GroupsProvider = ({ children }) => {
         setSpecificGroup(response.data);
 
         if (user_id === response.data.creator.id) {
-          setGroupCreator(response.data.creator);
+          setIsCreator(true);
         }
 
         if (
@@ -242,7 +244,7 @@ export const GroupsProvider = ({ children }) => {
         groupParticipants,
         groupGoals,
         groupActivities,
-        groupCreator,
+        isCreator,
         dataGroup,
         myGroups,
         isParticipant,
@@ -262,6 +264,7 @@ export const GroupsProvider = ({ children }) => {
         inscribeGroup,
         unsubscribeGroup,
         setMyGroups,
+        setIsCreator,
       }}
     >
       {children}

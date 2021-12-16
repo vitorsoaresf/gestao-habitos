@@ -59,49 +59,53 @@ const Login = () => {
   };
 
   return (
-    <motion.div
-      initial={{ x: -900 }}
-      animate={{ x: 0 }}
-      exit={{ x: 0 }}
-      transition={{ duration: 1 }}
-    >
+    <>
       <HeaderInitial />
-      <Container>
-        <div>
-          <img src={yoga} alt="Yoga svg" />
+      <motion.div
+        initial={{ x: -900 }}
+        animate={{ x: 0 }}
+        exit={{ x: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <Container>
           <div>
-            <h1>Login</h1>
+            <div className="img">
+              <img src={yoga} alt="Yoga svg" />
+            </div>
+            <div>
+              <h1>Login</h1>
 
-            <form onSubmit={handleSubmit(onSubmitFunction)}>
-              <Input
-                type="text"
-                placeholder="Username"
-                register={register}
-                name="username"
-                error={errors.username?.message}
-              >
-                <FaUserAlt />
-              </Input>
+              <form onSubmit={handleSubmit(onSubmitFunction)}>
+                <Input
+                  type="text"
+                  placeholder="Username"
+                  register={register}
+                  name="username"
+                  error={errors.username?.message}
+                >
+                  <FaUserAlt />
+                </Input>
 
-              <Input
-                type="password"
-                placeholder="Password"
-                register={register}
-                name="password"
-                error={errors.password?.message}
-              >
-                <FaLock />
-              </Input>
+                <Input
+                  type="password"
+                  placeholder="Password"
+                  register={register}
+                  name="password"
+                  error={errors.password?.message}
+                >
+                  <FaLock />
+                </Input>
 
-              <Button type="submit">Login</Button>
-              <p>
-                Don't have an account? <Link to="/register">Sign up</Link>
-              </p>
-            </form>
+                <Button type="submit">Login</Button>
+                <p>
+                  Don't have an account? <Link to="/register">Sign up</Link>
+                </p>
+              </form>
+            </div>
           </div>
-        </div>
-      </Container>
-    </motion.div>
+        </Container>
+      </motion.div>
+    </>
   );
 };
 

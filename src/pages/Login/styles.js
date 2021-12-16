@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 80vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
+  height: 100vh;
 
   > div {
     width: 100%;
@@ -12,8 +12,14 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
 
-    img {
+    .img {
       width: 450px;
+      background: none;
+
+      img {
+        width: 400px;
+        height: 400px;
+      }
 
       @media (max-width: 767px) {
         display: none;
@@ -34,6 +40,7 @@ export const Container = styled.div`
         height: 400px;
         display: flex;
         border-radius: 10px;
+        margin-right: 10px;
       }
 
       h1 {
@@ -47,17 +54,18 @@ export const Container = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
+        font-family: "Itim", cursive;
 
         button {
           margin: 10px 0 10px 0;
           color: var(--white);
-          font-family: "Itim", cursive;
           letter-spacing: 2px;
         }
 
         a {
-          color: var(--purple);
+          color: var(--purple-0);
           text-decoration: none;
+          font-size: 1.3rem;
         }
       }
     }

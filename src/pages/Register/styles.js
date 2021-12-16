@@ -35,7 +35,6 @@ export const Container = styled.div`
         width: 300px;
         display: flex;
         border-radius: 10px;
-        margin-bottom: 120px;
       }
 
       h1 {
@@ -56,8 +55,14 @@ export const Container = styled.div`
         }
 
         a {
-          color: var(--purple);
+          color: var(--purple-0);
           text-decoration: none;
+          font-family: "Itim", cursive;
+          font-size: 1.3rem;
+        }
+
+        p {
+          font-family: "Itim", cursive;
         }
       }
     }

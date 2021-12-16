@@ -28,10 +28,11 @@ const DetailsGroup = () => {
     getGoalsGroup,
     groupActivities,
     getActivitiesGroup,
-    groupCreator,
+    isCreator,
     inscribeGroup,
     dataGroup,
     isParticipant,
+    setIsCreator,
   } = useContext(GroupsContext);
 
   useEffect(() => {
@@ -50,6 +51,7 @@ const DetailsGroup = () => {
   const updateActivitiesGoals = () => {
     setUpdate(!update);
   };
+  console.log(isCreator);
   return isParticipant ? (
     <>
       <HeaderInitial />
@@ -91,12 +93,25 @@ const DetailsGroup = () => {
               title="activities"
               list={groupActivities}
             />
-            <Button onClick={() => history.push(`/groups/`)}>Back</Button>
-            {groupCreator.length > 0 ? (
-              <Button onClick={() => setModalEditGroup(true)}>Edit</Button>
-            ) : (
-              <Button onClick={() => setModalLeave(true)}>Leave</Button>
-            )}
+            <ContainerButton>
+              <Button
+                onClick={() => {
+                  setIsCreator(false);
+                  history.push(
+                    `/dashboard/${JSON.parse(
+                      localStorage.getItem("@Anima/token")
+                    )}`
+                  );
+                }}
+              >
+                Back
+              </Button>
+              {isCreator ? (
+                <Button onClick={() => setModalEditGroup(true)}>Edit</Button>
+              ) : (
+                <Button onClick={() => setModalLeave(true)}>Leave</Button>
+              )}
+            </ContainerButton>
           </ContainerBody>
         </Container>
       </motion.div>
@@ -118,8 +133,19 @@ const DetailsGroup = () => {
           <ContainerBody>
             <CardGroups title="participants" list={groupParticipants} />
             <ContainerButton>
-              <Button onClick={() => history.push(`/groups/`)}>Back</Button>
-              {groupCreator.length > 0 ? (
+              <Button
+                onClick={() => {
+                  setIsCreator(false);
+                  history.push(
+                    `/dashboard/${JSON.parse(
+                      localStorage.getItem("@Anima/token")
+                    )}`
+                  );
+                }}
+              >
+                Back
+              </Button>
+              {isCreator ? (
                 <Button onClick={() => setModalEditGroup(true)}>Edit</Button>
               ) : (
                 <Button
