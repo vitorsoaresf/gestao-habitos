@@ -51,7 +51,7 @@ const DetailsGroup = () => {
   const updateActivitiesGoals = () => {
     setUpdate(!update);
   };
-  console.log(isCreator);
+
   return isParticipant ? (
     <>
       <HeaderInitial />

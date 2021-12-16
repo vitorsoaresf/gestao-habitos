@@ -105,6 +105,7 @@ export const TitleBox = styled.div`
   justify-content: flex-start;
   align-items: center;
   max-width: 425px;
+  margin-top: 100px;
 
   h1 {
     font-size: 64px;
@@ -196,13 +197,10 @@ export const TitleBox = styled.div`
 `;
 
 export const AboutUsBox = styled.footer`
-  background: var(--gray);
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   padding: 42px 0 42px 0;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
-    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 
   > div {
     @media (min-width: 768px) {
@@ -213,7 +211,8 @@ export const AboutUsBox = styled.footer`
     }
 
     > div {
-      background: var(--darkGreen);
+      /* background: #fce2d2; */
+      background: #c4dad8;
       color: var(--white);
       margin-top: 8px;
       display: flex;
@@ -223,6 +222,7 @@ export const AboutUsBox = styled.footer`
       height: 150px;
       border-radius: 8px;
       justify-content: space-between;
+      font-family: "Itim", cursive;
 
       box-shadow: rgba(0, 0, 0, 0.55) 0px 3px 8px;
 
@@ -231,6 +231,11 @@ export const AboutUsBox = styled.footer`
         color: var(--white);
         margin-left: 4px;
         cursor: pointer;
+        color: #0a66c2;
+      }
+
+      svg {
+        color: #0a66c2;
       }
     }
   }
@@ -244,9 +249,11 @@ export const NameBox = styled.div`
 
   h1 {
     font-weight: 600;
+    color: var(--darkGreen);
   }
 
   p {
+    color: var(--darkGreen);
     font-family: italic;
   }
 `;
@@ -254,7 +261,7 @@ export const NameBox = styled.div`
 export const PicBox = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 24px;
+  /* margin-top: 24px; */
   align-items: center;
 
   img {
@@ -266,5 +273,8 @@ export const PicBox = styled.div`
 
   h4 {
     width: 80%;
+    font-size: 1.2rem;
+    text-align: center;
+    color: var(--darkGreen);
   }
 `;

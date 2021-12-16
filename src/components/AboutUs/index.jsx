@@ -5,7 +5,7 @@ import berg from "../../assets/DevImages/bergDev.png";
 
 const AboutUs = [
   {
-    name: "Leonardo M. Louzas",
+    name: "Leonardo Louzas",
     function: "Scrum Master (S.M.)",
     description:
       "in charge of taking care of code development and daily team productivity.",

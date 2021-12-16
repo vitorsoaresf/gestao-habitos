@@ -29,13 +29,19 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
 }
+
+html { 
+  background: url(${img}) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 body {
     line-height: 1;
     box-sizing: border-box;
     font-family: 'Lobster Two', cursive;
-
-    background-image: url(${img});
-    background-size: cover;
 }
 ol, ul {
     list-style: none;
