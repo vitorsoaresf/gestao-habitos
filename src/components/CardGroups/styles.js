@@ -85,12 +85,15 @@ export const ContainerUl = styled.ul`
     margin: 10px 12px 0px 0px;
 
     button {
-      width: 50px;
-      height: 30px;
-      background-color: var(--lightGreen);
-      color: var(--white);
-      border-radius: 5px;
-      margin-right: 5px;
+      background: var(--lightGreen);
+      width: 70px;
+      font-size: 15px;
+      height: 20px;
+      margin-right: 4px;
+
+      :hover {
+        background: var(--purple-0);
+      }
     }
 
     p {
