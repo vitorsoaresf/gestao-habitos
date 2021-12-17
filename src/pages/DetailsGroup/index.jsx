@@ -80,10 +80,10 @@ const DetailsGroup = () => {
             <h1>
               <div>
                 {dataGroup.name}
-                <p>{dataGroup.category}</p>
+                <p>Category: {dataGroup.category}</p>
               </div>
             </h1>
-            <p>{dataGroup.description}</p>
+            <p>Description: {dataGroup.description}</p>
           </ContainerTitle>
           <ContainerBody>
             <CardGroups title="Participants" list={groupParticipants} />
@@ -134,9 +134,12 @@ const DetailsGroup = () => {
         <Container>
           <ContainerTitleNotParticipant>
             <h1>
-              <p>{dataGroup.name}</p>
+              <div>
+                {dataGroup.name}
+                <p>Category: {dataGroup.category}</p>
+              </div>
             </h1>
-            <p>{dataGroup.description}</p>
+            <p>Description: {dataGroup.description}</p>
           </ContainerTitleNotParticipant>
           <ContainerBodyNotParticipant>
             <CardGroups title="Participants" list={groupParticipants} />
