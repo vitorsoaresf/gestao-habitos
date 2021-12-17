@@ -8,7 +8,7 @@ const AboutUs = [
     name: "Leonardo Louzas",
     function: "Scrum Master (S.M.)",
     description:
-      "in charge of taking care of code development and daily team productivity.",
+      "In charge of taking care of code development and daily team productivity.",
     img: leonardo,
     linkedin: "https://www.linkedin.com/in/leonardomlouzas/",
   },
@@ -16,7 +16,7 @@ const AboutUs = [
   {
     name: "Vitor Soares",
     function: "Tech Lead (T.L.)",
-    description: "in charge of the management and standardizing of the code.",
+    description: "In charge of the management and standardizing of the code.",
     img: vitor,
     linkedin: "https://www.linkedin.com/in/vitorsoaresf/",
   },
