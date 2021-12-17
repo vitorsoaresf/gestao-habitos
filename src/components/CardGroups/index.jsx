@@ -61,8 +61,10 @@ const CardGroups = ({ title, list, groupId, updateActivitiesGoals }) => {
 
       <Container>
         <ContainerTitle>
-          <h1>{title}</h1>
-          {title === "goals" && (
+          <div>
+            <h1>{title}</h1>
+          </div>
+          {title === "Goals" && (
             <Button
               onClick={() => {
                 setModalGoals(!modalGoals);
@@ -71,7 +73,7 @@ const CardGroups = ({ title, list, groupId, updateActivitiesGoals }) => {
               +
             </Button>
           )}
-          {title === "activities" && (
+          {title === "Activities" && (
             <Button
               onClick={() => {
                 setModalActivities(!modalActivities);
@@ -82,13 +84,13 @@ const CardGroups = ({ title, list, groupId, updateActivitiesGoals }) => {
           )}
         </ContainerTitle>
         <ContainerUl>
-          {title === "participants"
+          {title === "Participants"
             ? list.map((partipant, index) => (
                 <li key={index}>
                   <p>{partipant.username}</p>
                 </li>
               ))
-            : title === "goals"
+            : title === "Goals"
             ? list.map((goals, index) => (
                 <li key={index}>
                   <p>{goals.title}</p>

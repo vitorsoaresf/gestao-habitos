@@ -78,22 +78,25 @@ const DetailsGroup = () => {
 
           <ContainerTitle>
             <h1>
-              <p>{dataGroup.name}</p>
+              <div>
+                {dataGroup.name}
+                <p>{dataGroup.category}</p>
+              </div>
             </h1>
             <p>{dataGroup.description}</p>
           </ContainerTitle>
           <ContainerBody>
-            <CardGroups title="participants" list={groupParticipants} />
+            <CardGroups title="Participants" list={groupParticipants} />
             <CardGroups
               updateActivitiesGoals={updateActivitiesGoals}
               groupId={groupId}
-              title="goals"
+              title="Goals"
               list={groupGoals}
             />
             <CardGroups
               updateActivitiesGoals={updateActivitiesGoals}
               groupId={groupId}
-              title="activities"
+              title="Activities"
               list={groupActivities}
             />
             <ContainerButton>
@@ -136,7 +139,7 @@ const DetailsGroup = () => {
             <p>{dataGroup.description}</p>
           </ContainerTitleNotParticipant>
           <ContainerBodyNotParticipant>
-            <CardGroups title="participants" list={groupParticipants} />
+            <CardGroups title="Participants" list={groupParticipants} />
             <ContainerButton>
               <Button
                 onClick={() => {

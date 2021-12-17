@@ -18,16 +18,33 @@ export const ContainerTitle = styled.section`
 
   h1 {
     width: 100%;
-    p {
+
+    @media (min-width: 768px) {
+      width: 80vh;
+    }
+
+    > div {
       font-size: 2.5rem;
+      margin: 10px 0;
+      width: 100%;
+      text-align: center;
+      font-weight: 600;
+
+      > p {
+        font-size: 1.8rem;
+        margin-top: 8px;
+      }
     }
   }
 
-  p {
+  > p {
     margin: 10px 0;
     width: 100%;
-    text-align: center;
     font-size: 1.5rem;
+
+    @media (min-width: 768px) {
+      width: 80vh;
+    }
   }
 `;
 

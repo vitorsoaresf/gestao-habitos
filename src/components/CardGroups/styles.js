@@ -10,6 +10,9 @@ export const Container = styled.div`
   background-color: var(--green);
   border-radius:10px; 
   margin: 15px 0;
+  background-image: linear-gradient(
+    var(--green),
+    var(--darkGreen));
   
 }
 `;
@@ -23,10 +26,16 @@ export const ContainerTitle = styled.div`
 
   margin: 10px 0;
   color: var(--white);
-  font-weight: 600;
 
-  h1 {
-    font-size: 2rem;
+  > div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    h1 {
+      font-size: 3rem;
+      color: white;
+    }
   }
 
   button {
@@ -85,10 +94,14 @@ export const ContainerUl = styled.ul`
     }
 
     p {
+      margin-left: 4px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 75%;
+      height: 100%;
       display: flex;
-      width: 200px;
-      flex-wrap: wrap;
-      margin-left: 5px;
+      align-items: center;
 
       overflow-x: scroll;
 
@@ -100,7 +113,7 @@ export const ContainerUl = styled.ul`
         border-radius: 100px;
       }
       ::-webkit-scrollbar-thumb:horizontal {
-        background-color: var(--green);
+        /* background-color: var(--green); */
         border-radius: 100px;
         -webkit-width: 1;
       }
