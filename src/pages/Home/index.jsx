@@ -46,7 +46,7 @@ const Home = () => {
                     <p className="p1">
                       The <strong>Anima</strong> platform is a great way to
                       manage your <i>habits</i> and connect you with people who
-                      share the same habits.
+                      share the same routine.
                     </p>
                     <p className="p2">
                       In this sense, our <strong>objective</strong> is to enable
