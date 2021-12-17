@@ -122,6 +122,13 @@ export const ListBox = styled.section`
         }
       }
 
+      @media (min-width: 1400px) {
+
+        h3 {
+          width:220px;
+        }
+      }
+
       > Button {
         background: var(--lightGreen);
         width: 70px;
