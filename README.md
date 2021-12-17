@@ -2,7 +2,7 @@
 
 O objetivo da plataforma é que o usuário cadastrado consiga gerir seus hábitos e participar de grupos com outras pessoas com a mesmas categorias de hábitos e metas.\
 
-Acesse [AQUI](https://github.com/facebook/create-react-app).
+Acesse [AQUI](https://anima-nine.vercel.app/).
 
 ## Equipe
 
