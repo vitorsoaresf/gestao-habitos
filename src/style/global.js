@@ -30,12 +30,10 @@ footer, header, hgroup, menu, nav, section {
     display: block;
 }
 
-html { 
-  background: url(${img}) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+html {
+  background: url(${img}) no-repeat center center fixed;
   background-size: cover;
+  height: 100%;
 }
 
 body {
