@@ -5,7 +5,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background: var(--green);
+  // background: var(--green);
+  background-image: linear-gradient(var(--green), var(--darkGreen));
   align-items: center;
   border-radius: 10px;
   width: 280px;
@@ -18,6 +19,7 @@ export const Container = styled.div`
   > h2 {
     font-size: 45px;
     margin: 16px 0;
+    color: white;
   }
 
   > div {
@@ -52,7 +54,6 @@ export const Container = styled.div`
         padding-right: 6px;
         display: flex;
         align-items: center;
-
         cursor: pointer;
       }
     }
@@ -173,6 +174,7 @@ export const ListBox = styled.section`
 
             > p {
               font-size: 1.4rem;
+              color: var(--darkGreen);
             }
 
             > span {
