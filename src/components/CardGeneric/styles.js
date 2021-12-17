@@ -119,13 +119,13 @@ export const ListBox = styled.section`
 
         > p {
           font-size: 1.4rem;
+          color: var(--darkGreen);
         }
       }
 
       @media (min-width: 1400px) {
-
         h3 {
-          width:220px;
+          width: 220px;
         }
       }
 
