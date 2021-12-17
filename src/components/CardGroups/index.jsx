@@ -90,7 +90,7 @@ const CardGroups = ({ title, list, groupId, updateActivitiesGoals }) => {
                   <p>{partipant.username}</p>
                 </li>
               ))
-            : title === "goals"
+            : title === "Goals"
             ? list.map((goals, index) => (
                 <li key={index}>
                   <p>{goals.title}</p>

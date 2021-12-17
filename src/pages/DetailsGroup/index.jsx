@@ -78,10 +78,10 @@ const DetailsGroup = () => {
 
           <ContainerTitle>
             <h1>
-              <p>
+              <div>
                 {dataGroup.name}
-                <h2>{dataGroup.category}</h2>
-              </p>
+                <p>{dataGroup.category}</p>
+              </div>
             </h1>
             <p>{dataGroup.description}</p>
           </ContainerTitle>

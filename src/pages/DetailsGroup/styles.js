@@ -23,14 +23,14 @@ export const ContainerTitle = styled.section`
       width: 80vh;
     }
 
-    > p {
+    > div {
       font-size: 2.5rem;
       margin: 10px 0;
       width: 100%;
       text-align: center;
       font-weight: 600;
 
-      h2 {
+      > p {
         font-size: 1.8rem;
         margin-top: 8px;
       }
