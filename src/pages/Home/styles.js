@@ -5,10 +5,18 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
+  @media (min-width: 1024px) {
+    justify-content: start;
+  }
+
   > div {
     display: flex;
     margin-bottom: 150px;
     margin-top: 100px;
+
+    @media (min-width: 768px) {
+      margin-top: 0px;
+    }
 
     @media (min-width: 1300px) {
       gap: 6vw;
@@ -45,16 +53,11 @@ export const Container = styled.div`
           justify-content: space-around;
 
           @media (min-width: 768px) {
-            /* width: 80vw; */
             height: 550px;
           }
         }
       }
     }
-  }
-
-  @media (min-width: 1024px) {
-    justify-content: start;
   }
 `;
 
@@ -171,7 +174,6 @@ export const TitleBox = styled.div`
       height: 50px;
       margin-left: 10px;
       opacity: 0.5;
-      /* position: absolute; */
     }
   }
 
@@ -211,7 +213,6 @@ export const AboutUsBox = styled.footer`
     }
 
     > div {
-      /* background: #fce2d2; */
       background: #c4dad8;
       color: var(--white);
       margin-top: 8px;
@@ -261,7 +262,6 @@ export const NameBox = styled.div`
 export const PicBox = styled.div`
   display: flex;
   justify-content: space-between;
-  /* margin-top: 24px; */
   align-items: center;
 
   img {
