@@ -1,5 +1,7 @@
 # Anima
 
+Link App - https://react-gestao-habitos-leonardomlouzas.vercel.app/
+
 O objetivo da plataforma é que o usuário cadastrado consiga gerir seus hábitos e participar de grupos com outras pessoas com a mesmas categorias de hábitos e metas.\
 
 Acesse [AQUI](https://anima-nine.vercel.app/).
